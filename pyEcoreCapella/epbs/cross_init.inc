@@ -1,0 +1,20 @@
+
+#print('epbs.cross_init starting')
+
+
+EPBSArchitecturePkg.ownedEPBSArchitectures.eType = EPBSArchitecture
+EPBSArchitecture.ownedConfigurationItemPkg.eType = ConfigurationItemPkg
+EPBSArchitecture._containedCapabilityRealizationPkg.eType = CapabilityRealizationPkg
+EPBSArchitecture.ownedPhysicalArchitectureRealizations.eType = PhysicalArchitectureRealization
+EPBSArchitecture.allocatedPhysicalArchitectureRealizations.eType = PhysicalArchitectureRealization
+ConfigurationItemPkg.ownedConfigurationItems.eType = ConfigurationItem
+ConfigurationItemPkg.ownedConfigurationItemPkgs.eType = ConfigurationItemPkg
+ConfigurationItem.ownedConfigurationItems.eType = ConfigurationItem
+ConfigurationItem.ownedConfigurationItemPkgs.eType = ConfigurationItemPkg
+ConfigurationItem.ownedPhysicalArtifactRealizations.eType = PhysicalArtifactRealization
+PhysicalArtifactRealization._realizedPhysicalArtifact.eType = AbstractPhysicalArtifact
+PhysicalArtifactRealization._realizingConfigurationItem.eType = ConfigurationItem
+EPBSArchitecture.allocatedPhysicalArchitectures.eType = PhysicalArchitecture
+ConfigurationItem.allocatedPhysicalArtifacts.eType = AbstractPhysicalArtifact
+
+#print('epbs.cross_init done')

@@ -1,11 +1,12 @@
+print('sharedmodel.sharedmodel loading')
 """Definition of meta model 'sharedmodel'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import Namespace, CapellaElement, NamedElement, Structure, Structure, CapellaElement, ReuseableStructure
-from modellingcore import ModelElement, TraceableElement, AbstractNamedElement, PublishableElement
+from capellacore import CapellaElement, CapellaElement, NamedElement, Namespace, ReuseableStructure, Structure, Structure
 from capellamodeller import ModelRoot
-from emde import ExtensibleElement, Element
+from emde import Element, ExtensibleElement
+from modellingcore import AbstractNamedElement, ModelElement, PublishableElement, TraceableElement
 
 
 name = 'sharedmodel'
@@ -50,3 +51,5 @@ class SharedPkg(ReuseableStructure, ModelRoot):
 
         if ownedGenericPkg is not None:
             self.ownedGenericPkg = ownedGenericPkg
+
+print('sharedmodel.sharedmodel loaded')

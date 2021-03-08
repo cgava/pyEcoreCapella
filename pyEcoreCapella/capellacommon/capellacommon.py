@@ -1,11 +1,12 @@
+print('capellacommon.capellacommon loading')
 """Definition of meta model 'capellacommon'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import Namespace, InvolvedElement, NamedElement, Trace, Allocation, Structure, CapellaElement, CapellaElement, Involvement, Relationship, NamedElement, Relationship
-from modellingcore import TraceableElement, AbstractNamedElement, AbstractType, AbstractNamedElement, IState, PublishableElement, AbstractNamedElement, AbstractRelationship, ModelElement, AbstractTrace, TraceableElement
-from emde import ExtensibleElement, Element
-from behavior import AbstractEvent, AbstractBehavior
+from behavior import AbstractBehavior, AbstractEvent
+from capellacore import Allocation, CapellaElement, CapellaElement, InvolvedElement, Involvement, NamedElement, NamedElement, Namespace, Relationship, Relationship, Structure, Trace
+from emde import Element, ExtensibleElement
+from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, IState, ModelElement, PublishableElement, TraceableElement, TraceableElement
 
 
 name = 'capellacommon'
@@ -540,3 +541,5 @@ class TimeEvent(StateEvent):
 
         if kind is not None:
             self.kind = kind
+
+print('capellacommon.capellacommon loaded')

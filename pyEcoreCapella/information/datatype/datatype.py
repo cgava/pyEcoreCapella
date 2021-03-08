@@ -1,11 +1,12 @@
+print('datatype.datatype loading')
 """Definition of meta model 'datatype'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import Namespace, Structure, NamedElement, VisibilityKind, CapellaElement, Type, GeneralizableElement
-from modellingcore import TraceableElement, AbstractType, AbstractNamedElement, ModelElement, AbstractNamedElement, FinalizableElement, PublishableElement
+from capellacore import CapellaElement, GeneralizableElement, NamedElement, Namespace, Structure, Type, VisibilityKind
 from information.datavalue import DataValueContainer
-from emde import ExtensibleElement, Element
+from emde import Element, ExtensibleElement
+from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractType, FinalizableElement, ModelElement, PublishableElement, TraceableElement
 
 
 name = 'datatype'
@@ -203,3 +204,5 @@ class PhysicalQuantity(NumericType):
 
         if unit is not None:
             self.unit = unit
+
+print('datatype.datatype loaded')

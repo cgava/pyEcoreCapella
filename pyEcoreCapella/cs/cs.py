@@ -1,13 +1,14 @@
+print('cs.cs loading')
 """Definition of meta model 'cs'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import AbstractDependenciesPkg, NamedElement, Allocation, Relationship, AbstractExchangeItemPkg, GeneralClass, ModellingArchitecturePkg, InvolverElement, Type, CapellaElement, Involvement, Namespace, GeneralizableElement, Relationship, Structure, CapellaElement, ModellingBlock, Structure, ModellingArchitecture, Classifier, ModellingBlock, Structure, Classifier, NamedElement, Feature, NamedElement, CapellaElement, InvolvedElement, TypedElement, NamedElement
-from information.communication import MessageReferencePkg, CommunicationLinkExchanger, CommunicationLinkProtocol
-from modellingcore import TraceableElement, FinalizableElement, AbstractNamedElement, FinalizableElement, AbstractNamedElement, PublishableElement, ModelElement, FinalizableElement, InformationsExchanger, AbstractRelationship, AbstractTypedElement, AbstractTrace, AbstractType, TraceableElement
-from fa import AbstractFunctionalBlock, AbstractFunctionalArchitecture, ComponentExchangeAllocator
-from information import Property, MultiplicityElement, Port, AbstractEventOperation, Property, AbstractInstance
-from emde import ExtensibleElement, Element
+from capellacore import AbstractDependenciesPkg, AbstractExchangeItemPkg, Allocation, CapellaElement, CapellaElement, CapellaElement, Classifier, Classifier, Feature, GeneralClass, GeneralizableElement, InvolvedElement, Involvement, InvolverElement, ModellingArchitecture, ModellingArchitecturePkg, ModellingBlock, ModellingBlock, NamedElement, NamedElement, NamedElement, NamedElement, Namespace, Relationship, Relationship, Structure, Structure, Structure, Type, TypedElement
+from information.communication import CommunicationLinkExchanger, CommunicationLinkProtocol, MessageReferencePkg
+from emde import Element, ExtensibleElement
+from fa import AbstractFunctionalArchitecture, AbstractFunctionalBlock, ComponentExchangeAllocator
+from information import AbstractEventOperation, AbstractInstance, MultiplicityElement, Port, Property, Property
+from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, AbstractTypedElement, FinalizableElement, FinalizableElement, FinalizableElement, InformationsExchanger, ModelElement, PublishableElement, TraceableElement, TraceableElement
 
 
 name = 'cs'
@@ -1170,3 +1171,5 @@ class Part(AbstractInstance, InformationsExchanger, DeployableElement, Deploymen
 
         if ownedAbstractType is not None:
             self.ownedAbstractType = ownedAbstractType
+
+print('cs.cs loaded')

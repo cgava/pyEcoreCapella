@@ -1,18 +1,19 @@
+print('oa.oa loading')
 """Definition of meta model 'oa'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import Allocation, NamedElement, Structure, Structure, Relationship, InvolvedElement, InvolverElement, NamedElement, InvolvedElement, Type, CapellaElement, Namespace, GeneralizableElement, Relationship, Structure, CapellaElement, Structure, ModellingBlock, CapellaElement, Structure, ModellingArchitecture, InvolverElement, NamedRelationship, ModellingBlock, Structure, Involvement, Classifier, Namespace, NamedElement, Feature, Namespace, CapellaElement, TypedElement, NamedElement
-from modellingcore import TraceableElement, AbstractNamedElement, TraceableElement, AbstractType, AbstractNamedElement, ModelElement, AbstractNamedElement, InformationsExchanger, AbstractRelationship, ModelElement, FinalizableElement, AbstractRelationship, AbstractTypedElement, AbstractTrace, AbstractType, AbstractInformationFlow, PublishableElement
-from activity import ExecutableNode, AbstractAction, CallBehaviorAction, ActivityPartition, ActivityGroup, ActivityNode, CallAction, InvocationAction, ActivityExchange
-from fa import FunctionPkg, FunctionalChain, AbstractFunctionalArchitecture, ExchangeSpecification, AbstractFunctionalChainContainer, AbstractFunctionalChainContainer, AbstractFunction, AbstractFunctionalBlock, ComponentExchange
-from information import MultiplicityElement, AbstractEventOperation, AbstractInstance, AbstractInstance, Property
-from information.communication import CommunicationLinkExchanger
+from activity import AbstractAction, ActivityExchange, ActivityGroup, ActivityNode, ActivityPartition, CallAction, CallBehaviorAction, ExecutableNode, InvocationAction
 from behavior import AbstractEvent
-from cs import BlockArchitecture, ComponentPkg, InterfaceAllocator, Component, Block
-from emde import ExtensibleElement, Element
 from capellacommon import AbstractCapabilityPkg
+from capellacore import Allocation, CapellaElement, CapellaElement, CapellaElement, CapellaElement, Classifier, Feature, GeneralizableElement, InvolvedElement, InvolvedElement, Involvement, InvolverElement, InvolverElement, ModellingArchitecture, ModellingBlock, ModellingBlock, NamedElement, NamedElement, NamedElement, NamedElement, NamedRelationship, Namespace, Namespace, Namespace, Relationship, Relationship, Structure, Structure, Structure, Structure, Structure, Structure, Type, TypedElement
+from information.communication import CommunicationLinkExchanger
+from cs import Block, BlockArchitecture, Component, ComponentPkg, InterfaceAllocator
+from emde import Element, ExtensibleElement
+from fa import AbstractFunction, AbstractFunctionalArchitecture, AbstractFunctionalBlock, AbstractFunctionalChainContainer, AbstractFunctionalChainContainer, ComponentExchange, ExchangeSpecification, FunctionalChain, FunctionPkg
+from information import AbstractEventOperation, AbstractInstance, AbstractInstance, MultiplicityElement, Property
 from interaction import AbstractCapability
+from modellingcore import AbstractInformationFlow, AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractRelationship, AbstractTrace, AbstractType, AbstractType, AbstractTypedElement, FinalizableElement, InformationsExchanger, ModelElement, ModelElement, PublishableElement, TraceableElement, TraceableElement
 
 
 name = 'oa'
@@ -764,3 +765,5 @@ class OperationalActivity(AbstractFunction):
 
         if childrenOperationalActivities:
             self.childrenOperationalActivities.extend(childrenOperationalActivities)
+
+print('oa.oa loaded')

@@ -1,0 +1,52 @@
+
+#print('pa.cross_init starting')
+
+
+ComponentInstance.portInstances.eType = PortInstance
+ComponentInstance.ownedAbstractPhysicalInstances.eType = AbstractPhysicalInstance
+ComponentInstance.ownedInstanceDeploymentLinks.eType = InstanceDeploymentLink
+ComponentInstance.type.eType = PhysicalComponent
+ConnectionInstance.type.eType = ComponentExchange
+DeploymentAspect.ownedConfigurations.eType = DeploymentConfiguration
+DeploymentAspect.ownedDeploymentAspects.eType = DeploymentAspect
+DeploymentConfiguration.ownedDeploymentLinks.eType = AbstractDeploymentLink
+DeploymentConfiguration.ownedPhysicalInstances.eType = AbstractPhysicalInstance
+PortInstance._component.eType = ComponentInstance
+PortInstance.type.eType = ComponentPort
+PhysicalArchitecturePkg.ownedPhysicalArchitecturePkgs.eType = PhysicalArchitecturePkg
+PhysicalArchitecturePkg.ownedPhysicalArchitectures.eType = PhysicalArchitecture
+PhysicalArchitecture.ownedPhysicalComponentPkg.eType = PhysicalComponentPkg
+PhysicalArchitecture._containedCapabilityRealizationPkg.eType = CapabilityRealizationPkg
+PhysicalArchitecture._containedPhysicalFunctionPkg.eType = PhysicalFunctionPkg
+PhysicalArchitecture.ownedDeployments.eType = AbstractDeploymentLink
+PhysicalArchitecture.ownedLogicalArchitectureRealizations.eType = LogicalArchitectureRealization
+PhysicalArchitecture.allocatedLogicalArchitectureRealizations.eType = LogicalArchitectureRealization
+PhysicalFunction.ownedPhysicalFunctionPkgs.eType = PhysicalFunctionPkg
+PhysicalFunction.containedPhysicalFunctions.eType = PhysicalFunction
+PhysicalFunction.childrenPhysicalFunctions.eType = PhysicalFunction
+PhysicalFunctionPkg.ownedPhysicalFunctions.eType = PhysicalFunction
+PhysicalFunctionPkg.ownedPhysicalFunctionPkgs.eType = PhysicalFunctionPkg
+PhysicalComponent.ownedDeploymentLinks.eType = AbstractDeploymentLink
+PhysicalComponent.ownedPhysicalComponents.eType = PhysicalComponent
+PhysicalComponent.ownedPhysicalComponentPkgs.eType = PhysicalComponentPkg
+PhysicalComponent.logicalInterfaceRealizations.eType = LogicalInterfaceRealization
+PhysicalComponent.subPhysicalComponents.eType = PhysicalComponent
+PhysicalComponent.deployedPhysicalComponents.eType = PhysicalComponent
+PhysicalComponent.deployingPhysicalComponents.eType = PhysicalComponent
+PhysicalComponentPkg.ownedPhysicalComponents.eType = PhysicalComponent
+PhysicalComponentPkg.ownedPhysicalComponentPkgs.eType = PhysicalComponentPkg
+PhysicalComponentPkg.ownedKeyParts.eType = KeyPart
+PhysicalComponentPkg.ownedDeployments.eType = AbstractDeploymentLink
+PhysicalNode.subPhysicalNodes.eType = PhysicalNode
+ConnectionInstance.connectionEnds.eType = PortInstance
+PortInstance.connections.eType = ConnectionInstance
+PortInstance.connections.eOpposite = ConnectionInstance.connectionEnds
+PhysicalArchitecture.allocatedLogicalArchitectures.eType = LogicalArchitecture
+PhysicalArchitecture.allocatingEpbsArchitectures.eType = EPBSArchitecture
+PhysicalFunction.allocatingPhysicalComponents.eType = PhysicalComponent
+PhysicalFunction.realizedLogicalFunctions.eType = LogicalFunction
+PhysicalComponent.realizedLogicalComponents.eType = LogicalComponent
+PhysicalComponent.allocatedPhysicalFunctions.eType = PhysicalFunction
+PhysicalComponent.allocatedPhysicalFunctions.eOpposite = PhysicalFunction.allocatingPhysicalComponents
+
+#print('pa.cross_init done')

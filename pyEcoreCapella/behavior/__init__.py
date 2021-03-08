@@ -1,27 +1,17 @@
-
+print('behavior.__init__.py loading')
+from pyecore.resources import global_registry
 from .behavior import getEClassifier, eClassifiers
 from .behavior import name, nsURI, nsPrefix, eClass
-from .behavior import AbstractBehavior, AbstractSignal, AbstractEvent, AbstractTimeEvent, AbstractMessageEvent, AbstractSignalEvent, TimeExpression
-
-from modellingcore import AbstractConstraint, AbstractParameter, AbstractType, AbstractNamedElement, AbstractTypedElement, ModelElement, ValueSpecification, AbstractParameterSet
-from emde import ElementExtension
-
+from .behavior import AbstractBehavior, AbstractEvent, AbstractMessageEvent, AbstractSignal, AbstractSignalEvent, AbstractTimeEvent, TimeExpression
 from . import behavior
 
-__all__ = ['AbstractBehavior', 'AbstractSignal', 'AbstractEvent', 'AbstractTimeEvent',
-           'AbstractMessageEvent', 'AbstractSignalEvent', 'TimeExpression']
+__all__ = ['AbstractBehavior', 'AbstractEvent', 'AbstractMessageEvent',
+           'AbstractSignal', 'AbstractSignalEvent', 'AbstractTimeEvent', 'TimeExpression']
 
 eSubpackages = []
 eSuperPackage = None
 behavior.eSubpackages = eSubpackages
 behavior.eSuperPackage = eSuperPackage
-
-AbstractBehavior.ownedParameterSet.eType = AbstractParameterSet
-AbstractBehavior.ownedParameter.eType = AbstractParameter
-AbstractTimeEvent.when.eType = TimeExpression
-AbstractSignalEvent.signal.eType = AbstractSignal
-TimeExpression.observations.eType = AbstractNamedElement
-TimeExpression.expression.eType = ValueSpecification
 
 otherClassifiers = []
 
@@ -34,3 +24,10 @@ for classif in eClassifiers.values():
 
 for subpack in eSubpackages:
     eClass.eSubpackages.append(subpack.eClass)
+
+register_packages = [behavior] + eSubpackages
+for pack in register_packages:
+    global_registry[pack.nsURI] = pack
+
+
+print('behavior.__init__.py loaded')

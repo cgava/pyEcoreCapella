@@ -1,10 +1,11 @@
+print('activity.activity loading')
 """Definition of meta model 'activity'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from modellingcore import AbstractRelationship, ModelElement, AbstractNamedElement, TraceableElement, AbstractNamedElement, AbstractRelationship, ModelElement, AbstractNamedElement, AbstractInformationFlow, AbstractTypedElement, RateKind
-from emde import ExtensibleElement, Element
 from behavior import AbstractBehavior
+from emde import Element, ExtensibleElement
+from modellingcore import AbstractInformationFlow, AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractRelationship, AbstractTypedElement, ModelElement, ModelElement, RateKind, TraceableElement
 
 
 name = 'activity'
@@ -537,3 +538,5 @@ class ValuePin(InputPin):
 
         if value is not None:
             self.value = value
+
+print('activity.activity loaded')

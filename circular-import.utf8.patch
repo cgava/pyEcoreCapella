@@ -1,0 +1,36 @@
+diff --git a/pyEcoreCapella/information/communication/communication.py b/pyEcoreCapella/information/communication/communication.py
+index 10d05e4..fc1a4dd 100644
+--- a/pyEcoreCapella/information/communication/communication.py
++++ b/pyEcoreCapella/information/communication/communication.py
+@@ -7,7 +7,21 @@ from behavior import AbstractSignal
+ from capellacore import CapellaElement, CapellaElement, Classifier, Feature, GeneralizableElement, NamedElement, Namespace, Relationship, Structure, Type, TypedElement, VisibilityKind
+ from information.datavalue import DataValueContainer
+ from emde import Element, ExtensibleElement
+-from information import AbstractInstance, MultiplicityElement, Property
++try:
++   from information import AbstractInstance
++   print('communication.{__name__} sucessfully imported AbstractInstance')
++except ImportError:
++   print('communication.{__name__} failed to import AbstractInstance')
++try:
++   from information import MultiplicityElement
++   print('communication.{__name__} sucessfully imported MultiplicityElement')
++except ImportError:
++   print('communication.{__name__} failed to import MultiplicityElement')
++try:
++   from information import Property
++   print('communication.{__name__} sucessfully imported Property')
++except ImportError:
++   print('communication.{__name__} failed to import Property')
+ from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractType, AbstractType, AbstractTypedElement, FinalizableElement, ModelElement, PublishableElement, TraceableElement
+ 
+ 
+@@ -220,7 +234,7 @@ class Message(CommunicationItem):
+         super().__init__(**kwargs)
+ 
+ 
+-class SignalInstance(AbstractInstance):
++class SignalInstance(EObject, metaclass=MetaEClass): #CGA AbstractInstance
+ 
+     def __init__(self, **kwargs):
+ 

@@ -1,29 +1,19 @@
-
+print('deployment.__init__.py loading')
+from pyecore.resources import global_registry
 from .deployment import getEClassifier, eClassifiers
 from .deployment import name, nsURI, nsPrefix, eClass
-from .deployment import ComponentInstance, ConnectionInstance, DeploymentAspect, DeploymentConfiguration, InstanceDeploymentLink, PartDeploymentLink, AbstractPhysicalInstance, PortInstance, TypeDeploymentLink
-
-from capellacore import EnumerationPropertyLiteral, AbstractPropertyValue, EnumerationPropertyType, NamingRule, PropertyValuePkg, PropertyValueGroup, Trace
-from capellacommon import GenericTrace
-from modellingcore import AbstractTrace, AbstractConstraint, ModelElement, AbstractInformationFlow
-from requirement import RequirementsTrace, Requirement
-from emde import ElementExtension
-from fa import ComponentExchange, ComponentPort
-from cs import DeployableElement, DeploymentTarget, AbstractDeploymentLink, AbstractDeploymentLink
-from pa import PhysicalComponent
-
+from .deployment import AbstractPhysicalInstance, ComponentInstance, ConnectionInstance, DeploymentAspect, DeploymentConfiguration, InstanceDeploymentLink, PartDeploymentLink, PortInstance, TypeDeploymentLink
 from . import deployment
 from .. import pa
 
 
-__all__ = ['ComponentInstance', 'ConnectionInstance', 'DeploymentAspect', 'DeploymentConfiguration',
-           'InstanceDeploymentLink', 'PartDeploymentLink', 'AbstractPhysicalInstance', 'PortInstance', 'TypeDeploymentLink']
+__all__ = ['AbstractPhysicalInstance', 'ComponentInstance', 'ConnectionInstance', 'DeploymentAspect',
+           'DeploymentConfiguration', 'InstanceDeploymentLink', 'PartDeploymentLink', 'PortInstance', 'TypeDeploymentLink']
 
 eSubpackages = []
 eSuperPackage = pa
 deployment.eSubpackages = eSubpackages
 deployment.eSuperPackage = eSuperPackage
-
 
 otherClassifiers = []
 
@@ -36,3 +26,10 @@ for classif in eClassifiers.values():
 
 for subpack in eSubpackages:
     eClass.eSubpackages.append(subpack.eClass)
+
+register_packages = [deployment] + eSubpackages
+for pack in register_packages:
+    global_registry[pack.nsURI] = pack
+
+
+print('deployment.__init__.py loaded')

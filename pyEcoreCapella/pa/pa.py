@@ -1,17 +1,18 @@
+print('pa.pa loading')
 """Definition of meta model 'pa'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from cs import DeploymentTarget, ArchitectureAllocation, BlockArchitecturePkg, InterfaceAllocator, InterfaceAllocation, ComponentPkg, Component, ComponentArchitecture, BlockArchitecture, Block, AbstractPhysicalArtifact, DeployableElement
-from capellacore import Allocation, Relationship, InvolvedElement, InvolvedElement, ModellingArchitecturePkg, CapellaElement, Type, Namespace, GeneralizableElement, Structure, CapellaElement, ModellingBlock, CapellaElement, Structure, ModellingArchitecture, ModellingBlock, Structure, Structure, Classifier, NamedElement, Namespace, Feature, NamedElement, CapellaElement, TypedElement
-from modellingcore import TraceableElement, AbstractNamedElement, AbstractType, AbstractNamedElement, AbstractNamedElement, PublishableElement, ModelElement, FinalizableElement, AbstractRelationship, AbstractTypedElement, AbstractTrace, AbstractType, TraceableElement
-from information import Property, AbstractInstance, AssociationPkg, MultiplicityElement
-from fa import AbstractFunctionalArchitecture, FunctionPkg, AbstractFunctionalChainContainer, AbstractFunctionalBlock, AbstractFunction
-from activity import ExecutableNode, AbstractAction, CallBehaviorAction, ActivityNode, CallAction, InvocationAction
+from activity import AbstractAction, ActivityNode, CallAction, CallBehaviorAction, ExecutableNode, InvocationAction
 from behavior import AbstractEvent
-from emde import ExtensibleElement, Element
 from capellacommon import CapabilityRealizationInvolvedElement
+from capellacore import Allocation, CapellaElement, CapellaElement, CapellaElement, CapellaElement, Classifier, Feature, GeneralizableElement, InvolvedElement, InvolvedElement, ModellingArchitecture, ModellingArchitecturePkg, ModellingBlock, ModellingBlock, NamedElement, NamedElement, Namespace, Namespace, Relationship, Structure, Structure, Structure, Structure, Type, TypedElement
 from information.communication import CommunicationLinkExchanger
+from cs import AbstractPhysicalArtifact, ArchitectureAllocation, Block, BlockArchitecture, BlockArchitecturePkg, Component, ComponentArchitecture, ComponentPkg, DeployableElement, DeploymentTarget, InterfaceAllocation, InterfaceAllocator
+from emde import Element, ExtensibleElement
+from fa import AbstractFunction, AbstractFunctionalArchitecture, AbstractFunctionalBlock, AbstractFunctionalChainContainer, FunctionPkg
+from information import AbstractInstance, AssociationPkg, MultiplicityElement, Property
+from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, AbstractType, AbstractTypedElement, FinalizableElement, ModelElement, PublishableElement, TraceableElement, TraceableElement
 
 
 name = 'pa'
@@ -323,3 +324,5 @@ class PhysicalFunction(AbstractFunction):
 
         if childrenPhysicalFunctions:
             self.childrenPhysicalFunctions.extend(childrenPhysicalFunctions)
+
+print('pa.pa loaded')

@@ -1,69 +1,17 @@
-
+print('capellacommon.__init__.py loading')
+from pyecore.resources import global_registry
 from .capellacommon import getEClassifier, eClassifiers
 from .capellacommon import name, nsURI, nsPrefix, eClass
-from .capellacommon import AbstractCapabilityPkg, GenericTrace, TransfoLink, JustificationLink, CapabilityRealizationInvolvement, CapabilityRealizationInvolvedElement, StateMachine, Region, State, Mode, FinalState, AbstractState, StateTransition, Pseudostate, InitialPseudoState, JoinPseudoState, ForkPseudoState, ChoicePseudoState, TerminatePseudoState, AbstractStateRealization, StateTransitionRealization, TransitionKind, ShallowHistoryPseudoState, DeepHistoryPseudoState, EntryPointPseudoState, ExitPointPseudoState, StateEventRealization, StateEvent, ChangeEvent, TimeEvent, TimeEventKind, ChangeEventKind
-
-from modellingcore import TraceableElement, AbstractConstraint, AbstractParameter, IState, AbstractParameterSet, AbstractTrace, AbstractTypedElement, AbstractInformationFlow, ModelElement, AbstractConstraint, TraceableElement
-from capellacore import EnumerationPropertyLiteral, Trace, Constraint, InvolverElement, AbstractPropertyValue, InvolvedElement, EnumerationPropertyType, KeyValue, NamingRule, Involvement, PropertyValuePkg, PropertyValueGroup
-from requirement import RequirementsTrace, Requirement
-from emde import ElementExtension
-from la import CapabilityRealization
-from fa import FunctionalChain, AbstractFunction
-from interaction import AbstractCapability
-from behavior import AbstractEvent
-
+from .capellacommon import AbstractCapabilityPkg, AbstractState, AbstractStateRealization, CapabilityRealizationInvolvedElement, CapabilityRealizationInvolvement, ChangeEvent, ChangeEventKind, ChoicePseudoState, DeepHistoryPseudoState, EntryPointPseudoState, ExitPointPseudoState, FinalState, ForkPseudoState, GenericTrace, InitialPseudoState, JoinPseudoState, JustificationLink, Mode, Pseudostate, Region, ShallowHistoryPseudoState, State, StateEvent, StateEventRealization, StateMachine, StateTransition, StateTransitionRealization, TerminatePseudoState, TimeEvent, TimeEventKind, TransfoLink, TransitionKind
 from . import capellacommon
 
-__all__ = ['AbstractCapabilityPkg', 'GenericTrace', 'TransfoLink', 'JustificationLink', 'CapabilityRealizationInvolvement', 'CapabilityRealizationInvolvedElement', 'StateMachine', 'Region', 'State', 'Mode', 'FinalState', 'AbstractState', 'StateTransition', 'Pseudostate', 'InitialPseudoState', 'JoinPseudoState', 'ForkPseudoState',
-           'ChoicePseudoState', 'TerminatePseudoState', 'AbstractStateRealization', 'StateTransitionRealization', 'TransitionKind', 'ShallowHistoryPseudoState', 'DeepHistoryPseudoState', 'EntryPointPseudoState', 'ExitPointPseudoState', 'StateEventRealization', 'StateEvent', 'ChangeEvent', 'TimeEvent', 'TimeEventKind', 'ChangeEventKind']
+__all__ = ['AbstractCapabilityPkg', 'AbstractState', 'AbstractStateRealization', 'CapabilityRealizationInvolvedElement', 'CapabilityRealizationInvolvement', 'ChangeEvent', 'ChangeEventKind', 'ChoicePseudoState', 'DeepHistoryPseudoState', 'EntryPointPseudoState', 'ExitPointPseudoState', 'FinalState', 'ForkPseudoState', 'GenericTrace',
+           'InitialPseudoState', 'JoinPseudoState', 'JustificationLink', 'Mode', 'Pseudostate', 'Region', 'ShallowHistoryPseudoState', 'State', 'StateEvent', 'StateEventRealization', 'StateMachine', 'StateTransition', 'StateTransitionRealization', 'TerminatePseudoState', 'TimeEvent', 'TimeEventKind', 'TransfoLink', 'TransitionKind']
 
 eSubpackages = []
 eSuperPackage = None
 capellacommon.eSubpackages = eSubpackages
 capellacommon.eSuperPackage = eSuperPackage
-
-GenericTrace.keyValuePairs.eType = KeyValue
-GenericTrace._source.eType = TraceableElement
-GenericTrace._target.eType = TraceableElement
-CapabilityRealizationInvolvement._involvedCapabilityRealizationInvolvedElement.eType = CapabilityRealizationInvolvedElement
-CapabilityRealizationInvolvedElement.capabilityRealizationInvolvements.eType = CapabilityRealizationInvolvement
-CapabilityRealizationInvolvedElement.involvingCapabilityRealizations.eType = CapabilityRealization
-StateMachine.ownedRegions.eType = Region
-StateMachine.ownedConnectionPoints.eType = Pseudostate
-Region.ownedStates.eType = AbstractState
-Region.ownedTransitions.eType = StateTransition
-Region.involvedStates.eType = AbstractState
-State.ownedRegions.eType = Region
-State.ownedConnectionPoints.eType = Pseudostate
-State.availableAbstractFunctions.eType = AbstractFunction
-State.availableFunctionalChains.eType = FunctionalChain
-State.availableAbstractCapabilities.eType = AbstractCapability
-State.entry.eType = AbstractEvent
-State.doActivity.eType = AbstractEvent
-State.exit.eType = AbstractEvent
-State.stateInvariant.eType = AbstractConstraint
-AbstractState.ownedAbstractStateRealizations.eType = AbstractStateRealization
-AbstractState.realizedAbstractStates.eType = AbstractState
-AbstractState.realizingAbstractStates.eType = AbstractState
-AbstractState.outgoing.eType = StateTransition
-AbstractState.incoming.eType = StateTransition
-AbstractState.involverRegions.eType = Region
-StateTransition.guard.eType = Constraint
-StateTransition.source.eType = AbstractState
-StateTransition.target.eType = AbstractState
-StateTransition.effect.eType = AbstractEvent
-StateTransition.triggers.eType = AbstractEvent
-StateTransition.ownedStateTransitionRealizations.eType = StateTransitionRealization
-StateTransition.realizedStateTransitions.eType = StateTransition
-StateTransition.realizingStateTransitions.eType = StateTransition
-AbstractStateRealization._realizedAbstractState.eType = AbstractState
-AbstractStateRealization._realizingAbstractState.eType = AbstractState
-StateTransitionRealization._realizedStateTransition.eType = StateTransition
-StateTransitionRealization._realizingStateTransition.eType = StateTransition
-StateEventRealization._realizedEvent.eType = StateEvent
-StateEventRealization._realizingEvent.eType = StateEvent
-StateEvent.expression.eType = Constraint
-StateEvent.ownedStateEventRealizations.eType = StateEventRealization
 
 otherClassifiers = [TransitionKind, TimeEventKind, ChangeEventKind]
 
@@ -76,3 +24,10 @@ for classif in eClassifiers.values():
 
 for subpack in eSubpackages:
     eClass.eSubpackages.append(subpack.eClass)
+
+register_packages = [capellacommon] + eSubpackages
+for pack in register_packages:
+    global_registry[pack.nsURI] = pack
+
+
+print('capellacommon.__init__.py loaded')

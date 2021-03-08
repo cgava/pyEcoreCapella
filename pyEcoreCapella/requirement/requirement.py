@@ -1,10 +1,11 @@
+print('requirement.requirement loading')
 """Definition of meta model 'requirement'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import Namespace, NamedElement, Namespace, Structure, CapellaElement, Relationship, Trace
-from modellingcore import TraceableElement, AbstractNamedElement, PublishableElement, AbstractRelationship, ModelElement, AbstractTrace, TraceableElement
-from emde import ExtensibleElement, Element
+from capellacore import CapellaElement, NamedElement, Namespace, Namespace, Relationship, Structure, Trace
+from emde import Element, ExtensibleElement
+from modellingcore import AbstractNamedElement, AbstractRelationship, AbstractTrace, ModelElement, PublishableElement, TraceableElement, TraceableElement
 
 
 name = 'requirement'
@@ -148,3 +149,5 @@ class RequirementsTrace(Trace):
 
         if target is not None:
             self.target = target
+
+print('requirement.requirement loaded')

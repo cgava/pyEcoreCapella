@@ -1,28 +1,19 @@
-
+print('datavalue.__init__.py loading')
+from pyecore.resources import global_registry
 from .datavalue import getEClassifier, eClassifiers
 from .datavalue import name, nsURI, nsPrefix, eClass
-from .datavalue import DataValue, DataValueContainer, AbstractBooleanValue, LiteralBooleanValue, BooleanReference, AbstractEnumerationValue, EnumerationLiteral, EnumerationReference, AbstractStringValue, LiteralStringValue, StringReference, NumericValue, LiteralNumericValue, NumericReference, AbstractComplexValue, ComplexValue, ComplexValueReference, ValuePart, AbstractExpressionValue, BinaryExpression, UnaryExpression, BinaryOperator, UnaryOperator, OpaqueExpression
-
-from capellacore import EnumerationPropertyLiteral, Trace, AbstractPropertyValue, Type, Classifier, EnumerationPropertyType, NamingRule, PropertyValuePkg, PropertyValueGroup
-from information.datatype import DataType, StringType, BooleanType, Enumeration, NumericType
-from capellacommon import GenericTrace
-from modellingcore import AbstractTrace, AbstractType, AbstractConstraint, ModelElement
-from requirement import RequirementsTrace, Requirement
-from emde import ElementExtension
-from information import Property, Unit
-
+from .datavalue import AbstractBooleanValue, AbstractComplexValue, AbstractEnumerationValue, AbstractExpressionValue, AbstractStringValue, BinaryExpression, BinaryOperator, BooleanReference, ComplexValue, ComplexValueReference, DataValue, DataValueContainer, EnumerationLiteral, EnumerationReference, LiteralBooleanValue, LiteralNumericValue, LiteralStringValue, NumericReference, NumericValue, OpaqueExpression, StringReference, UnaryExpression, UnaryOperator, ValuePart
 from . import datavalue
 from .. import information
 
 
-__all__ = ['DataValue', 'DataValueContainer', 'AbstractBooleanValue', 'LiteralBooleanValue', 'BooleanReference', 'AbstractEnumerationValue', 'EnumerationLiteral', 'EnumerationReference', 'AbstractStringValue', 'LiteralStringValue', 'StringReference',
-           'NumericValue', 'LiteralNumericValue', 'NumericReference', 'AbstractComplexValue', 'ComplexValue', 'ComplexValueReference', 'ValuePart', 'AbstractExpressionValue', 'BinaryExpression', 'UnaryExpression', 'BinaryOperator', 'UnaryOperator', 'OpaqueExpression']
+__all__ = ['AbstractBooleanValue', 'AbstractComplexValue', 'AbstractEnumerationValue', 'AbstractExpressionValue', 'AbstractStringValue', 'BinaryExpression', 'BinaryOperator', 'BooleanReference', 'ComplexValue', 'ComplexValueReference', 'DataValue',
+           'DataValueContainer', 'EnumerationLiteral', 'EnumerationReference', 'LiteralBooleanValue', 'LiteralNumericValue', 'LiteralStringValue', 'NumericReference', 'NumericValue', 'OpaqueExpression', 'StringReference', 'UnaryExpression', 'UnaryOperator', 'ValuePart']
 
 eSubpackages = []
 eSuperPackage = information
 datavalue.eSubpackages = eSubpackages
 datavalue.eSuperPackage = eSuperPackage
-
 
 otherClassifiers = [BinaryOperator, UnaryOperator]
 
@@ -35,3 +26,10 @@ for classif in eClassifiers.values():
 
 for subpack in eSubpackages:
     eClass.eSubpackages.append(subpack.eClass)
+
+register_packages = [datavalue] + eSubpackages
+for pack in register_packages:
+    global_registry[pack.nsURI] = pack
+
+
+print('datavalue.__init__.py loaded')

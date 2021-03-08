@@ -1,13 +1,28 @@
+print('communication.communication loading')
 """Definition of meta model 'communication'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from modellingcore import TraceableElement, AbstractType, AbstractNamedElement, ModelElement, FinalizableElement, AbstractRelationship, AbstractTypedElement, AbstractNamedElement, AbstractType, PublishableElement
-from capellacore import Namespace, GeneralizableElement, Structure, NamedElement, Relationship, Feature, VisibilityKind, Classifier, CapellaElement, TypedElement, Type, CapellaElement
 from behavior import AbstractSignal
-from emde import ExtensibleElement, Element
-from information import Property, AbstractInstance, MultiplicityElement
+from capellacore import CapellaElement, CapellaElement, Classifier, Feature, GeneralizableElement, NamedElement, Namespace, Relationship, Structure, Type, TypedElement, VisibilityKind
 from information.datavalue import DataValueContainer
+from emde import Element, ExtensibleElement
+try:
+   from information import AbstractInstance
+   print('communication.{__name__} sucessfully imported AbstractInstance')
+except ImportError:
+   print('communication.{__name__} failed to import AbstractInstance')
+try:
+   from information import MultiplicityElement
+   print('communication.{__name__} sucessfully imported MultiplicityElement')
+except ImportError:
+   print('communication.{__name__} failed to import MultiplicityElement')
+try:
+   from information import Property
+   print('communication.{__name__} sucessfully imported Property')
+except ImportError:
+   print('communication.{__name__} failed to import Property')
+from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractType, AbstractType, AbstractTypedElement, FinalizableElement, ModelElement, PublishableElement, TraceableElement
 
 
 name = 'communication'
@@ -219,7 +234,7 @@ class Message(CommunicationItem):
         super().__init__(**kwargs)
 
 
-class SignalInstance(AbstractInstance):
+class SignalInstance(EObject, metaclass=MetaEClass): #CGA AbstractInstance
 
     def __init__(self, **kwargs):
 
@@ -237,3 +252,5 @@ class Signal(CommunicationItem, AbstractSignal):
 
         if signalInstances:
             self.signalInstances.extend(signalInstances)
+
+print('communication.communication loaded')

@@ -1,0 +1,40 @@
+
+#print('la.cross_init starting')
+
+
+LogicalArchitecturePkg.ownedLogicalArchitectures.eType = LogicalArchitecture
+LogicalArchitecture.ownedLogicalComponentPkg.eType = LogicalComponentPkg
+LogicalArchitecture._containedCapabilityRealizationPkg.eType = CapabilityRealizationPkg
+LogicalArchitecture._containedLogicalFunctionPkg.eType = LogicalFunctionPkg
+LogicalArchitecture.ownedSystemAnalysisRealizations.eType = SystemAnalysisRealization
+LogicalArchitecture.allocatedSystemAnalysisRealizations.eType = SystemAnalysisRealization
+LogicalFunction.ownedLogicalFunctionPkgs.eType = LogicalFunctionPkg
+LogicalFunction.containedLogicalFunctions.eType = LogicalFunction
+LogicalFunction.childrenLogicalFunctions.eType = LogicalFunction
+LogicalFunctionPkg.ownedLogicalFunctions.eType = LogicalFunction
+LogicalFunctionPkg.ownedLogicalFunctionPkgs.eType = LogicalFunctionPkg
+LogicalComponent.ownedLogicalComponents.eType = LogicalComponent
+LogicalComponent.ownedLogicalArchitectures.eType = LogicalArchitecture
+LogicalComponent.ownedLogicalComponentPkgs.eType = LogicalComponentPkg
+LogicalComponent.subLogicalComponents.eType = LogicalComponent
+LogicalComponent.realizedSystemComponents.eType = SystemComponent
+LogicalComponentPkg.ownedLogicalComponents.eType = LogicalComponent
+LogicalComponentPkg.ownedLogicalComponentPkgs.eType = LogicalComponentPkg
+CapabilityRealization.ownedCapabilityRealizationInvolvements.eType = CapabilityRealizationInvolvement
+CapabilityRealization.involvedComponents.eType = CapabilityRealizationInvolvedElement
+CapabilityRealizationPkg.ownedCapabilityRealizations.eType = CapabilityRealization
+CapabilityRealizationPkg.ownedCapabilityRealizationPkgs.eType = CapabilityRealizationPkg
+LogicalArchitecture.allocatedSystemAnalyses.eType = SystemAnalysis
+LogicalArchitecture.allocatingPhysicalArchitectures.eType = PhysicalArchitecture
+LogicalFunction.allocatingLogicalComponents.eType = LogicalComponent
+LogicalFunction.realizedSystemFunctions.eType = SystemFunction
+LogicalFunction.realizingPhysicalFunctions.eType = PhysicalFunction
+LogicalComponent.allocatedLogicalFunctions.eType = LogicalFunction
+LogicalComponent.allocatedLogicalFunctions.eOpposite = LogicalFunction.allocatingLogicalComponents
+LogicalComponent.realizingPhysicalComponents.eType = PhysicalComponent
+CapabilityRealization.realizedCapabilities.eType = Capability
+CapabilityRealization.realizedCapabilityRealizations.eType = CapabilityRealization
+CapabilityRealization.realizingCapabilityRealizations.eType = CapabilityRealization
+CapabilityRealization.realizingCapabilityRealizations.eOpposite = CapabilityRealization.realizedCapabilityRealizations
+
+#print('la.cross_init done')

@@ -1,12 +1,13 @@
+print('interaction.interaction loading')
 """Definition of meta model 'interaction'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from behavior import AbstractEvent, AbstractBehavior
-from modellingcore import TraceableElement, AbstractNamedElement, AbstractType, AbstractNamedElement, PublishableElement, AbstractNamedElement, AbstractRelationship, ModelElement, AbstractTrace, TraceableElement
-from capellacore import Namespace, Relationship, NamedElement, Namespace, CapellaElement, NamedElement, CapellaElement, CapellaElement, Involvement, Relationship, Structure, NamedRelationship, InvolverElement, Trace, Allocation
-from emde import ExtensibleElement, Element
+from behavior import AbstractBehavior, AbstractEvent
+from capellacore import Allocation, CapellaElement, CapellaElement, CapellaElement, Involvement, InvolverElement, NamedElement, NamedElement, NamedRelationship, Namespace, Namespace, Relationship, Relationship, Structure, Trace
+from emde import Element, ExtensibleElement
 from fa import AbstractFunctionalChainContainer
+from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, ModelElement, PublishableElement, TraceableElement, TraceableElement
 
 
 name = 'interaction'
@@ -970,3 +971,5 @@ class AbstractCapability(Structure, InvolverElement, AbstractFunctionalChainCont
 
         if involvedFunctionalChains:
             self.involvedFunctionalChains.extend(involvedFunctionalChains)
+
+print('interaction.interaction loaded')

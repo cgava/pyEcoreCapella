@@ -1,9 +1,10 @@
+print('behavior.behavior loading')
 """Definition of meta model 'behavior'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from modellingcore import AbstractType, AbstractNamedElement, AbstractNamedElement, AbstractTypedElement, ModelElement, ValueSpecification
-from emde import ExtensibleElement, Element
+from emde import Element, ExtensibleElement
+from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractType, AbstractTypedElement, ModelElement, ValueSpecification
 
 
 name = 'behavior'
@@ -108,3 +109,5 @@ class AbstractSignalEvent(AbstractMessageEvent):
 
         if signal is not None:
             self.signal = signal
+
+print('behavior.behavior loaded')

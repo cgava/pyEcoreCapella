@@ -1,18 +1,19 @@
+print('ctx.ctx loading')
 """Definition of meta model 'ctx'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import Allocation, Structure, InvolvedElement, Relationship, InvolvedElement, NamedElement, Relationship, Type, CapellaElement, Namespace, GeneralizableElement, Structure, Involvement, CapellaElement, ModellingBlock, Structure, CapellaElement, Structure, ModellingArchitecture, InvolverElement, InvolverElement, ModellingBlock, Structure, Classifier, NamedElement, Namespace, Structure, Feature, CapellaElement, TypedElement
-from modellingcore import TraceableElement, AbstractNamedElement, AbstractType, AbstractNamedElement, AbstractNamedElement, PublishableElement, ModelElement, FinalizableElement, AbstractRelationship, AbstractTypedElement, AbstractTrace, AbstractType, TraceableElement
-from cs import Component, ArchitectureAllocation, ComponentPkg, InterfaceAllocator, BlockArchitecture, Block, ComponentArchitecture
-from fa import AbstractFunctionalArchitecture, AbstractFunctionalChainContainer, AbstractFunctionalChainContainer, FunctionPkg, AbstractFunctionalBlock, AbstractFunction
-from information import Property, AbstractInstance, MultiplicityElement
-from activity import ExecutableNode, AbstractAction, CallBehaviorAction, ActivityNode, CallAction, InvocationAction
+from activity import AbstractAction, ActivityNode, CallAction, CallBehaviorAction, ExecutableNode, InvocationAction
 from behavior import AbstractEvent
-from emde import ExtensibleElement, Element
-from interaction import AbstractCapability
-from information.communication import CommunicationLinkExchanger
 from capellacommon import AbstractCapabilityPkg
+from capellacore import Allocation, CapellaElement, CapellaElement, CapellaElement, CapellaElement, Classifier, Feature, GeneralizableElement, InvolvedElement, InvolvedElement, Involvement, InvolverElement, InvolverElement, ModellingArchitecture, ModellingBlock, ModellingBlock, NamedElement, NamedElement, Namespace, Namespace, Relationship, Relationship, Structure, Structure, Structure, Structure, Structure, Structure, Type, TypedElement
+from information.communication import CommunicationLinkExchanger
+from cs import ArchitectureAllocation, Block, BlockArchitecture, Component, ComponentArchitecture, ComponentPkg, InterfaceAllocator
+from emde import Element, ExtensibleElement
+from fa import AbstractFunction, AbstractFunctionalArchitecture, AbstractFunctionalBlock, AbstractFunctionalChainContainer, AbstractFunctionalChainContainer, FunctionPkg
+from information import AbstractInstance, MultiplicityElement, Property
+from interaction import AbstractCapability
+from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, AbstractType, AbstractTypedElement, FinalizableElement, ModelElement, PublishableElement, TraceableElement, TraceableElement
 
 
 name = 'ctx'
@@ -510,3 +511,5 @@ class SystemFunction(AbstractFunction):
 
         if childrenSystemFunctions:
             self.childrenSystemFunctions.extend(childrenSystemFunctions)
+
+print('ctx.ctx loaded')

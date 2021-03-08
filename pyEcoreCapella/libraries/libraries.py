@@ -1,8 +1,9 @@
+print('libraries.libraries loading')
 """Definition of meta model 'libraries'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from emde import ExtensibleElement, Element, ExtensibleElement, ElementExtension
+from emde import Element, ElementExtension, ExtensibleElement, ExtensibleElement
 
 
 name = 'libraries'
@@ -84,3 +85,5 @@ class ModelInformation(LibraryAbstractElement, ElementExtension):
 
         if version is not None:
             self.version = version
+
+print('libraries.libraries loaded')

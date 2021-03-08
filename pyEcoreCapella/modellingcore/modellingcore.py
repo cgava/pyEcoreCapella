@@ -1,8 +1,9 @@
+print('modellingcore.modellingcore loading')
 """Definition of meta model 'modellingcore'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from emde import ExtensibleElement, Element
+from emde import Element, ExtensibleElement
 
 
 name = 'modellingcore'
@@ -388,3 +389,5 @@ class AbstractExchangeItem(AbstractType):
     def __init__(self, **kwargs):
 
         super().__init__(**kwargs)
+
+print('modellingcore.modellingcore loaded')

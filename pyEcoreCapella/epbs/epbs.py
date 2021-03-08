@@ -1,14 +1,15 @@
+print('epbs.epbs loading')
 """Definition of meta model 'epbs'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import Namespace, GeneralizableElement, InvolvedElement, Classifier, NamedElement, Allocation, ModellingArchitecturePkg, Structure, Structure, Allocation, CapellaElement, Type, Relationship, CapellaElement, ModellingBlock, ModellingArchitecture, ModellingBlock
 from capellacommon import CapabilityRealizationInvolvedElement
-from cs import ArchitectureAllocation, BlockArchitecturePkg, ComponentPkg, InterfaceAllocator, ComponentArchitecture, Component, BlockArchitecture, Block
-from modellingcore import TraceableElement, AbstractNamedElement, AbstractNamedElement, PublishableElement, AbstractRelationship, ModelElement, AbstractTrace, AbstractType, TraceableElement
-from fa import AbstractFunctionalBlock, AbstractFunctionalArchitecture
-from emde import ExtensibleElement, Element
+from capellacore import Allocation, Allocation, CapellaElement, CapellaElement, Classifier, GeneralizableElement, InvolvedElement, ModellingArchitecture, ModellingArchitecturePkg, ModellingBlock, ModellingBlock, NamedElement, Namespace, Relationship, Structure, Structure, Type
 from information.communication import CommunicationLinkExchanger
+from cs import ArchitectureAllocation, Block, BlockArchitecture, BlockArchitecturePkg, Component, ComponentArchitecture, ComponentPkg, InterfaceAllocator
+from emde import Element, ExtensibleElement
+from fa import AbstractFunctionalArchitecture, AbstractFunctionalBlock
+from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, ModelElement, PublishableElement, TraceableElement, TraceableElement
 
 
 name = 'epbs'
@@ -172,3 +173,5 @@ class ConfigurationItem(CapabilityRealizationInvolvedElement, Component):
 
         if allocatedPhysicalArtifacts:
             self.allocatedPhysicalArtifacts.extend(allocatedPhysicalArtifacts)
+
+print('epbs.epbs loaded')

@@ -1,11 +1,12 @@
+print('deployment.deployment loading')
 """Definition of meta model 'deployment'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import Namespace, Relationship, NamedElement, NamedElement, CapellaElement, Structure, CapellaElement, NamedElement
-from modellingcore import TraceableElement, AbstractRelationship, ModelElement, AbstractNamedElement, PublishableElement
-from cs import AbstractDeploymentLink, DeploymentTarget, DeployableElement
-from emde import ExtensibleElement, Element
+from capellacore import CapellaElement, CapellaElement, NamedElement, NamedElement, NamedElement, Namespace, Relationship, Structure
+from cs import AbstractDeploymentLink, DeployableElement, DeploymentTarget
+from emde import Element, ExtensibleElement
+from modellingcore import AbstractNamedElement, AbstractRelationship, ModelElement, PublishableElement, TraceableElement
 
 
 name = 'deployment'
@@ -154,3 +155,5 @@ class ComponentInstance(AbstractPhysicalInstance, DeployableElement, DeploymentT
 
         if type is not None:
             self.type = type
+
+print('deployment.deployment loaded')

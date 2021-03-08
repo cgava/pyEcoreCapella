@@ -1,24 +1,17 @@
-
+print('libraries.__init__.py loading')
+from pyecore.resources import global_registry
 from .libraries import getEClassifier, eClassifiers
 from .libraries import name, nsURI, nsPrefix, eClass
-from .libraries import ModelInformation, LibraryReference, ModelVersion, AccessPolicy, LibraryAbstractElement
-
-from emde import ElementExtension
-
+from .libraries import AccessPolicy, LibraryAbstractElement, LibraryReference, ModelInformation, ModelVersion
 from . import libraries
 
-__all__ = ['ModelInformation', 'LibraryReference',
-           'ModelVersion', 'AccessPolicy', 'LibraryAbstractElement']
+__all__ = ['AccessPolicy', 'LibraryAbstractElement',
+           'LibraryReference', 'ModelInformation', 'ModelVersion']
 
 eSubpackages = []
 eSuperPackage = None
 libraries.eSubpackages = eSubpackages
 libraries.eSuperPackage = eSuperPackage
-
-ModelInformation.ownedReferences.eType = LibraryReference
-ModelInformation.version.eType = ModelVersion
-LibraryReference.library.eType = ModelInformation
-LibraryReference.version.eType = ModelVersion
 
 otherClassifiers = [AccessPolicy]
 
@@ -31,3 +24,10 @@ for classif in eClassifiers.values():
 
 for subpack in eSubpackages:
     eClass.eSubpackages.append(subpack.eClass)
+
+register_packages = [libraries] + eSubpackages
+for pack in register_packages:
+    global_registry[pack.nsURI] = pack
+
+
+print('libraries.__init__.py loaded')

@@ -1,28 +1,16 @@
-
+print('sharedmodel.__init__.py loading')
+from pyecore.resources import global_registry
 from .sharedmodel import getEClassifier, eClassifiers
 from .sharedmodel import name, nsURI, nsPrefix, eClass
-from .sharedmodel import SharedPkg, GenericPkg
-
-from modellingcore import AbstractConstraint, AbstractTrace, ModelElement
-from capellacore import CapellaElement, EnumerationPropertyLiteral, Trace, AbstractPropertyValue, EnumerationPropertyType, NamingRule, ReuseLink, PropertyValueGroup, PropertyValuePkg
-from capellacommon import GenericTrace
-from information import DataPkg
-from requirement import RequirementsTrace, Requirement
-from emde import ElementExtension
-
+from .sharedmodel import GenericPkg, SharedPkg
 from . import sharedmodel
 
-__all__ = ['SharedPkg', 'GenericPkg']
+__all__ = ['GenericPkg', 'SharedPkg']
 
 eSubpackages = []
 eSuperPackage = None
 sharedmodel.eSubpackages = eSubpackages
 sharedmodel.eSuperPackage = eSuperPackage
-
-SharedPkg.ownedDataPkg.eType = DataPkg
-SharedPkg.ownedGenericPkg.eType = GenericPkg
-GenericPkg.subGenericPkgs.eType = GenericPkg
-GenericPkg.capellaElements.eType = CapellaElement
 
 otherClassifiers = []
 
@@ -35,3 +23,10 @@ for classif in eClassifiers.values():
 
 for subpack in eSubpackages:
     eClass.eSubpackages.append(subpack.eClass)
+
+register_packages = [sharedmodel] + eSubpackages
+for pack in register_packages:
+    global_registry[pack.nsURI] = pack
+
+
+print('sharedmodel.__init__.py loaded')

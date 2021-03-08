@@ -1,18 +1,19 @@
+print('la.la loading')
 """Definition of meta model 'la'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from cs import Component, ComponentArchitecture, InterfaceAllocation, ArchitectureAllocation, InterfaceAllocator, ComponentPkg, BlockArchitecturePkg, BlockArchitecture, Block
-from capellacore import Allocation, Structure, Relationship, InvolvedElement, InvolvedElement, ModellingArchitecturePkg, Type, CapellaElement, Namespace, GeneralizableElement, Structure, CapellaElement, CapellaElement, Structure, ModellingBlock, Structure, ModellingArchitecture, InvolverElement, ModellingBlock, Structure, Classifier, Namespace, NamedElement, Feature, CapellaElement, TypedElement
-from modellingcore import TraceableElement, AbstractNamedElement, AbstractTrace, AbstractType, AbstractType, AbstractNamedElement, PublishableElement, ModelElement, AbstractRelationship, AbstractTypedElement, AbstractNamedElement, FinalizableElement, TraceableElement
-from information import Property, AbstractInstance, MultiplicityElement
-from fa import AbstractFunctionalArchitecture, AbstractFunctionalChainContainer, AbstractFunctionalChainContainer, AbstractFunctionalBlock, FunctionPkg, AbstractFunction
-from activity import ExecutableNode, AbstractAction, CallBehaviorAction, ActivityNode, CallAction, InvocationAction
-from emde import ExtensibleElement, Element
-from capellacommon import AbstractCapabilityPkg, CapabilityRealizationInvolvedElement
-from interaction import AbstractCapability
-from information.communication import CommunicationLinkExchanger
+from activity import AbstractAction, ActivityNode, CallAction, CallBehaviorAction, ExecutableNode, InvocationAction
 from behavior import AbstractEvent
+from capellacommon import AbstractCapabilityPkg, CapabilityRealizationInvolvedElement
+from capellacore import Allocation, CapellaElement, CapellaElement, CapellaElement, CapellaElement, Classifier, Feature, GeneralizableElement, InvolvedElement, InvolvedElement, InvolverElement, ModellingArchitecture, ModellingArchitecturePkg, ModellingBlock, ModellingBlock, NamedElement, Namespace, Namespace, Relationship, Structure, Structure, Structure, Structure, Structure, Type, TypedElement
+from information.communication import CommunicationLinkExchanger
+from cs import ArchitectureAllocation, Block, BlockArchitecture, BlockArchitecturePkg, Component, ComponentArchitecture, ComponentPkg, InterfaceAllocation, InterfaceAllocator
+from emde import Element, ExtensibleElement
+from fa import AbstractFunction, AbstractFunctionalArchitecture, AbstractFunctionalBlock, AbstractFunctionalChainContainer, AbstractFunctionalChainContainer, FunctionPkg
+from information import AbstractInstance, MultiplicityElement, Property
+from interaction import AbstractCapability
+from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, AbstractType, AbstractTypedElement, FinalizableElement, ModelElement, PublishableElement, TraceableElement, TraceableElement
 
 
 name = 'la'
@@ -334,3 +335,5 @@ class LogicalFunction(AbstractFunction):
 
         if childrenLogicalFunctions:
             self.childrenLogicalFunctions.extend(childrenLogicalFunctions)
+
+print('la.la loaded')

@@ -1,10 +1,11 @@
+print('capellamodeller.capellamodeller loading')
 """Definition of meta model 'capellamodeller'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import Namespace, CapellaElement, NamedElement, Structure, Structure, ReuserStructure, CapellaElement, AbstractModellingStructure
-from modellingcore import ModelElement, TraceableElement, AbstractNamedElement, PublishableElement
-from emde import ExtensibleElement, Element
+from capellacore import AbstractModellingStructure, CapellaElement, CapellaElement, NamedElement, Namespace, ReuserStructure, Structure, Structure
+from emde import Element, ExtensibleElement
+from modellingcore import AbstractNamedElement, ModelElement, PublishableElement, TraceableElement
 
 
 name = 'capellamodeller'
@@ -143,3 +144,5 @@ class SystemEngineering(AbstractModellingStructure, ModelRoot):
 
         if containedSharedPkgs:
             self.containedSharedPkgs.extend(containedSharedPkgs)
+
+print('capellamodeller.capellamodeller loaded')

@@ -1,9 +1,10 @@
+print('capellacore.capellacore loading')
 """Definition of meta model 'capellacore'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from modellingcore import TraceableElement, AbstractNamedElement, FinalizableElement, AbstractNamedElement, PublishableElement, AbstractConstraint, AbstractRelationship, ModelElement, AbstractTrace, AbstractType, AbstractTypedElement, TraceableElement
-from emde import ExtensibleElement, Element
+from emde import Element, ExtensibleElement
+from modellingcore import AbstractConstraint, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, AbstractTypedElement, FinalizableElement, ModelElement, PublishableElement, TraceableElement, TraceableElement
 
 
 name = 'capellacore'
@@ -697,3 +698,5 @@ class GeneralClass(Classifier, FinalizableElement):
 
         if nestedGeneralClasses:
             self.nestedGeneralClasses.extend(nestedGeneralClasses)
+
+print('capellacore.capellacore loaded')

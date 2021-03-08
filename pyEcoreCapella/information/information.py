@@ -1,13 +1,14 @@
+print('information.information loading')
 """Definition of meta model 'information'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import NamedElement, Classifier, Relationship, GeneralizableElement, AbstractDependenciesPkg, AbstractExchangeItemPkg, Type, Namespace, GeneralizableElement, Relationship, Structure, CapellaElement, Classifier, Structure, NamedElement, Feature, VisibilityKind, CapellaElement, TypedElement, Allocation, NamedRelationship, GeneralClass
-from modellingcore import TraceableElement, AbstractNamedElement, AbstractExchangeItem, FinalizableElement, AbstractType, AbstractNamedElement, PublishableElement, ModelElement, FinalizableElement, AbstractTypedElement, AbstractRelationship, AbstractParameter, AbstractType, AbstractTrace, ValueSpecification, AbstractType, AbstractTypedElement, TraceableElement
-from behavior import AbstractSignal, AbstractEvent
-from emde import ExtensibleElement, Element
-from information.datavalue import DataValueContainer, DataValue
+from behavior import AbstractEvent, AbstractSignal
+from capellacore import AbstractDependenciesPkg, AbstractExchangeItemPkg, Allocation, CapellaElement, CapellaElement, Classifier, Classifier, Feature, GeneralClass, GeneralizableElement, GeneralizableElement, NamedElement, NamedElement, NamedRelationship, Namespace, Relationship, Relationship, Structure, Structure, Type, TypedElement, VisibilityKind
 from information.communication import MessageReferencePkg
+from information.datavalue import DataValue, DataValueContainer
+from emde import Element, ExtensibleElement
+from modellingcore import AbstractExchangeItem, AbstractNamedElement, AbstractNamedElement, AbstractParameter, AbstractRelationship, AbstractTrace, AbstractType, AbstractType, AbstractType, AbstractTypedElement, AbstractTypedElement, FinalizableElement, FinalizableElement, ModelElement, PublishableElement, TraceableElement, TraceableElement, ValueSpecification
 
 
 name = 'information'
@@ -821,3 +822,5 @@ class ExchangeItem(AbstractExchangeItem, AbstractEvent, AbstractSignal, Finaliza
 
         if realizingOperations:
             self.realizingOperations.extend(realizingOperations)
+
+print('information.information loaded')

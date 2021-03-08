@@ -1,41 +1,16 @@
-
+print('capellamodeller.__init__.py loading')
+from pyecore.resources import global_registry
 from .capellamodeller import getEClassifier, eClassifiers
 from .capellamodeller import name, nsURI, nsPrefix, eClass
-from .capellamodeller import Project, Folder, ModelRoot, SystemEngineering, SystemEngineeringPkg, Library
-
-from capellacore import EnumerationPropertyLiteral, Trace, ModellingArchitecturePkg, AbstractPropertyValue, KeyValue, EnumerationPropertyType, NamingRule, PropertyValuePkg, ReuseLink, ModellingArchitecture, PropertyValueGroup
-from capellacommon import GenericTrace
-from modellingcore import AbstractTrace, AbstractConstraint, ModelElement
-from requirement import RequirementsTrace, Requirement
-from emde import ElementExtension
-from oa import OperationalAnalysis
-from ctx import SystemAnalysis
-from la import LogicalArchitecture
-from pa import PhysicalArchitecture
-from epbs import EPBSArchitecture
-from sharedmodel import SharedPkg
-
+from .capellamodeller import Folder, Library, ModelRoot, Project, SystemEngineering, SystemEngineeringPkg
 from . import capellamodeller
 
-__all__ = ['Project', 'Folder', 'ModelRoot', 'SystemEngineering', 'SystemEngineeringPkg', 'Library']
+__all__ = ['Folder', 'Library', 'ModelRoot', 'Project', 'SystemEngineering', 'SystemEngineeringPkg']
 
 eSubpackages = []
 eSuperPackage = None
 capellamodeller.eSubpackages = eSubpackages
 capellamodeller.eSuperPackage = eSuperPackage
-
-Project.keyValuePairs.eType = KeyValue
-Project.ownedFolders.eType = Folder
-Project.ownedModelRoots.eType = ModelRoot
-Folder.ownedFolders.eType = Folder
-Folder.ownedModelRoots.eType = ModelRoot
-SystemEngineering.containedOperationalAnalysis.eType = OperationalAnalysis
-SystemEngineering.containedSystemAnalysis.eType = SystemAnalysis
-SystemEngineering.containedLogicalArchitectures.eType = LogicalArchitecture
-SystemEngineering.containedPhysicalArchitectures.eType = PhysicalArchitecture
-SystemEngineering.containedEPBSArchitectures.eType = EPBSArchitecture
-SystemEngineering.containedSharedPkgs.eType = SharedPkg
-SystemEngineeringPkg.ownedSystemEngineerings.eType = SystemEngineering
 
 otherClassifiers = []
 
@@ -48,3 +23,10 @@ for classif in eClassifiers.values():
 
 for subpack in eSubpackages:
     eClass.eSubpackages.append(subpack.eClass)
+
+register_packages = [capellamodeller] + eSubpackages
+for pack in register_packages:
+    global_registry[pack.nsURI] = pack
+
+
+print('capellamodeller.__init__.py loaded')

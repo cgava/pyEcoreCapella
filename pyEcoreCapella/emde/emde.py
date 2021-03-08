@@ -1,3 +1,4 @@
+print('emde.emde loading')
 """Definition of meta model 'emde'."""
 from functools import partial
 import pyecore.ecore as Ecore
@@ -44,3 +45,5 @@ class ElementExtension(ExtensibleElement):
     def __init__(self, **kwargs):
 
         super().__init__(**kwargs)
+
+print('emde.emde loaded')

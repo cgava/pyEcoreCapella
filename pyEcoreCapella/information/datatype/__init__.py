@@ -1,28 +1,19 @@
-
+print('datatype.__init__.py loading')
+from pyecore.resources import global_registry
 from .datatype import getEClassifier, eClassifiers
 from .datatype import name, nsURI, nsPrefix, eClass
-from .datatype import DataType, BooleanType, Enumeration, StringType, NumericType, PhysicalQuantity, NumericTypeKind
-
-from capellacore import GeneralizableElement, EnumerationPropertyLiteral, Trace, Generalization, AbstractPropertyValue, TypedElement, EnumerationPropertyType, NamingRule, PropertyValuePkg, PropertyValueGroup
-from capellacommon import GenericTrace
-from modellingcore import AbstractTrace, AbstractTypedElement, AbstractConstraint, ModelElement
-from requirement import RequirementsTrace, Requirement
-from emde import ElementExtension
-from information.datavalue import AbstractEnumerationValue, NumericValue, AbstractBooleanValue, AbstractStringValue, EnumerationLiteral, DataValue, LiteralBooleanValue
-from information import InformationRealization, Unit
-
+from .datatype import BooleanType, DataType, Enumeration, NumericType, NumericTypeKind, PhysicalQuantity, StringType
 from . import datatype
 from .. import information
 
 
-__all__ = ['DataType', 'BooleanType', 'Enumeration', 'StringType',
-           'NumericType', 'PhysicalQuantity', 'NumericTypeKind']
+__all__ = ['BooleanType', 'DataType', 'Enumeration', 'NumericType',
+           'NumericTypeKind', 'PhysicalQuantity', 'StringType']
 
 eSubpackages = []
 eSuperPackage = information
 datatype.eSubpackages = eSubpackages
 datatype.eSuperPackage = eSuperPackage
-
 
 otherClassifiers = [NumericTypeKind]
 
@@ -35,3 +26,10 @@ for classif in eClassifiers.values():
 
 for subpack in eSubpackages:
     eClass.eSubpackages.append(subpack.eClass)
+
+register_packages = [datatype] + eSubpackages
+for pack in register_packages:
+    global_registry[pack.nsURI] = pack
+
+
+print('datatype.__init__.py loaded')

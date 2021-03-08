@@ -1,13 +1,14 @@
+print('fa.fa loading')
 """Definition of meta model 'fa'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from modellingcore import InformationsExchanger, AbstractType, AbstractRelationship, AbstractRelationship, AbstractTypedElement, AbstractType, FinalizableElement, TraceableElement, AbstractNamedElement, AbstractNamedElement, AbstractTrace, AbstractInformationFlow, ModelElement, AbstractTypedElement, PublishableElement, TraceableElement, TraceableElement, AbstractNamedElement, AbstractRelationship, AbstractNamedElement
-from capellacore import Relationship, NamedElement, NamedRelationship, Relationship, InvolvedElement, TypedElement, InvolverElement, Type, Namespace, Structure, CapellaElement, Involvement, CapellaElement, ModellingArchitecture, ModellingBlock, Structure, NamedElement, Namespace, Feature, CapellaElement, TypedElement, Allocation, NamedElement
-from activity import ExecutableNode, AbstractAction, CallBehaviorAction, ActivityNode, OutputPin, CallAction, ActivityEdge, AbstractActivity, Pin, InvocationAction, InputPin, ObjectNode, ActivityExchange, ObjectFlow
-from information import MultiplicityElement, AbstractEventOperation, Port, AbstractInstance, Property, Property
-from emde import ExtensibleElement, Element
-from behavior import AbstractEvent, AbstractBehavior
+from activity import AbstractAction, AbstractActivity, ActivityEdge, ActivityExchange, ActivityNode, CallAction, CallBehaviorAction, ExecutableNode, InputPin, InvocationAction, ObjectFlow, ObjectNode, OutputPin, Pin
+from behavior import AbstractBehavior, AbstractEvent
+from capellacore import Allocation, CapellaElement, CapellaElement, CapellaElement, Feature, InvolvedElement, Involvement, InvolverElement, ModellingArchitecture, ModellingBlock, NamedElement, NamedElement, NamedElement, NamedRelationship, Namespace, Namespace, Relationship, Relationship, Structure, Structure, Type, TypedElement, TypedElement
+from emde import Element, ExtensibleElement
+from information import AbstractEventOperation, AbstractInstance, MultiplicityElement, Port, Property, Property
+from modellingcore import AbstractInformationFlow, AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractRelationship, AbstractRelationship, AbstractTrace, AbstractType, AbstractType, AbstractTypedElement, AbstractTypedElement, FinalizableElement, InformationsExchanger, ModelElement, PublishableElement, TraceableElement, TraceableElement, TraceableElement
 
 
 name = 'fa'
@@ -1491,3 +1492,5 @@ class AbstractFunction(Namespace, InvolvedElement, AbstractInstance, AbstractFun
 
         if linkedFunctionSpecification is not None:
             self.linkedFunctionSpecification = linkedFunctionSpecification
+
+print('fa.fa loaded')

@@ -1,10 +1,11 @@
+print('datavalue.datavalue loading')
 """Definition of meta model 'datavalue'."""
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import Namespace, Structure, NamedElement, NamedElement, CapellaElement, CapellaElement
-from modellingcore import TraceableElement, AbstractNamedElement, AbstractTypedElement, ModelElement, AbstractNamedElement, ValueSpecification, PublishableElement
-from emde import ExtensibleElement, Element
+from capellacore import CapellaElement, CapellaElement, NamedElement, NamedElement, Namespace, Structure
+from emde import Element, ExtensibleElement
+from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractTypedElement, ModelElement, PublishableElement, TraceableElement, ValueSpecification
 
 
 name = 'datavalue'
@@ -388,3 +389,5 @@ class UnaryExpression(AbstractExpressionValue):
 
         if ownedOperand is not None:
             self.ownedOperand = ownedOperand
+
+print('datavalue.datavalue loaded')
