@@ -1,0 +1,217 @@
+
+from .fa import getEClassifier, eClassifiers
+from .fa import name, nsURI, nsPrefix, eClass
+from .fa import AbstractFunctionalArchitecture, AbstractFunctionalBlock, FunctionPkg, FunctionSpecification, ExchangeCategory, ExchangeLink, ExchangeContainment, ExchangeSpecification, FunctionalExchangeSpecification, FunctionalChain, FunctionalChainKind, AbstractFunctionalChainContainer, FunctionalChainInvolvement, FunctionalChainReference, FunctionInputPort, FunctionOutputPort, AbstractFunctionAllocation, ComponentFunctionalAllocation, FunctionalChainRealization, ExchangeSpecificationRealization, FunctionalExchangeRealization, FunctionRealization, FunctionalExchange, AbstractFunction, FunctionKind, FunctionPort, ComponentExchangeKind, ComponentPortKind, OrientationPortKind, ComponentExchange, ComponentExchangeAllocation, ComponentExchangeAllocator, ComponentExchangeCategory, ComponentExchangeEnd, ComponentExchangeFunctionalExchangeAllocation, ComponentExchangeRealization, ComponentPort, ComponentPortAllocation, ComponentPortAllocationEnd, FunctionalChainInvolvementLink, SequenceLink, SequenceLinkEnd, FunctionalChainInvolvementFunction, ControlNode, ControlNodeKind, ReferenceHierarchyContext
+
+from information import ExchangeItem, PortAllocation, PortRealization, Association, Port
+from modellingcore import AbstractConstraint, InformationsExchanger, AbstractInformationFlow, AbstractParameter, AbstractConstraint, AbstractExchangeItem, IState, AbstractParameterSet, AbstractType, AbstractTrace, AbstractRelationship, ValueSpecification, ModelElement, AbstractTypedElement, AbstractType, TraceableElement
+from capellacore import EnumerationPropertyLiteral, InvolverElement, AbstractPropertyValue, Constraint, TypedElement, InvolvedElement, EnumerationPropertyType, NamingRule, Type, Involvement, PropertyValuePkg, InvolvedElement, PropertyValueGroup, Trace
+from cs import PhysicalPort, PhysicalLink, Interface, Part
+from activity import AbstractAction, InterruptibleActivityRegion, ActivityGroup, ActivityNode, ActivityEdge, ExceptionHandler, StructuredActivityNode, ActivityPartition, OutputPin, InputPin
+from capellacommon import GenericTrace, StateMachine, StateMachine, State
+from requirement import RequirementsTrace, Requirement
+from emde import ElementExtension
+from information.datavalue import NumericValue, DataValue
+from ctx import Capability
+from interaction import InstanceRole, SequenceMessage
+from la import CapabilityRealization
+from behavior import AbstractBehavior
+
+from . import fa
+
+__all__ = ['AbstractFunctionalArchitecture', 'AbstractFunctionalBlock', 'FunctionPkg', 'FunctionSpecification', 'ExchangeCategory', 'ExchangeLink', 'ExchangeContainment', 'ExchangeSpecification', 'FunctionalExchangeSpecification', 'FunctionalChain', 'FunctionalChainKind', 'AbstractFunctionalChainContainer', 'FunctionalChainInvolvement', 'FunctionalChainReference', 'FunctionInputPort', 'FunctionOutputPort', 'AbstractFunctionAllocation', 'ComponentFunctionalAllocation', 'FunctionalChainRealization', 'ExchangeSpecificationRealization', 'FunctionalExchangeRealization', 'FunctionRealization',
+           'FunctionalExchange', 'AbstractFunction', 'FunctionKind', 'FunctionPort', 'ComponentExchangeKind', 'ComponentPortKind', 'OrientationPortKind', 'ComponentExchange', 'ComponentExchangeAllocation', 'ComponentExchangeAllocator', 'ComponentExchangeCategory', 'ComponentExchangeEnd', 'ComponentExchangeFunctionalExchangeAllocation', 'ComponentExchangeRealization', 'ComponentPort', 'ComponentPortAllocation', 'ComponentPortAllocationEnd', 'FunctionalChainInvolvementLink', 'SequenceLink', 'SequenceLinkEnd', 'FunctionalChainInvolvementFunction', 'ControlNode', 'ControlNodeKind', 'ReferenceHierarchyContext']
+
+eSubpackages = []
+eSuperPackage = None
+fa.eSubpackages = eSubpackages
+fa.eSuperPackage = eSuperPackage
+
+AbstractFunctionalArchitecture.ownedFunctionPkg.eType = FunctionPkg
+AbstractFunctionalArchitecture.ownedComponentExchanges.eType = ComponentExchange
+AbstractFunctionalArchitecture.ownedComponentExchangeCategories.eType = ComponentExchangeCategory
+AbstractFunctionalArchitecture.ownedFunctionalLinks.eType = ExchangeLink
+AbstractFunctionalArchitecture.ownedFunctionalAllocations.eType = ComponentFunctionalAllocation
+AbstractFunctionalArchitecture.ownedComponentExchangeRealizations.eType = ComponentExchangeRealization
+AbstractFunctionalBlock.ownedFunctionalAllocation.eType = ComponentFunctionalAllocation
+AbstractFunctionalBlock.ownedComponentExchanges.eType = ComponentExchange
+AbstractFunctionalBlock.ownedComponentExchangeCategories.eType = ComponentExchangeCategory
+AbstractFunctionalBlock.inExchangeLinks.eType = ExchangeLink
+AbstractFunctionalBlock.outExchangeLinks.eType = ExchangeLink
+FunctionPkg.ownedFunctionalLinks.eType = ExchangeLink
+FunctionPkg.ownedExchanges.eType = FunctionalExchangeSpecification
+FunctionPkg.ownedExchangeSpecificationRealizations.eType = ExchangeSpecificationRealization
+FunctionPkg.ownedCategories.eType = ExchangeCategory
+FunctionPkg.ownedFunctionSpecifications.eType = FunctionSpecification
+FunctionSpecification.inExchangeLinks.eType = ExchangeLink
+FunctionSpecification.outExchangeLinks.eType = ExchangeLink
+FunctionSpecification.ownedFunctionPorts.eType = FunctionPort
+FunctionSpecification.subFunctionSpecifications.eType = FunctionSpecification
+ExchangeCategory.exchanges.eType = FunctionalExchange
+ExchangeLink.exchanges.eType = ExchangeSpecification
+ExchangeLink.ownedExchangeContainments.eType = ExchangeContainment
+ExchangeLink.sources.eType = FunctionSpecification
+ExchangeLink.destinations.eType = FunctionSpecification
+ExchangeSpecification._containingLink.eType = ExchangeLink
+FunctionalExchangeSpecification.functionalExchanges.eType = FunctionalExchange
+FunctionalChain.ownedFunctionalChainInvolvements.eType = FunctionalChainInvolvement
+FunctionalChain.ownedFunctionalChainRealizations.eType = FunctionalChainRealization
+FunctionalChain.involvedFunctionalChainInvolvements.eType = FunctionalChainInvolvement
+FunctionalChain.involvedElements.eType = InvolvedElement
+FunctionalChain.enactedFunctions.eType = AbstractFunction
+FunctionalChain.enactedFunctionalBlocks.eType = AbstractFunctionalBlock
+FunctionalChain.availableInStates.eType = State
+FunctionalChain.firstFunctionalChainInvolvements.eType = FunctionalChainInvolvement
+FunctionalChain.involvingCapabilities.eType = Capability
+FunctionalChain.involvingCapabilityRealizations.eType = CapabilityRealization
+FunctionalChain.realizedFunctionalChains.eType = FunctionalChain
+FunctionalChain.realizingFunctionalChains.eType = FunctionalChain
+FunctionalChain.preCondition.eType = Constraint
+FunctionalChain.postCondition.eType = Constraint
+FunctionalChain.ownedSequenceNodes.eType = ControlNode
+FunctionalChain.ownedSequenceLinks.eType = SequenceLink
+AbstractFunctionalChainContainer.ownedFunctionalChains.eType = FunctionalChain
+FunctionalChainInvolvement.nextFunctionalChainInvolvements.eType = FunctionalChainInvolvement
+FunctionalChainInvolvement.previousFunctionalChainInvolvements.eType = FunctionalChainInvolvement
+FunctionalChainInvolvement._involvedElement.eType = InvolvedElement
+FunctionalChainReference._referencedFunctionalChain.eType = FunctionalChain
+FunctionInputPort.incomingExchangeItems.eType = ExchangeItem
+FunctionInputPort.incomingFunctionalExchanges.eType = FunctionalExchange
+FunctionOutputPort.outgoingExchangeItems.eType = ExchangeItem
+FunctionOutputPort.outgoingFunctionalExchanges.eType = FunctionalExchange
+FunctionalExchange.exchangeSpecifications.eType = FunctionalExchangeSpecification
+FunctionalExchange.exchangedItems.eType = ExchangeItem
+FunctionalExchange.categories.eType = ExchangeCategory
+FunctionalExchange.ownedFunctionalExchangeRealizations.eType = FunctionalExchangeRealization
+FunctionalExchange._sourceFunctionOutputPort.eType = FunctionOutputPort
+FunctionalExchange._targetFunctionInputPort.eType = FunctionInputPort
+AbstractFunction.ownedFunctions.eType = AbstractFunction
+AbstractFunction.ownedFunctionRealizations.eType = FunctionRealization
+AbstractFunction.ownedFunctionalExchanges.eType = FunctionalExchange
+AbstractFunction.subFunctions.eType = AbstractFunction
+AbstractFunction.availableInStates.eType = State
+AbstractFunction.involvingCapabilities.eType = Capability
+AbstractFunction.involvingCapabilityRealizations.eType = CapabilityRealization
+AbstractFunction._linkedStateMachine.eType = StateMachine
+AbstractFunction._linkedFunctionSpecification.eType = FunctionSpecification
+FunctionPort.representedComponentPort.eType = ComponentPort
+FunctionPort.realizedFunctionPorts.eType = FunctionPort
+FunctionPort.realizingFunctionPorts.eType = FunctionPort
+ComponentExchange.ownedComponentExchangeFunctionalExchangeAllocations.eType = ComponentExchangeFunctionalExchangeAllocation
+ComponentExchange.ownedComponentExchangeRealizations.eType = ComponentExchangeRealization
+ComponentExchange.ownedComponentExchangeEnds.eType = ComponentExchangeEnd
+ComponentExchange._sourcePort.eType = Port
+ComponentExchange._sourcePart.eType = Part
+ComponentExchange._targetPort.eType = Port
+ComponentExchange._targetPart.eType = Part
+ComponentExchange.categories.eType = ComponentExchangeCategory
+ComponentExchange.allocatorPhysicalLinks.eType = PhysicalLink
+ComponentExchangeAllocation._componentExchangeAllocated.eType = ComponentExchange
+ComponentExchangeAllocation._componentExchangeAllocator.eType = ComponentExchangeAllocator
+ComponentExchangeAllocator.ownedComponentExchangeAllocations.eType = ComponentExchangeAllocation
+ComponentExchangeAllocator.allocatedComponentExchanges.eType = ComponentExchange
+ComponentExchangeCategory.exchanges.eType = ComponentExchange
+ComponentExchangeEnd.port.eType = Port
+ComponentExchangeEnd.part.eType = Part
+ComponentPort.componentExchanges.eType = ComponentExchange
+ComponentPortAllocation.ownedComponentPortAllocationEnds.eType = ComponentPortAllocationEnd
+ComponentPortAllocation._allocatedPort.eType = Port
+ComponentPortAllocation._allocatingPort.eType = Port
+ComponentPortAllocationEnd.port.eType = Port
+ComponentPortAllocationEnd.part.eType = Part
+ComponentPortAllocationEnd._owningComponentPortAllocation.eType = ComponentPortAllocation
+FunctionalChainInvolvementLink.exchangeContext.eType = Constraint
+FunctionalChainInvolvementLink.exchangedItems.eType = ExchangeItem
+FunctionalChainInvolvementLink.source.eType = FunctionalChainInvolvementFunction
+FunctionalChainInvolvementLink.target.eType = FunctionalChainInvolvementFunction
+SequenceLink.condition.eType = Constraint
+SequenceLink.links.eType = FunctionalChainInvolvementLink
+SequenceLink.source.eType = SequenceLinkEnd
+SequenceLink.target.eType = SequenceLinkEnd
+FunctionalChainInvolvementFunction.outgoingInvolvementLinks.eType = FunctionalChainInvolvementLink
+FunctionalChainInvolvementFunction.incomingInvolvementLinks.eType = FunctionalChainInvolvementLink
+ReferenceHierarchyContext.sourceReferenceHierarchy.eType = FunctionalChainReference
+ReferenceHierarchyContext.targetReferenceHierarchy.eType = FunctionalChainReference
+AbstractFunctionalBlock.functionalAllocations.eType = ComponentFunctionalAllocation
+AbstractFunctionalBlock.allocatedFunctions.eType = AbstractFunction
+ExchangeLink.exchangeContainmentLinks.eType = ExchangeContainment
+ExchangeContainment.exchange.eType = ExchangeSpecification
+ExchangeContainment.link.eType = ExchangeLink
+ExchangeContainment.link.eOpposite = ExchangeLink.exchangeContainmentLinks
+ExchangeSpecification.link.eType = ExchangeContainment
+ExchangeSpecification.link.eOpposite = ExchangeContainment.exchange
+ExchangeSpecification.outgoingExchangeSpecificationRealizations.eType = ExchangeSpecificationRealization
+ExchangeSpecification.incomingExchangeSpecificationRealizations.eType = ExchangeSpecificationRealization
+FunctionalChain.involvedFunctions.eType = AbstractFunction
+FunctionalChain.involvedFunctionalExchanges.eType = FunctionalExchange
+ComponentFunctionalAllocation._function.eType = AbstractFunction
+ComponentFunctionalAllocation._block.eType = AbstractFunctionalBlock
+ComponentFunctionalAllocation._block.eOpposite = AbstractFunctionalBlock.functionalAllocations
+ExchangeSpecificationRealization._realizedExchangeSpecification.eType = ExchangeSpecification
+ExchangeSpecificationRealization._realizedExchangeSpecification.eOpposite = ExchangeSpecification.incomingExchangeSpecificationRealizations
+ExchangeSpecificationRealization._realizingExchangeSpecification.eType = ExchangeSpecification
+ExchangeSpecificationRealization._realizingExchangeSpecification.eOpposite = ExchangeSpecification.outgoingExchangeSpecificationRealizations
+FunctionalExchangeRealization._realizedFunctionalExchange.eType = FunctionalExchange
+FunctionalExchangeRealization._realizingFunctionalExchange.eType = FunctionalExchange
+FunctionRealization._allocatedFunction.eType = AbstractFunction
+FunctionRealization._allocatingFunction.eType = AbstractFunction
+FunctionalExchange.involvingFunctionalChains.eType = FunctionalChain
+FunctionalExchange.involvingFunctionalChains.eOpposite = FunctionalChain.involvedFunctionalExchanges
+FunctionalExchange.allocatingComponentExchanges.eType = ComponentExchange
+FunctionalExchange.incomingComponentExchangeFunctionalExchangeRealizations.eType = ComponentExchangeFunctionalExchangeAllocation
+FunctionalExchange.incomingFunctionalExchangeRealizations.eType = FunctionalExchangeRealization
+FunctionalExchange.incomingFunctionalExchangeRealizations.eOpposite = FunctionalExchangeRealization.realizedFunctionalExchange
+FunctionalExchange.outgoingFunctionalExchangeRealizations.eType = FunctionalExchangeRealization
+FunctionalExchange.outgoingFunctionalExchangeRealizations.eOpposite = FunctionalExchangeRealization.realizingFunctionalExchange
+FunctionalExchange.realizedFunctionalExchanges.eType = FunctionalExchange
+FunctionalExchange.realizingFunctionalExchanges.eType = FunctionalExchange
+FunctionalExchange.realizingFunctionalExchanges.eOpposite = FunctionalExchange.realizedFunctionalExchanges
+AbstractFunction.outFunctionRealizations.eType = FunctionRealization
+AbstractFunction.outFunctionRealizations.eOpposite = FunctionRealization.allocatingFunction
+AbstractFunction.inFunctionRealizations.eType = FunctionRealization
+AbstractFunction.inFunctionRealizations.eOpposite = FunctionRealization.allocatedFunction
+AbstractFunction.componentFunctionalAllocations.eType = ComponentFunctionalAllocation
+AbstractFunction.componentFunctionalAllocations.eOpposite = ComponentFunctionalAllocation.function
+AbstractFunction.allocationBlocks.eType = AbstractFunctionalBlock
+AbstractFunction.allocationBlocks.eOpposite = AbstractFunctionalBlock.allocatedFunctions
+AbstractFunction.involvingFunctionalChains.eType = FunctionalChain
+AbstractFunction.involvingFunctionalChains.eOpposite = FunctionalChain.involvedFunctions
+FunctionPort.allocatorComponentPorts.eType = ComponentPort
+ComponentExchange.allocatedFunctionalExchanges.eType = FunctionalExchange
+ComponentExchange.allocatedFunctionalExchanges.eOpposite = FunctionalExchange.allocatingComponentExchanges
+ComponentExchange.incomingComponentExchangeRealizations.eType = ComponentExchangeRealization
+ComponentExchange.outgoingComponentExchangeRealizations.eType = ComponentExchangeRealization
+ComponentExchange.outgoingComponentExchangeFunctionalExchangeAllocations.eType = ComponentExchangeFunctionalExchangeAllocation
+ComponentExchange.realizedComponentExchanges.eType = ComponentExchange
+ComponentExchange.realizingComponentExchanges.eType = ComponentExchange
+ComponentExchange.realizingComponentExchanges.eOpposite = ComponentExchange.realizedComponentExchanges
+ComponentExchangeFunctionalExchangeAllocation._allocatedFunctionalExchange.eType = FunctionalExchange
+ComponentExchangeFunctionalExchangeAllocation._allocatedFunctionalExchange.eOpposite = FunctionalExchange.incomingComponentExchangeFunctionalExchangeRealizations
+ComponentExchangeFunctionalExchangeAllocation._allocatingComponentExchange.eType = ComponentExchange
+ComponentExchangeFunctionalExchangeAllocation._allocatingComponentExchange.eOpposite = ComponentExchange.outgoingComponentExchangeFunctionalExchangeAllocations
+ComponentExchangeRealization._allocatedComponentExchange.eType = ComponentExchange
+ComponentExchangeRealization._allocatedComponentExchange.eOpposite = ComponentExchange.incomingComponentExchangeRealizations
+ComponentExchangeRealization._allocatingComponentExchange.eType = ComponentExchange
+ComponentExchangeRealization._allocatingComponentExchange.eOpposite = ComponentExchange.outgoingComponentExchangeRealizations
+ComponentPort.allocatedFunctionPorts.eType = FunctionPort
+ComponentPort.allocatedFunctionPorts.eOpposite = FunctionPort.allocatorComponentPorts
+ComponentPort.delegatedComponentPorts.eType = ComponentPort
+ComponentPort.delegatingComponentPorts.eType = ComponentPort
+ComponentPort.delegatingComponentPorts.eOpposite = ComponentPort.delegatedComponentPorts
+ComponentPort.allocatingPhysicalPorts.eType = PhysicalPort
+ComponentPort.realizedComponentPorts.eType = ComponentPort
+ComponentPort.realizingComponentPorts.eType = ComponentPort
+ComponentPort.realizingComponentPorts.eOpposite = ComponentPort.realizedComponentPorts
+
+otherClassifiers = [FunctionalChainKind, FunctionKind, ComponentExchangeKind,
+                    ComponentPortKind, OrientationPortKind, ControlNodeKind]
+
+for classif in otherClassifiers:
+    eClassifiers[classif.name] = classif
+    classif.ePackage = eClass
+
+for classif in eClassifiers.values():
+    eClass.eClassifiers.append(classif.eClass)
+
+for subpack in eSubpackages:
+    eClass.eSubpackages.append(subpack.eClass)
