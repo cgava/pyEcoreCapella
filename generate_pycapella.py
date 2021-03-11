@@ -1,5 +1,6 @@
-import sys
-
+# # Issue with my own virtalenv, please, don't pay attention
+# import sys
+#
 # sys.path.append("../pyecoregen")
 # sys.path.append("../pyecore")
 
