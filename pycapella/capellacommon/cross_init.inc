@@ -1,0 +1,48 @@
+
+#print('capellacommon.cross_init starting')
+
+
+capellacommon.GenericTrace.keyValuePairs.eType = capellacore.KeyValue
+capellacommon.GenericTrace._source.eType = modellingcore.TraceableElement
+capellacommon.GenericTrace._target.eType = modellingcore.TraceableElement
+capellacommon.CapabilityRealizationInvolvement._involvedCapabilityRealizationInvolvedElement.eType = capellacommon.CapabilityRealizationInvolvedElement
+capellacommon.CapabilityRealizationInvolvedElement.capabilityRealizationInvolvements.eType = capellacommon.CapabilityRealizationInvolvement
+capellacommon.CapabilityRealizationInvolvedElement.involvingCapabilityRealizations.eType = la.CapabilityRealization
+capellacommon.StateMachine.ownedRegions.eType = capellacommon.Region
+capellacommon.StateMachine.ownedConnectionPoints.eType = capellacommon.Pseudostate
+capellacommon.Region.ownedStates.eType = capellacommon.AbstractState
+capellacommon.Region.ownedTransitions.eType = capellacommon.StateTransition
+capellacommon.Region.involvedStates.eType = capellacommon.AbstractState
+capellacommon.State.ownedRegions.eType = capellacommon.Region
+capellacommon.State.ownedConnectionPoints.eType = capellacommon.Pseudostate
+capellacommon.State.availableAbstractFunctions.eType = fa.AbstractFunction
+capellacommon.State.availableFunctionalChains.eType = fa.FunctionalChain
+capellacommon.State.availableAbstractCapabilities.eType = interaction.AbstractCapability
+capellacommon.State.entry.eType = behavior.AbstractEvent
+capellacommon.State.doActivity.eType = behavior.AbstractEvent
+capellacommon.State.exit.eType = behavior.AbstractEvent
+capellacommon.State.stateInvariant.eType = modellingcore.AbstractConstraint
+capellacommon.AbstractState.ownedAbstractStateRealizations.eType = capellacommon.AbstractStateRealization
+capellacommon.AbstractState.realizedAbstractStates.eType = capellacommon.AbstractState
+capellacommon.AbstractState.realizingAbstractStates.eType = capellacommon.AbstractState
+capellacommon.AbstractState.outgoing.eType = capellacommon.StateTransition
+capellacommon.AbstractState.incoming.eType = capellacommon.StateTransition
+capellacommon.AbstractState.involverRegions.eType = capellacommon.Region
+capellacommon.StateTransition.guard.eType = capellacore.Constraint
+capellacommon.StateTransition.source.eType = capellacommon.AbstractState
+capellacommon.StateTransition.target.eType = capellacommon.AbstractState
+capellacommon.StateTransition.effect.eType = behavior.AbstractEvent
+capellacommon.StateTransition.triggers.eType = behavior.AbstractEvent
+capellacommon.StateTransition.ownedStateTransitionRealizations.eType = capellacommon.StateTransitionRealization
+capellacommon.StateTransition.realizedStateTransitions.eType = capellacommon.StateTransition
+capellacommon.StateTransition.realizingStateTransitions.eType = capellacommon.StateTransition
+capellacommon.AbstractStateRealization._realizedAbstractState.eType = capellacommon.AbstractState
+capellacommon.AbstractStateRealization._realizingAbstractState.eType = capellacommon.AbstractState
+capellacommon.StateTransitionRealization._realizedStateTransition.eType = capellacommon.StateTransition
+capellacommon.StateTransitionRealization._realizingStateTransition.eType = capellacommon.StateTransition
+capellacommon.StateEventRealization._realizedEvent.eType = capellacommon.StateEvent
+capellacommon.StateEventRealization._realizingEvent.eType = capellacommon.StateEvent
+capellacommon.StateEvent.expression.eType = capellacore.Constraint
+capellacommon.StateEvent.ownedStateEventRealizations.eType = capellacommon.StateEventRealization
+
+#print('capellacommon.cross_init done')
