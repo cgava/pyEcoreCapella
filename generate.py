@@ -1,7 +1,7 @@
 import sys
 
-sys.path.append("../pyecoregen")
-sys.path.append("../pyecore")
+# sys.path.append("../pyecoregen")
+# sys.path.append("../pyecore")
 
 from capellagenerator import CapellaGenerator
 
