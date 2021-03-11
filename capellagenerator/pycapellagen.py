@@ -2,10 +2,23 @@ import os
 import subprocess
 from pathlib import Path
 import itertools
+import multigen
 import pyecore.ecore as ecore
 from pyecore.resources import ResourceSet
 from pyecoregen.ecore import EcoreGenerator, EcoreTask, EcorePackageInitTask, EcorePackageModuleTask
-import multigen
+import pyecoregen.adapter as adapter
+
+
+old_fix_name_clash = adapter.fix_name_clash
+
+def fix_name_clash(value):
+    value = old_fix_name_clash(value)
+    if value in ('super', 'self'):
+        print(f"!! Fixing {value} in {value}_")
+        value += '_'
+    return value
+
+adapter.fix_name_clash = fix_name_clash
 
 
 class CapellaPackageInitTask(EcorePackageInitTask):
