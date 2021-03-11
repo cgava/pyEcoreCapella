@@ -32,7 +32,7 @@ capellacore.Classifier.ownedFeatures.eType = capellacore.Feature
 capellacore.Classifier.containedProperties.eType = information.Property
 capellacore.GeneralClass.containedOperations.eType = information.Operation
 capellacore.GeneralClass.nestedGeneralClasses.eType = capellacore.GeneralClass
-capellacore.Generalization.super.eType = capellacore.GeneralizableElement
+capellacore.Generalization.super_.eType = capellacore.GeneralizableElement
 capellacore.Generalization.sub.eType = capellacore.GeneralizableElement
 capellacore.AbstractExchangeItemPkg.ownedExchangeItems.eType = information.ExchangeItem
 capellacore.Involvement._involver.eType = capellacore.InvolverElement
@@ -45,8 +45,8 @@ capellacore.EnumerationPropertyValue.type.eType = capellacore.EnumerationPropert
 capellacore.EnumerationPropertyValue.value.eType = capellacore.EnumerationPropertyLiteral
 capellacore.EnumerationPropertyType.ownedLiterals.eType = capellacore.EnumerationPropertyLiteral
 capellacore.PropertyValueGroup.valuedElements.eType = capellacore.CapellaElement
-capellacore.GeneralizableElement.super.eType = capellacore.GeneralizableElement
+capellacore.GeneralizableElement.super_.eType = capellacore.GeneralizableElement
 capellacore.GeneralizableElement.sub.eType = capellacore.GeneralizableElement
-capellacore.GeneralizableElement.sub.eOpposite = capellacore.GeneralizableElement.super
+capellacore.GeneralizableElement.sub.eOpposite = capellacore.GeneralizableElement.super_
 
 #print('capellacore.cross_init done')

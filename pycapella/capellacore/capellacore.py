@@ -226,15 +226,15 @@ class ReuseLink(Relationship):
 
 class Generalization(Relationship):
 
-    super = EReference(ordered=True, unique=True, containment=False, derived=False)
+    super_ = EReference(ordered=True, unique=True, containment=False, derived=False)
     sub = EReference(ordered=True, unique=True, containment=False, derived=False)
 
-    def __init__(self, *, super=None, sub=None, **kwargs):
+    def __init__(self, *, super_=None, sub=None, **kwargs):
 
         super().__init__(**kwargs)
 
-        if super is not None:
-            self.super = super
+        if super_ is not None:
+            self.super_ = super_
 
         if sub is not None:
             self.sub = sub
@@ -603,7 +603,7 @@ class DerivedSubgeneralizations(EDerivedCollection):
     pass
 
 
-class DerivedSuper(EDerivedCollection):
+class DerivedSuper_(EDerivedCollection):
     pass
 
 
@@ -621,12 +621,12 @@ class GeneralizableElement(Type):
                                       derived=True, upper=-1, transient=True, derived_class=DerivedSupergeneralizations)
     subGeneralizations = EReference(ordered=True, unique=True, containment=False,
                                     derived=True, upper=-1, transient=True, derived_class=DerivedSubgeneralizations)
-    super = EReference(ordered=True, unique=True, containment=False, derived=True,
-                       upper=-1, transient=True, derived_class=DerivedSuper)
+    super_ = EReference(ordered=True, unique=True, containment=False, derived=True,
+                        upper=-1, transient=True, derived_class=DerivedSuper_)
     sub = EReference(ordered=True, unique=True, containment=False, derived=True,
                      upper=-1, transient=True, derived_class=DerivedSub)
 
-    def __init__(self, *, abstract=None, ownedGeneralizations=None, superGeneralizations=None, subGeneralizations=None, super=None, sub=None, **kwargs):
+    def __init__(self, *, abstract=None, ownedGeneralizations=None, superGeneralizations=None, subGeneralizations=None, super_=None, sub=None, **kwargs):
 
         super().__init__(**kwargs)
 
@@ -642,8 +642,8 @@ class GeneralizableElement(Type):
         if subGeneralizations:
             self.subGeneralizations.extend(subGeneralizations)
 
-        if super:
-            self.super.extend(super)
+        if super_:
+            self.super_.extend(super_)
 
         if sub:
             self.sub.extend(sub)
