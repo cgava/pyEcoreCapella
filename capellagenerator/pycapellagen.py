@@ -1,4 +1,5 @@
 import os
+import subprocess
 from pathlib import Path
 import itertools
 import pyecore.ecore as ecore
@@ -113,3 +114,7 @@ class CapellaGenerator(object):
                 with open(outfolder / module / "cross_init.inc", "r") as inc:
                     for line in inc:
                         f.write(line)
+        print("== Apply patch for circular dependencies")
+        patch = Path(os.path.dirname(os.path.realpath(__file__))) / 'patches' / 'circular.patch'
+        process = subprocess.Popen(['git', 'apply', patch])
+        process.communicate()

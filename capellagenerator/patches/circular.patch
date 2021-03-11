@@ -1,0 +1,34 @@
+diff --git a/pycapella/__init__.py b/pycapella/__init__.py
+index 5eb79b7..d3a462d 100644
+--- a/pycapella/__init__.py
++++ b/pycapella/__init__.py
+@@ -1121,3 +1121,7 @@ libraries.LibraryReference.version.eType = libraries.ModelVersion
+ emde.ExtensibleElement.ownedExtensions.eType = emde.ElementExtension
+ 
+ #print('emde.cross_init done')
++
++# Manual patching circular dep for inheritance
++information.communication.SignalInstance._staticEClass = False
++information.communication.SignalInstance.eClass.eSuperTypes.append(information.AbstractInstance.eClass)
+diff --git a/pycapella/information/communication/communication.py b/pycapella/information/communication/communication.py
+index 02cb267..8e8af45 100644
+--- a/pycapella/information/communication/communication.py
++++ b/pycapella/information/communication/communication.py
+@@ -5,7 +5,7 @@ from pyecore.ecore import *
+ from behavior import AbstractSignal
+ from capellacore import CapellaElement, Classifier, Relationship, Structure, VisibilityKind
+ from information.datavalue import DataValueContainer
+-from information import AbstractInstance
++# from information import AbstractInstance
+ 
+ 
+ name = 'communication'
+@@ -217,7 +217,7 @@ class Message(CommunicationItem):
+         super().__init__(**kwargs)
+ 
+ 
+-class SignalInstance(AbstractInstance):
++class SignalInstance(EObject, metaclass=MetaEClass):
+ 
+     def __init__(self, **kwargs):
+ 
