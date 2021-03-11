@@ -4,10 +4,8 @@ from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
 from behavior import AbstractBehavior, AbstractEvent
-from capellacore import Allocation, CapellaElement, CapellaElement, CapellaElement, Involvement, InvolverElement, NamedElement, NamedElement, NamedRelationship, Namespace, Namespace, Relationship, Relationship, Structure, Trace
-from emde import Element, ExtensibleElement
+from capellacore import Allocation, CapellaElement, Involvement, InvolverElement, NamedElement, NamedRelationship, Namespace, Relationship, Structure, Trace
 from fa import AbstractFunctionalChainContainer
-from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, ModelElement, PublishableElement, TraceableElement, TraceableElement
 
 
 name = 'interaction'

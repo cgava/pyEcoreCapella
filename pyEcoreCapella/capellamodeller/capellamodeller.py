@@ -3,9 +3,7 @@ print('capellamodeller.capellamodeller loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import AbstractModellingStructure, CapellaElement, CapellaElement, NamedElement, Namespace, ReuserStructure, Structure, Structure
-from emde import Element, ExtensibleElement
-from modellingcore import AbstractNamedElement, ModelElement, PublishableElement, TraceableElement
+from capellacore import AbstractModellingStructure, CapellaElement, Structure
 
 
 name = 'capellamodeller'

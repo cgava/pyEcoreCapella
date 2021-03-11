@@ -3,8 +3,7 @@ print('capellacore.capellacore loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from emde import Element, ExtensibleElement
-from modellingcore import AbstractConstraint, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, AbstractTypedElement, FinalizableElement, ModelElement, PublishableElement, TraceableElement, TraceableElement
+from modellingcore import AbstractConstraint, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, AbstractTypedElement, FinalizableElement, PublishableElement, TraceableElement
 
 
 name = 'capellacore'

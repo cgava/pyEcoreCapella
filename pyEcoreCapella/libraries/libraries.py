@@ -3,7 +3,7 @@ print('libraries.libraries loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from emde import Element, ElementExtension, ExtensibleElement, ExtensibleElement
+from emde import ElementExtension, ExtensibleElement
 
 
 name = 'libraries'

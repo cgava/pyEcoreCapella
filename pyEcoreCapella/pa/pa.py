@@ -3,16 +3,10 @@ print('pa.pa loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from activity import AbstractAction, ActivityNode, CallAction, CallBehaviorAction, ExecutableNode, InvocationAction
-from behavior import AbstractEvent
 from capellacommon import CapabilityRealizationInvolvedElement
-from capellacore import Allocation, CapellaElement, CapellaElement, CapellaElement, CapellaElement, Classifier, Feature, GeneralizableElement, InvolvedElement, InvolvedElement, ModellingArchitecture, ModellingArchitecturePkg, ModellingBlock, ModellingBlock, NamedElement, NamedElement, Namespace, Namespace, Relationship, Structure, Structure, Structure, Structure, Type, TypedElement
-from information.communication import CommunicationLinkExchanger
-from cs import AbstractPhysicalArtifact, ArchitectureAllocation, Block, BlockArchitecture, BlockArchitecturePkg, Component, ComponentArchitecture, ComponentPkg, DeployableElement, DeploymentTarget, InterfaceAllocation, InterfaceAllocator
-from emde import Element, ExtensibleElement
-from fa import AbstractFunction, AbstractFunctionalArchitecture, AbstractFunctionalBlock, AbstractFunctionalChainContainer, FunctionPkg
-from information import AbstractInstance, AssociationPkg, MultiplicityElement, Property
-from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, AbstractType, AbstractTypedElement, FinalizableElement, ModelElement, PublishableElement, TraceableElement, TraceableElement
+from cs import AbstractPhysicalArtifact, ArchitectureAllocation, BlockArchitecturePkg, Component, ComponentArchitecture, ComponentPkg, DeployableElement, DeploymentTarget, InterfaceAllocation
+from fa import AbstractFunction, FunctionPkg
+from information import AssociationPkg
 
 
 name = 'pa'

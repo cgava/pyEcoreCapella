@@ -4,9 +4,8 @@ from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
 from behavior import AbstractBehavior, AbstractEvent
-from capellacore import Allocation, CapellaElement, CapellaElement, InvolvedElement, Involvement, NamedElement, NamedElement, Namespace, Relationship, Relationship, Structure, Trace
-from emde import Element, ExtensibleElement
-from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, IState, ModelElement, PublishableElement, TraceableElement, TraceableElement
+from capellacore import Allocation, CapellaElement, InvolvedElement, Involvement, NamedElement, Relationship, Structure, Trace
+from modellingcore import IState
 
 
 name = 'capellacommon'

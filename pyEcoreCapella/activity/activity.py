@@ -4,8 +4,7 @@ from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
 from behavior import AbstractBehavior
-from emde import Element, ExtensibleElement
-from modellingcore import AbstractInformationFlow, AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractRelationship, AbstractTypedElement, ModelElement, ModelElement, RateKind, TraceableElement
+from modellingcore import AbstractInformationFlow, AbstractNamedElement, AbstractRelationship, AbstractTypedElement, ModelElement, RateKind, TraceableElement
 
 
 name = 'activity'

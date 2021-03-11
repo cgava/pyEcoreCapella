@@ -3,9 +3,8 @@ print('datavalue.datavalue loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import CapellaElement, CapellaElement, NamedElement, NamedElement, Namespace, Structure
-from emde import Element, ExtensibleElement
-from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractTypedElement, ModelElement, PublishableElement, TraceableElement, ValueSpecification
+from capellacore import CapellaElement, NamedElement, Structure
+from modellingcore import ValueSpecification
 
 
 name = 'datavalue'

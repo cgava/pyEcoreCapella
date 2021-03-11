@@ -3,17 +3,11 @@ print('ctx.ctx loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from activity import AbstractAction, ActivityNode, CallAction, CallBehaviorAction, ExecutableNode, InvocationAction
-from behavior import AbstractEvent
 from capellacommon import AbstractCapabilityPkg
-from capellacore import Allocation, CapellaElement, CapellaElement, CapellaElement, CapellaElement, Classifier, Feature, GeneralizableElement, InvolvedElement, InvolvedElement, Involvement, InvolverElement, InvolverElement, ModellingArchitecture, ModellingBlock, ModellingBlock, NamedElement, NamedElement, Namespace, Namespace, Relationship, Relationship, Structure, Structure, Structure, Structure, Structure, Structure, Type, TypedElement
-from information.communication import CommunicationLinkExchanger
-from cs import ArchitectureAllocation, Block, BlockArchitecture, Component, ComponentArchitecture, ComponentPkg, InterfaceAllocator
-from emde import Element, ExtensibleElement
-from fa import AbstractFunction, AbstractFunctionalArchitecture, AbstractFunctionalBlock, AbstractFunctionalChainContainer, AbstractFunctionalChainContainer, FunctionPkg
-from information import AbstractInstance, MultiplicityElement, Property
+from capellacore import InvolvedElement, Involvement, InvolverElement, NamedElement, Relationship, Structure
+from cs import ArchitectureAllocation, Component, ComponentArchitecture, ComponentPkg
+from fa import AbstractFunction, FunctionPkg
 from interaction import AbstractCapability
-from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, AbstractType, AbstractTypedElement, FinalizableElement, ModelElement, PublishableElement, TraceableElement, TraceableElement
 
 
 name = 'ctx'

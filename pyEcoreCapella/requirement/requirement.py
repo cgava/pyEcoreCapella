@@ -3,9 +3,7 @@ print('requirement.requirement loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import CapellaElement, NamedElement, Namespace, Namespace, Relationship, Structure, Trace
-from emde import Element, ExtensibleElement
-from modellingcore import AbstractNamedElement, AbstractRelationship, AbstractTrace, ModelElement, PublishableElement, TraceableElement, TraceableElement
+from capellacore import Namespace, Structure, Trace
 
 
 name = 'requirement'

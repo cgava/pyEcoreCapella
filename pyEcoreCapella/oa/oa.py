@@ -3,17 +3,14 @@ print('oa.oa loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from activity import AbstractAction, ActivityExchange, ActivityGroup, ActivityNode, ActivityPartition, CallAction, CallBehaviorAction, ExecutableNode, InvocationAction
-from behavior import AbstractEvent
+from activity import ActivityPartition
 from capellacommon import AbstractCapabilityPkg
-from capellacore import Allocation, CapellaElement, CapellaElement, CapellaElement, CapellaElement, Classifier, Feature, GeneralizableElement, InvolvedElement, InvolvedElement, Involvement, InvolverElement, InvolverElement, ModellingArchitecture, ModellingBlock, ModellingBlock, NamedElement, NamedElement, NamedElement, NamedElement, NamedRelationship, Namespace, Namespace, Namespace, Relationship, Relationship, Structure, Structure, Structure, Structure, Structure, Structure, Type, TypedElement
-from information.communication import CommunicationLinkExchanger
-from cs import Block, BlockArchitecture, Component, ComponentPkg, InterfaceAllocator
-from emde import Element, ExtensibleElement
-from fa import AbstractFunction, AbstractFunctionalArchitecture, AbstractFunctionalBlock, AbstractFunctionalChainContainer, AbstractFunctionalChainContainer, ComponentExchange, ExchangeSpecification, FunctionalChain, FunctionPkg
-from information import AbstractEventOperation, AbstractInstance, AbstractInstance, MultiplicityElement, Property
+from capellacore import Allocation, InvolvedElement, Involvement, NamedElement, NamedRelationship, Namespace, Relationship, Structure
+from cs import BlockArchitecture, Component, ComponentPkg
+from fa import AbstractFunction, ComponentExchange, FunctionalChain, FunctionPkg
+from information import AbstractInstance
 from interaction import AbstractCapability
-from modellingcore import AbstractInformationFlow, AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractRelationship, AbstractTrace, AbstractType, AbstractType, AbstractTypedElement, FinalizableElement, InformationsExchanger, ModelElement, ModelElement, PublishableElement, TraceableElement, TraceableElement
+from modellingcore import InformationsExchanger
 
 
 name = 'oa'

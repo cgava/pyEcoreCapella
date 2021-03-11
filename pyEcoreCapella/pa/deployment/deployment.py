@@ -3,10 +3,8 @@ print('deployment.deployment loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import CapellaElement, CapellaElement, NamedElement, NamedElement, NamedElement, Namespace, Relationship, Structure
+from capellacore import CapellaElement, NamedElement, Structure
 from cs import AbstractDeploymentLink, DeployableElement, DeploymentTarget
-from emde import Element, ExtensibleElement
-from modellingcore import AbstractNamedElement, AbstractRelationship, ModelElement, PublishableElement, TraceableElement
 
 
 name = 'deployment'

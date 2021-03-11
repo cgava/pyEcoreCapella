@@ -4,11 +4,10 @@ from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
 from behavior import AbstractEvent, AbstractSignal
-from capellacore import AbstractDependenciesPkg, AbstractExchangeItemPkg, Allocation, CapellaElement, CapellaElement, Classifier, Classifier, Feature, GeneralClass, GeneralizableElement, GeneralizableElement, NamedElement, NamedElement, NamedRelationship, Namespace, Relationship, Relationship, Structure, Structure, Type, TypedElement, VisibilityKind
+from capellacore import AbstractDependenciesPkg, AbstractExchangeItemPkg, Allocation, CapellaElement, Classifier, Feature, GeneralClass, GeneralizableElement, NamedElement, NamedRelationship, Relationship, Structure, TypedElement, VisibilityKind
 from information.communication import MessageReferencePkg
 from information.datavalue import DataValue, DataValueContainer
-from emde import Element, ExtensibleElement
-from modellingcore import AbstractExchangeItem, AbstractNamedElement, AbstractNamedElement, AbstractParameter, AbstractRelationship, AbstractTrace, AbstractType, AbstractType, AbstractType, AbstractTypedElement, AbstractTypedElement, FinalizableElement, FinalizableElement, ModelElement, PublishableElement, TraceableElement, TraceableElement, ValueSpecification
+from modellingcore import AbstractExchangeItem, AbstractParameter, FinalizableElement
 
 
 name = 'information'

@@ -3,10 +3,9 @@ print('datatype.datatype loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import CapellaElement, GeneralizableElement, NamedElement, Namespace, Structure, Type, VisibilityKind
+from capellacore import GeneralizableElement, VisibilityKind
 from information.datavalue import DataValueContainer
-from emde import Element, ExtensibleElement
-from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractType, FinalizableElement, ModelElement, PublishableElement, TraceableElement
+from modellingcore import FinalizableElement
 
 
 name = 'datatype'

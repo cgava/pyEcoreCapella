@@ -3,7 +3,7 @@ print('modellingcore.modellingcore loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from emde import Element, ExtensibleElement
+from emde import ExtensibleElement
 
 
 name = 'modellingcore'

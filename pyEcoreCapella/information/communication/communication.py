@@ -4,7 +4,7 @@ from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
 from behavior import AbstractSignal
-from capellacore import CapellaElement, CapellaElement, Classifier, Feature, GeneralizableElement, NamedElement, Namespace, Relationship, Structure, Type, TypedElement, VisibilityKind
+from capellacore import CapellaElement, Classifier, Relationship, Structure, VisibilityKind
 from information.datavalue import DataValueContainer
 from emde import Element, ExtensibleElement
 try:
@@ -12,18 +12,6 @@ try:
    print('communication.{__name__} sucessfully imported AbstractInstance')
 except ImportError:
    print('communication.{__name__} failed to import AbstractInstance')
-try:
-   from information import MultiplicityElement
-   print('communication.{__name__} sucessfully imported MultiplicityElement')
-except ImportError:
-   print('communication.{__name__} failed to import MultiplicityElement')
-try:
-   from information import Property
-   print('communication.{__name__} sucessfully imported Property')
-except ImportError:
-   print('communication.{__name__} failed to import Property')
-from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractType, AbstractType, AbstractTypedElement, FinalizableElement, ModelElement, PublishableElement, TraceableElement
-
 
 name = 'communication'
 nsURI = 'http://www.polarsys.org/capella/core/information/communication/1.4.0'

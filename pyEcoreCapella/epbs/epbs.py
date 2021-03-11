@@ -4,12 +4,8 @@ from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
 from capellacommon import CapabilityRealizationInvolvedElement
-from capellacore import Allocation, Allocation, CapellaElement, CapellaElement, Classifier, GeneralizableElement, InvolvedElement, ModellingArchitecture, ModellingArchitecturePkg, ModellingBlock, ModellingBlock, NamedElement, Namespace, Relationship, Structure, Structure, Type
-from information.communication import CommunicationLinkExchanger
-from cs import ArchitectureAllocation, Block, BlockArchitecture, BlockArchitecturePkg, Component, ComponentArchitecture, ComponentPkg, InterfaceAllocator
-from emde import Element, ExtensibleElement
-from fa import AbstractFunctionalArchitecture, AbstractFunctionalBlock
-from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, ModelElement, PublishableElement, TraceableElement, TraceableElement
+from capellacore import Allocation
+from cs import ArchitectureAllocation, BlockArchitecturePkg, Component, ComponentArchitecture, ComponentPkg
 
 
 name = 'epbs'

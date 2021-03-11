@@ -3,10 +3,8 @@ print('sharedmodel.sharedmodel loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import CapellaElement, CapellaElement, NamedElement, Namespace, ReuseableStructure, Structure, Structure
+from capellacore import ReuseableStructure, Structure
 from capellamodeller import ModelRoot
-from emde import Element, ExtensibleElement
-from modellingcore import AbstractNamedElement, ModelElement, PublishableElement, TraceableElement
 
 
 name = 'sharedmodel'

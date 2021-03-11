@@ -3,12 +3,11 @@ print('cs.cs loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from capellacore import AbstractDependenciesPkg, AbstractExchangeItemPkg, Allocation, CapellaElement, CapellaElement, CapellaElement, Classifier, Classifier, Feature, GeneralClass, GeneralizableElement, InvolvedElement, Involvement, InvolverElement, ModellingArchitecture, ModellingArchitecturePkg, ModellingBlock, ModellingBlock, NamedElement, NamedElement, NamedElement, NamedElement, Namespace, Relationship, Relationship, Structure, Structure, Structure, Type, TypedElement
+from capellacore import AbstractDependenciesPkg, AbstractExchangeItemPkg, Allocation, CapellaElement, Classifier, GeneralClass, InvolvedElement, Involvement, InvolverElement, ModellingArchitecturePkg, ModellingBlock, NamedElement, Relationship, Structure
 from information.communication import CommunicationLinkExchanger, CommunicationLinkProtocol, MessageReferencePkg
-from emde import Element, ExtensibleElement
 from fa import AbstractFunctionalArchitecture, AbstractFunctionalBlock, ComponentExchangeAllocator
-from information import AbstractEventOperation, AbstractInstance, MultiplicityElement, Port, Property, Property
-from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractTrace, AbstractType, AbstractTypedElement, FinalizableElement, FinalizableElement, FinalizableElement, InformationsExchanger, ModelElement, PublishableElement, TraceableElement, TraceableElement
+from information import AbstractEventOperation, AbstractInstance, Port, Property
+from modellingcore import FinalizableElement, InformationsExchanger
 
 
 name = 'cs'

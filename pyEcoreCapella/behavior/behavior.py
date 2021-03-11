@@ -3,8 +3,7 @@ print('behavior.behavior loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from emde import Element, ExtensibleElement
-from modellingcore import AbstractNamedElement, AbstractNamedElement, AbstractType, AbstractTypedElement, ModelElement, ValueSpecification
+from modellingcore import AbstractNamedElement, AbstractType, ValueSpecification
 
 
 name = 'behavior'

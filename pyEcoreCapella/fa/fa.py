@@ -3,12 +3,11 @@ print('fa.fa loading')
 from functools import partial
 import pyecore.ecore as Ecore
 from pyecore.ecore import *
-from activity import AbstractAction, AbstractActivity, ActivityEdge, ActivityExchange, ActivityNode, CallAction, CallBehaviorAction, ExecutableNode, InputPin, InvocationAction, ObjectFlow, ObjectNode, OutputPin, Pin
-from behavior import AbstractBehavior, AbstractEvent
-from capellacore import Allocation, CapellaElement, CapellaElement, CapellaElement, Feature, InvolvedElement, Involvement, InvolverElement, ModellingArchitecture, ModellingBlock, NamedElement, NamedElement, NamedElement, NamedRelationship, Namespace, Namespace, Relationship, Relationship, Structure, Structure, Type, TypedElement, TypedElement
-from emde import Element, ExtensibleElement
-from information import AbstractEventOperation, AbstractInstance, MultiplicityElement, Port, Property, Property
-from modellingcore import AbstractInformationFlow, AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractNamedElement, AbstractRelationship, AbstractRelationship, AbstractRelationship, AbstractTrace, AbstractType, AbstractType, AbstractTypedElement, AbstractTypedElement, FinalizableElement, InformationsExchanger, ModelElement, PublishableElement, TraceableElement, TraceableElement, TraceableElement
+from activity import AbstractActivity, ActivityExchange, CallBehaviorAction, InputPin, ObjectFlow, OutputPin
+from behavior import AbstractEvent
+from capellacore import Allocation, CapellaElement, InvolvedElement, Involvement, InvolverElement, ModellingArchitecture, ModellingBlock, NamedElement, NamedRelationship, Namespace, Relationship, Structure, TypedElement
+from information import AbstractEventOperation, AbstractInstance, Port, Property
+from modellingcore import InformationsExchanger
 
 
 name = 'fa'
