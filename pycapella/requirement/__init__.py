@@ -1,4 +1,4 @@
-print('requirement.__init__.py loading')
+#print('requirement.__init__.py loading')
 from pyecore.resources import global_registry
 from .requirement import getEClassifier, eClassifiers
 from .requirement import name, nsURI, nsPrefix, eClass
@@ -30,4 +30,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('requirement.__init__.py loaded')
+#print('requirement.__init__.py loaded')

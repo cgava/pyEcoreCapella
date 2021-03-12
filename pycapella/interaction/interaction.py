@@ -169,7 +169,7 @@ class AbstractCapabilityExtend(Relationship):
 
 class AbstractCapabilityGeneralization(Relationship):
 
-    super = EReference(ordered=True, unique=True, containment=False, derived=False)
+    super_ = EReference(ordered=True, unique=True, containment=False, derived=False)
     _sub = EReference(ordered=True, unique=True, containment=False,
                       derived=True, name='sub', transient=True)
 
@@ -177,12 +177,12 @@ class AbstractCapabilityGeneralization(Relationship):
     def sub(self):
         raise NotImplementedError('Missing implementation for sub')
 
-    def __init__(self, *, super=None, sub=None, **kwargs):
+    def __init__(self, *, super_=None, sub=None, **kwargs):
 
         super().__init__(**kwargs)
 
-        if super is not None:
-            self.super = super
+        if super_ is not None:
+            self.super_ = super_
 
         if sub is not None:
             self.sub = sub
@@ -812,7 +812,7 @@ class DerivedIncluding(EDerivedCollection):
     pass
 
 
-class DerivedSuper(EDerivedCollection):
+class DerivedSuper_(EDerivedCollection):
     pass
 
 
@@ -867,8 +867,8 @@ class AbstractCapability(Structure, InvolverElement, AbstractFunctionalChainCont
     includes = EReference(ordered=True, unique=True, containment=True, derived=False, upper=-1)
     including = EReference(ordered=True, unique=True, containment=False,
                            derived=True, upper=-1, transient=True, derived_class=DerivedIncluding)
-    super = EReference(ordered=True, unique=True, containment=False, derived=True,
-                       upper=-1, transient=True, derived_class=DerivedSuper)
+    super_ = EReference(ordered=True, unique=True, containment=False, derived=True,
+                        upper=-1, transient=True, derived_class=DerivedSuper_)
     sub = EReference(ordered=True, unique=True, containment=False, derived=True,
                      upper=-1, transient=True, derived_class=DerivedSub)
     includedAbstractCapabilities = EReference(ordered=True, unique=True, containment=False,
@@ -892,7 +892,7 @@ class AbstractCapability(Structure, InvolverElement, AbstractFunctionalChainCont
     involvedFunctionalChains = EReference(ordered=True, unique=True, containment=False,
                                           derived=True, upper=-1, transient=True, derived_class=DerivedInvolvedfunctionalchains)
 
-    def __init__(self, *, preCondition=None, postCondition=None, ownedScenarios=None, incomingCapabilityAllocation=None, outgoingCapabilityAllocation=None, extends=None, extending=None, abstractCapabilityExtensionPoints=None, superGeneralizations=None, subGeneralizations=None, includes=None, including=None, super=None, sub=None, includedAbstractCapabilities=None, includingAbstractCapabilities=None, extendedAbstractCapabilities=None, extendingAbstractCapabilities=None, ownedFunctionalChainAbstractCapabilityInvolvements=None, ownedAbstractFunctionAbstractCapabilityInvolvements=None, availableInStates=None, ownedAbstractCapabilityRealizations=None, involvedAbstractFunctions=None, involvedFunctionalChains=None, **kwargs):
+    def __init__(self, *, preCondition=None, postCondition=None, ownedScenarios=None, incomingCapabilityAllocation=None, outgoingCapabilityAllocation=None, extends=None, extending=None, abstractCapabilityExtensionPoints=None, superGeneralizations=None, subGeneralizations=None, includes=None, including=None, super_=None, sub=None, includedAbstractCapabilities=None, includingAbstractCapabilities=None, extendedAbstractCapabilities=None, extendingAbstractCapabilities=None, ownedFunctionalChainAbstractCapabilityInvolvements=None, ownedAbstractFunctionAbstractCapabilityInvolvements=None, availableInStates=None, ownedAbstractCapabilityRealizations=None, involvedAbstractFunctions=None, involvedFunctionalChains=None, **kwargs):
 
         super().__init__(**kwargs)
 
@@ -932,8 +932,8 @@ class AbstractCapability(Structure, InvolverElement, AbstractFunctionalChainCont
         if including:
             self.including.extend(including)
 
-        if super:
-            self.super.extend(super)
+        if super_:
+            self.super_.extend(super_)
 
         if sub:
             self.sub.extend(sub)

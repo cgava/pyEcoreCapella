@@ -1,6 +1,6 @@
-# Only for my personal usage, issues with my virtualenv
-# import sys
+# manual setting of sys.path, for testing purpose only, please setup your virtual env as desired
 # import os
+# import sys
 #
 # sys.path.append("../pyecoregen")
 # sys.path.append("../pyecore")
@@ -15,6 +15,7 @@ uri_mapper['platform:/plugin/org.polarsys.kitalpha.emde/model'] = '../../org.pol
 for mm in ('../mm/org.polarsys.capella.common.data.def/model/Behavior.ecore',
             '../mm/org.polarsys.capella.common.data.def/model/ModellingCore.ecore',
             '../mm/org.polarsys.capella.common.data.def/model/Activity.ecore',
+            '../mm/org.polarsys.kitalpha.emde/model/eMDE.ecore',
             '../mm/org.polarsys.capella.core.data.def/model/CapellaCommon.ecore',
             '../mm/org.polarsys.capella.core.data.def/model/CapellaCore.ecore',
             '../mm/org.polarsys.capella.core.data.def/model/CapellaModeller.ecore',

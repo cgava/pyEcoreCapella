@@ -1,1164 +1,1127 @@
-print('pyEcoreCapelle.__init__ loading')
-print('pyEcoreCapelle.__init__ 01 importing activity')
-from activity import *
-print('pyEcoreCapelle.__init__ 02 importing behavior')
-from behavior import *
-print('pyEcoreCapelle.__init__ 03 importing modellingcore')
-from modellingcore import *
-print('pyEcoreCapelle.__init__ 04 importing emde')
-from emde import *
-print('pyEcoreCapelle.__init__ 05 importing capellacommon')
-from capellacommon import *
-print('pyEcoreCapelle.__init__ 06 importing capellacore')
-from capellacore import *
-print('pyEcoreCapelle.__init__ 07 importing capellamodeller')
-from capellamodeller import *
-print('pyEcoreCapelle.__init__ 08 importing cs')
-from cs import *
-print('pyEcoreCapelle.__init__ 09 importing ctx')
-from ctx import *
-print('pyEcoreCapelle.__init__ 10 importing epbs')
-from epbs import *
-print('pyEcoreCapelle.__init__ 11 importing fa')
-from fa import *
-print('pyEcoreCapelle.__init__ 12.1 importing information.communication')
-from information.communication import *
-print('pyEcoreCapelle.__init__ 12.2 importing information.datavalue')
-from information.datavalue import *
-print('pyEcoreCapelle.__init__ 12.3 importing information.datatype')
-from information.datatype import *
-print('pyEcoreCapelle.__init__ 12.4 importing information')
-from information import *
-print('pyEcoreCapelle.__init__ 13 importing interaction')
-from interaction import *
-print('pyEcoreCapelle.__init__ 14 importing la')
-from la import *
-print('pyEcoreCapelle.__init__ 15 importing libraries')
-from libraries import *
-print('pyEcoreCapelle.__init__ 16 importing oa')
-from oa import *
-print('pyEcoreCapelle.__init__ 17.1 importing pa.deployment')
-from pa.deployment import *
-print('pyEcoreCapelle.__init__ 17.2 importing pa')
-from pa import *
-print('pyEcoreCapelle.__init__ 18 importing requirement')
-from requirement import *
-print('pyEcoreCapelle.__init__ 19 importing sharedmodel')
-from sharedmodel import *
-
-print('pyEcoreCapelle.__init__ loaded')
-print('activity.cross_init starting')
-
-
-AbstractActivity.ownedNodes.eType = ActivityNode
-AbstractActivity.ownedEdges.eType = ActivityEdge
-AbstractActivity.ownedGroups.eType = ActivityGroup
-AbstractActivity.ownedStructuredNodes.eType = StructuredActivityNode
-ExceptionHandler.handlerBody.eType = ExecutableNode
-ExceptionHandler.exceptionInput.eType = ObjectNode
-ExceptionHandler.exceptionTypes.eType = AbstractType
-ActivityGroup.ownedNodes.eType = ActivityNode
-ActivityGroup.ownedEdges.eType = ActivityEdge
-ActivityEdge._inActivityPartition.eType = ActivityPartition
-ActivityEdge._inInterruptibleRegion.eType = InterruptibleActivityRegion
-ActivityEdge._inStructuredNode.eType = StructuredActivityNode
-ActivityEdge.rate.eType = ValueSpecification
-ActivityEdge.probability.eType = ValueSpecification
-ActivityEdge.target.eType = ActivityNode
-ActivityEdge.source.eType = ActivityNode
-ActivityEdge.guard.eType = ValueSpecification
-ActivityEdge.weight.eType = ValueSpecification
-ObjectFlow.transformation.eType = AbstractBehavior
-ObjectFlow.selection.eType = AbstractBehavior
-ActivityPartition.representedElement.eType = AbstractType
-ActivityPartition._superPartition.eType = ActivityPartition
-ActivityPartition.subPartitions.eType = ActivityPartition
-ActivityExchange.realizingActivityFlows.eType = ActivityEdge
-ActivityNode._inActivityPartition.eType = ActivityPartition
-ActivityNode._inInterruptibleRegion.eType = InterruptibleActivityRegion
-ActivityNode._inStructuredNode.eType = InterruptibleActivityRegion
-ActivityNode.outgoing.eType = ActivityEdge
-ActivityNode.incoming.eType = ActivityEdge
-AbstractAction.localPrecondition.eType = AbstractConstraint
-AbstractAction.localPostcondition.eType = AbstractConstraint
-AbstractAction.context.eType = AbstractType
-AbstractAction.inputs.eType = InputPin
-AbstractAction.outputs.eType = OutputPin
-AcceptEventAction.result.eType = OutputPin
-InvocationAction.arguments.eType = InputPin
-SendSignalAction.target.eType = InputPin
-SendSignalAction.signal.eType = AbstractSignal
-CallAction.results.eType = OutputPin
-CallBehaviorAction.behavior.eType = AbstractBehavior
-ObjectNode.upperBound.eType = ValueSpecification
-ObjectNode.inState.eType = IState
-ObjectNode.selection.eType = AbstractBehavior
-InputPin.inputEvaluationAction.eType = AbstractAction
-ValuePin.value.eType = ValueSpecification
-ExceptionHandler.protectedNode.eType = ExecutableNode
-ActivityGroup.superGroup.eType = ActivityGroup
-ActivityGroup.subGroups.eType = ActivityGroup
-ActivityGroup.subGroups.eOpposite = ActivityGroup.superGroup
-InterruptibleActivityRegion.interruptingEdges.eType = ActivityEdge
-ActivityEdge.interrupts.eType = InterruptibleActivityRegion
-ActivityEdge.interrupts.eOpposite = InterruptibleActivityRegion.interruptingEdges
-ExecutableNode.ownedHandlers.eType = ExceptionHandler
-ExecutableNode.ownedHandlers.eOpposite = ExceptionHandler.protectedNode
-
-print('activity.cross_init done')
-
-print('behavior.cross_init starting')
-
-
-AbstractBehavior.ownedParameterSet.eType = AbstractParameterSet
-AbstractBehavior.ownedParameter.eType = AbstractParameter
-AbstractTimeEvent.when.eType = TimeExpression
-AbstractSignalEvent.signal.eType = AbstractSignal
-TimeExpression.observations.eType = AbstractNamedElement
-TimeExpression.expression.eType = ValueSpecification
-
-print('behavior.cross_init done')
-
-print('capellacommon.cross_init starting')
-
-
-GenericTrace.keyValuePairs.eType = KeyValue
-GenericTrace._source.eType = TraceableElement
-GenericTrace._target.eType = TraceableElement
-CapabilityRealizationInvolvement._involvedCapabilityRealizationInvolvedElement.eType = CapabilityRealizationInvolvedElement
-CapabilityRealizationInvolvedElement.capabilityRealizationInvolvements.eType = CapabilityRealizationInvolvement
-CapabilityRealizationInvolvedElement.involvingCapabilityRealizations.eType = CapabilityRealization
-StateMachine.ownedRegions.eType = Region
-StateMachine.ownedConnectionPoints.eType = Pseudostate
-Region.ownedStates.eType = AbstractState
-Region.ownedTransitions.eType = StateTransition
-Region.involvedStates.eType = AbstractState
-State.ownedRegions.eType = Region
-State.ownedConnectionPoints.eType = Pseudostate
-State.availableAbstractFunctions.eType = AbstractFunction
-State.availableFunctionalChains.eType = FunctionalChain
-State.availableAbstractCapabilities.eType = AbstractCapability
-State.entry.eType = AbstractEvent
-State.doActivity.eType = AbstractEvent
-State.exit.eType = AbstractEvent
-State.stateInvariant.eType = AbstractConstraint
-AbstractState.ownedAbstractStateRealizations.eType = AbstractStateRealization
-AbstractState.realizedAbstractStates.eType = AbstractState
-AbstractState.realizingAbstractStates.eType = AbstractState
-AbstractState.outgoing.eType = StateTransition
-AbstractState.incoming.eType = StateTransition
-AbstractState.involverRegions.eType = Region
-StateTransition.guard.eType = Constraint
-StateTransition.source.eType = AbstractState
-StateTransition.target.eType = AbstractState
-StateTransition.effect.eType = AbstractEvent
-StateTransition.triggers.eType = AbstractEvent
-StateTransition.ownedStateTransitionRealizations.eType = StateTransitionRealization
-StateTransition.realizedStateTransitions.eType = StateTransition
-StateTransition.realizingStateTransitions.eType = StateTransition
-AbstractStateRealization._realizedAbstractState.eType = AbstractState
-AbstractStateRealization._realizingAbstractState.eType = AbstractState
-StateTransitionRealization._realizedStateTransition.eType = StateTransition
-StateTransitionRealization._realizingStateTransition.eType = StateTransition
-StateEventRealization._realizedEvent.eType = StateEvent
-StateEventRealization._realizingEvent.eType = StateEvent
-StateEvent.expression.eType = Constraint
-StateEvent.ownedStateEventRealizations.eType = StateEventRealization
-
-print('capellacommon.cross_init done')
-
-print('capellacore.cross_init starting')
-
-
-CapellaElement.ownedPropertyValues.eType = AbstractPropertyValue
-CapellaElement.ownedEnumerationPropertyTypes.eType = EnumerationPropertyType
-CapellaElement.appliedPropertyValues.eType = AbstractPropertyValue
-CapellaElement.ownedPropertyValueGroups.eType = PropertyValueGroup
-CapellaElement.appliedPropertyValueGroups.eType = PropertyValueGroup
-CapellaElement.status.eType = EnumerationPropertyLiteral
-CapellaElement.features.eType = EnumerationPropertyLiteral
-CapellaElement.appliedRequirements.eType = Requirement
-Namespace.ownedTraces.eType = Trace
-Namespace.containedGenericTraces.eType = GenericTrace
-Namespace.containedRequirementsTraces.eType = RequirementsTrace
-Namespace.namingRules.eType = NamingRule
-NamedRelationship.namingRules.eType = NamingRule
-Structure.ownedPropertyValuePkgs.eType = PropertyValuePkg
-AbstractModellingStructure.ownedArchitectures.eType = ModellingArchitecture
-AbstractModellingStructure.ownedArchitecturePkgs.eType = ModellingArchitecturePkg
-Type.typedElements.eType = TypedElement
-TypedElement._type.eType = Type
-ReuseLink.reused.eType = ReuseableStructure
-ReuseLink.reuser.eType = ReuserStructure
-ReuseableStructure.reuseLinks.eType = ReuseLink
-ReuserStructure.reuseLinks.eType = ReuseLink
-ReuserStructure.ownedReuseLinks.eType = ReuseLink
-GeneralizableElement.ownedGeneralizations.eType = Generalization
-GeneralizableElement.superGeneralizations.eType = Generalization
-GeneralizableElement.subGeneralizations.eType = Generalization
-Classifier.ownedFeatures.eType = Feature
-Classifier.containedProperties.eType = Property
-GeneralClass.containedOperations.eType = Operation
-GeneralClass.nestedGeneralClasses.eType = GeneralClass
-Generalization.super.eType = GeneralizableElement
-Generalization.sub.eType = GeneralizableElement
-AbstractExchangeItemPkg.ownedExchangeItems.eType = ExchangeItem
-Involvement._involver.eType = InvolverElement
-Involvement.involved.eType = InvolvedElement
-InvolverElement.involvedInvolvements.eType = Involvement
-InvolvedElement.involvingInvolvements.eType = Involvement
-AbstractPropertyValue.involvedElements.eType = CapellaElement
-AbstractPropertyValue.valuedElements.eType = CapellaElement
-EnumerationPropertyValue.type.eType = EnumerationPropertyType
-EnumerationPropertyValue.value.eType = EnumerationPropertyLiteral
-EnumerationPropertyType.ownedLiterals.eType = EnumerationPropertyLiteral
-PropertyValueGroup.valuedElements.eType = CapellaElement
-GeneralizableElement.super.eType = GeneralizableElement
-GeneralizableElement.sub.eType = GeneralizableElement
-GeneralizableElement.sub.eOpposite = GeneralizableElement.super
-
-print('capellacore.cross_init done')
-
-print('capellamodeller.cross_init starting')
-
-
-Project.keyValuePairs.eType = KeyValue
-Project.ownedFolders.eType = Folder
-Project.ownedModelRoots.eType = ModelRoot
-Folder.ownedFolders.eType = Folder
-Folder.ownedModelRoots.eType = ModelRoot
-SystemEngineering.containedOperationalAnalysis.eType = OperationalAnalysis
-SystemEngineering.containedSystemAnalysis.eType = SystemAnalysis
-SystemEngineering.containedLogicalArchitectures.eType = LogicalArchitecture
-SystemEngineering.containedPhysicalArchitectures.eType = PhysicalArchitecture
-SystemEngineering.containedEPBSArchitectures.eType = EPBSArchitecture
-SystemEngineering.containedSharedPkgs.eType = SharedPkg
-SystemEngineeringPkg.ownedSystemEngineerings.eType = SystemEngineering
-
-print('capellamodeller.cross_init done')
-
-print('cs.cross_init starting')
-
-
-BlockArchitecture.ownedRequirementPkgs.eType = RequirementsPkg
-BlockArchitecture.ownedAbstractCapabilityPkg.eType = AbstractCapabilityPkg
-BlockArchitecture.ownedInterfacePkg.eType = InterfacePkg
-BlockArchitecture.ownedDataPkg.eType = DataPkg
-BlockArchitecture.allocatedArchitectures.eType = BlockArchitecture
-BlockArchitecture.allocatingArchitectures.eType = BlockArchitecture
-BlockArchitecture._system.eType = Component
-Block.ownedAbstractCapabilityPkg.eType = AbstractCapabilityPkg
-Block.ownedInterfacePkg.eType = InterfacePkg
-Block.ownedDataPkg.eType = DataPkg
-Block.ownedStateMachines.eType = StateMachine
-Component.ownedInterfaceUses.eType = InterfaceUse
-Component.ownedInterfaceImplementations.eType = InterfaceImplementation
-Component.ownedComponentRealizations.eType = ComponentRealization
-Component.realizedComponents.eType = Component
-Component.realizingComponents.eType = Component
-Component.providedInterfaces.eType = Interface
-Component.requiredInterfaces.eType = Interface
-Component.containedComponentPorts.eType = ComponentPort
-Component.containedParts.eType = Part
-Component.containedPhysicalPorts.eType = PhysicalPort
-Component.ownedPhysicalPath.eType = PhysicalPath
-Component.ownedPhysicalLinks.eType = PhysicalLink
-Component.ownedPhysicalLinkCategories.eType = PhysicalLinkCategory
-Component.representingParts.eType = Part
-Part.providedInterfaces.eType = Interface
-Part.requiredInterfaces.eType = Interface
-Part.ownedDeploymentLinks.eType = AbstractDeploymentLink
-Part.deployedParts.eType = Part
-Part.deployingParts.eType = Part
-Part.ownedAbstractType.eType = AbstractType
-ComponentRealization._realizedComponent.eType = Component
-ComponentRealization._realizingComponent.eType = Component
-InterfacePkg.ownedInterfaces.eType = Interface
-InterfacePkg.ownedInterfacePkgs.eType = InterfacePkg
-Interface.interfaceImplementations.eType = InterfaceImplementation
-Interface.interfaceUses.eType = InterfaceUse
-Interface.allocatingInterfaces.eType = Interface
-Interface.allocatingComponents.eType = Component
-Interface.exchangeItems.eType = ExchangeItem
-Interface.ownedExchangeItemAllocations.eType = ExchangeItemAllocation
-Interface.requiringComponents.eType = Component
-Interface.requiringComponentPorts.eType = ComponentPort
-Interface.providingComponents.eType = Component
-Interface.providingComponentPorts.eType = ComponentPort
-Interface.realizingLogicalInterfaces.eType = Interface
-Interface.realizedContextInterfaces.eType = Interface
-Interface.realizingPhysicalInterfaces.eType = Interface
-Interface.realizedLogicalInterfaces.eType = Interface
-InterfaceImplementation.implementedInterface.eType = Interface
-InterfaceUse.usedInterface.eType = Interface
-ProvidedInterfaceLink.interface.eType = Interface
-RequiredInterfaceLink.interface.eType = Interface
-InterfaceAllocator.ownedInterfaceAllocations.eType = InterfaceAllocation
-InterfaceAllocator.allocatedInterfaces.eType = Interface
-ExchangeItemAllocation.allocatedItem.eType = ExchangeItem
-ExchangeItemAllocation._allocatingInterface.eType = Interface
-DeployableElement.deployingLinks.eType = AbstractDeploymentLink
-DeploymentTarget.deploymentLinks.eType = AbstractDeploymentLink
-AbstractDeploymentLink.deployedElement.eType = DeployableElement
-AbstractDeploymentLink.location.eType = DeploymentTarget
-AbstractPhysicalLinkEnd.involvedLinks.eType = PhysicalLink
-PhysicalLink.linkEnds.eType = AbstractPhysicalLinkEnd
-PhysicalLink.ownedComponentExchangeFunctionalExchangeAllocations.eType = ComponentExchangeFunctionalExchangeAllocation
-PhysicalLink.ownedPhysicalLinkEnds.eType = PhysicalLinkEnd
-PhysicalLink.ownedPhysicalLinkRealizations.eType = PhysicalLinkRealization
-PhysicalLink.categories.eType = PhysicalLinkCategory
-PhysicalLink._sourcePhysicalPort.eType = PhysicalPort
-PhysicalLink._targetPhysicalPort.eType = PhysicalPort
-PhysicalLink.realizedPhysicalLinks.eType = PhysicalLink
-PhysicalLink.realizingPhysicalLinks.eType = PhysicalLink
-PhysicalLinkCategory.links.eType = PhysicalLink
-PhysicalLinkEnd.port.eType = PhysicalPort
-PhysicalLinkEnd.part.eType = Part
-PhysicalPath.involvedLinks.eType = AbstractPhysicalPathLink
-PhysicalPath.ownedPhysicalPathInvolvements.eType = PhysicalPathInvolvement
-PhysicalPath.firstPhysicalPathInvolvements.eType = PhysicalPathInvolvement
-PhysicalPath.ownedPhysicalPathRealizations.eType = PhysicalPathRealization
-PhysicalPath.realizedPhysicalPaths.eType = PhysicalPath
-PhysicalPath.realizingPhysicalPaths.eType = PhysicalPath
-PhysicalPathInvolvement.nextInvolvements.eType = PhysicalPathInvolvement
-PhysicalPathInvolvement.previousInvolvements.eType = PhysicalPathInvolvement
-PhysicalPathInvolvement._involvedElement.eType = AbstractPathInvolvedElement
-PhysicalPathInvolvement._involvedComponent.eType = Component
-PhysicalPathReference._referencedPhysicalPath.eType = PhysicalPath
-PhysicalPort.ownedComponentPortAllocations.eType = ComponentPortAllocation
-PhysicalPort.ownedPhysicalPortRealizations.eType = PhysicalPortRealization
-PhysicalPort.realizedPhysicalPorts.eType = PhysicalPort
-PhysicalPort.realizingPhysicalPorts.eType = PhysicalPort
-ComponentPkg.ownedParts.eType = Part
-ComponentPkg.ownedComponentExchanges.eType = ComponentExchange
-ComponentPkg.ownedComponentExchangeCategories.eType = ComponentExchangeCategory
-ComponentPkg.ownedFunctionalLinks.eType = ExchangeLink
-ComponentPkg.ownedFunctionalAllocations.eType = ComponentFunctionalAllocation
-ComponentPkg.ownedComponentExchangeRealizations.eType = ComponentExchangeRealization
-ComponentPkg.ownedPhysicalLinks.eType = PhysicalLink
-ComponentPkg.ownedPhysicalLinkCategories.eType = PhysicalLinkCategory
-ComponentPkg.ownedStateMachines.eType = StateMachine
-BlockArchitecture.provisionedArchitectureAllocations.eType = ArchitectureAllocation
-BlockArchitecture.provisioningArchitectureAllocations.eType = ArchitectureAllocation
-Component.usedInterfaceLinks.eType = InterfaceUse
-Component.usedInterfaces.eType = Interface
-Component.implementedInterfaceLinks.eType = InterfaceImplementation
-Component.implementedInterfaces.eType = Interface
-ArchitectureAllocation._allocatedArchitecture.eType = BlockArchitecture
-ArchitectureAllocation._allocatedArchitecture.eOpposite = BlockArchitecture.provisioningArchitectureAllocations
-ArchitectureAllocation._allocatingArchitecture.eType = BlockArchitecture
-ArchitectureAllocation._allocatingArchitecture.eOpposite = BlockArchitecture.provisionedArchitectureAllocations
-Interface.implementorComponents.eType = Component
-Interface.implementorComponents.eOpposite = Component.implementedInterfaces
-Interface.userComponents.eType = Component
-Interface.userComponents.eOpposite = Component.usedInterfaces
-Interface.provisioningInterfaceAllocations.eType = InterfaceAllocation
-InterfaceImplementation._interfaceImplementor.eType = Component
-InterfaceImplementation._interfaceImplementor.eOpposite = Component.implementedInterfaceLinks
-InterfaceUse._interfaceUser.eType = Component
-InterfaceUse._interfaceUser.eOpposite = Component.usedInterfaceLinks
-InterfaceAllocation._allocatedInterface.eType = Interface
-InterfaceAllocation._allocatedInterface.eOpposite = Interface.provisioningInterfaceAllocations
-InterfaceAllocation._allocatingInterfaceAllocator.eType = InterfaceAllocator
-InterfaceAllocator.provisionedInterfaceAllocations.eType = InterfaceAllocation
-#InterfaceAllocator.provisionedInterfaceAllocations.eOpposite = InterfaceAllocation.allocatingInterfaceAllocator
-AbstractPhysicalArtifact.allocatorConfigurationItems.eType = ConfigurationItem
-PhysicalPort.allocatedComponentPorts.eType = ComponentPort
-
-print('cs.cross_init done')
-
-print('ctx.cross_init starting')
-
-
-SystemAnalysis.ownedSystemComponentPkg.eType = SystemComponentPkg
-SystemAnalysis.ownedMissionPkg.eType = MissionPkg
-SystemAnalysis._containedCapabilityPkg.eType = CapabilityPkg
-SystemAnalysis._containedSystemFunctionPkg.eType = SystemFunctionPkg
-SystemAnalysis.ownedOperationalAnalysisRealizations.eType = OperationalAnalysisRealization
-SystemAnalysis.allocatedOperationalAnalysisRealizations.eType = OperationalAnalysisRealization
-SystemFunction.ownedSystemFunctionPkgs.eType = SystemFunctionPkg
-SystemFunction.allocatingSystemComponents.eType = SystemComponent
-SystemFunction.containedSystemFunctions.eType = SystemFunction
-SystemFunction.childrenSystemFunctions.eType = SystemFunction
-SystemFunctionPkg.ownedSystemFunctions.eType = SystemFunction
-SystemFunctionPkg.ownedSystemFunctionPkgs.eType = SystemFunctionPkg
-SystemCommunicationHook.communication.eType = SystemCommunication
-SystemCommunicationHook.type.eType = Component
-SystemCommunication.ends.eType = SystemCommunicationHook
-CapabilityInvolvement._systemComponent.eType = SystemComponent
-CapabilityInvolvement._capability.eType = Capability
-MissionInvolvement._systemComponent.eType = SystemComponent
-MissionInvolvement._mission.eType = Mission
-Mission.ownedMissionInvolvements.eType = MissionInvolvement
-Mission.involvedSystemComponents.eType = SystemComponent
-Mission.ownedCapabilityExploitations.eType = CapabilityExploitation
-MissionPkg.ownedMissionPkgs.eType = MissionPkg
-MissionPkg.ownedMissions.eType = Mission
-Capability.ownedCapabilityInvolvements.eType = CapabilityInvolvement
-Capability.involvedSystemComponents.eType = SystemComponent
-Capability.purposes.eType = CapabilityExploitation
-CapabilityExploitation._mission.eType = Mission
-CapabilityExploitation.capability.eType = Capability
-CapabilityPkg.ownedCapabilities.eType = Capability
-CapabilityPkg.ownedCapabilityPkgs.eType = CapabilityPkg
-SystemComponentPkg.ownedSystemComponents.eType = SystemComponent
-SystemComponentPkg.ownedSystemComponentPkgs.eType = SystemComponentPkg
-SystemComponent.ownedSystemComponents.eType = SystemComponent
-SystemComponent.ownedSystemComponentPkgs.eType = SystemComponentPkg
-SystemComponent.dataType.eType = Classifier
-SystemComponent.involvingCapabilities.eType = Capability
-SystemComponent.capabilityInvolvements.eType = CapabilityInvolvement
-SystemComponent.involvingMissions.eType = Mission
-SystemComponent.missionInvolvements.eType = MissionInvolvement
-SystemComponent.realizedEntities.eType = Entity
-SystemComponent.realizingLogicalComponents.eType = LogicalComponent
-SystemComponent.allocatedSystemFunctions.eType = SystemFunction
-SystemAnalysis.allocatedOperationalAnalyses.eType = OperationalAnalysis
-SystemAnalysis.allocatingLogicalArchitectures.eType = LogicalArchitecture
-SystemFunction.realizedOperationalActivities.eType = OperationalActivity
-SystemFunction.realizingLogicalFunctions.eType = LogicalFunction
-Mission.exploitedCapabilities.eType = Capability
-Capability.purposeMissions.eType = Mission
-Capability.purposeMissions.eOpposite = Mission.exploitedCapabilities
-Capability.realizedOperationalCapabilities.eType = OperationalCapability
-Capability.realizingCapabilityRealizations.eType = CapabilityRealization
-
-print('ctx.cross_init done')
-
-print('emde.cross_init starting')
-
-
-ExtensibleElement.ownedExtensions.eType = ElementExtension
-
-print('emde.cross_init done')
-
-print('epbs.cross_init starting')
-
-
-EPBSArchitecturePkg.ownedEPBSArchitectures.eType = EPBSArchitecture
-EPBSArchitecture.ownedConfigurationItemPkg.eType = ConfigurationItemPkg
-EPBSArchitecture._containedCapabilityRealizationPkg.eType = CapabilityRealizationPkg
-EPBSArchitecture.ownedPhysicalArchitectureRealizations.eType = PhysicalArchitectureRealization
-EPBSArchitecture.allocatedPhysicalArchitectureRealizations.eType = PhysicalArchitectureRealization
-ConfigurationItemPkg.ownedConfigurationItems.eType = ConfigurationItem
-ConfigurationItemPkg.ownedConfigurationItemPkgs.eType = ConfigurationItemPkg
-ConfigurationItem.ownedConfigurationItems.eType = ConfigurationItem
-ConfigurationItem.ownedConfigurationItemPkgs.eType = ConfigurationItemPkg
-ConfigurationItem.ownedPhysicalArtifactRealizations.eType = PhysicalArtifactRealization
-PhysicalArtifactRealization._realizedPhysicalArtifact.eType = AbstractPhysicalArtifact
-PhysicalArtifactRealization._realizingConfigurationItem.eType = ConfigurationItem
-EPBSArchitecture.allocatedPhysicalArchitectures.eType = PhysicalArchitecture
-ConfigurationItem.allocatedPhysicalArtifacts.eType = AbstractPhysicalArtifact
-
-print('epbs.cross_init done')
-
-print('fa.cross_init starting')
-
-
-AbstractFunctionalArchitecture.ownedFunctionPkg.eType = FunctionPkg
-AbstractFunctionalArchitecture.ownedComponentExchanges.eType = ComponentExchange
-AbstractFunctionalArchitecture.ownedComponentExchangeCategories.eType = ComponentExchangeCategory
-AbstractFunctionalArchitecture.ownedFunctionalLinks.eType = ExchangeLink
-AbstractFunctionalArchitecture.ownedFunctionalAllocations.eType = ComponentFunctionalAllocation
-AbstractFunctionalArchitecture.ownedComponentExchangeRealizations.eType = ComponentExchangeRealization
-AbstractFunctionalBlock.ownedFunctionalAllocation.eType = ComponentFunctionalAllocation
-AbstractFunctionalBlock.ownedComponentExchanges.eType = ComponentExchange
-AbstractFunctionalBlock.ownedComponentExchangeCategories.eType = ComponentExchangeCategory
-AbstractFunctionalBlock.inExchangeLinks.eType = ExchangeLink
-AbstractFunctionalBlock.outExchangeLinks.eType = ExchangeLink
-FunctionPkg.ownedFunctionalLinks.eType = ExchangeLink
-FunctionPkg.ownedExchanges.eType = FunctionalExchangeSpecification
-FunctionPkg.ownedExchangeSpecificationRealizations.eType = ExchangeSpecificationRealization
-FunctionPkg.ownedCategories.eType = ExchangeCategory
-FunctionPkg.ownedFunctionSpecifications.eType = FunctionSpecification
-FunctionSpecification.inExchangeLinks.eType = ExchangeLink
-FunctionSpecification.outExchangeLinks.eType = ExchangeLink
-FunctionSpecification.ownedFunctionPorts.eType = FunctionPort
-FunctionSpecification.subFunctionSpecifications.eType = FunctionSpecification
-ExchangeCategory.exchanges.eType = FunctionalExchange
-ExchangeLink.exchanges.eType = ExchangeSpecification
-ExchangeLink.ownedExchangeContainments.eType = ExchangeContainment
-ExchangeLink.sources.eType = FunctionSpecification
-ExchangeLink.destinations.eType = FunctionSpecification
-ExchangeSpecification._containingLink.eType = ExchangeLink
-FunctionalExchangeSpecification.functionalExchanges.eType = FunctionalExchange
-FunctionalChain.ownedFunctionalChainInvolvements.eType = FunctionalChainInvolvement
-FunctionalChain.ownedFunctionalChainRealizations.eType = FunctionalChainRealization
-FunctionalChain.involvedFunctionalChainInvolvements.eType = FunctionalChainInvolvement
-FunctionalChain.involvedElements.eType = InvolvedElement
-FunctionalChain.enactedFunctions.eType = AbstractFunction
-FunctionalChain.enactedFunctionalBlocks.eType = AbstractFunctionalBlock
-FunctionalChain.availableInStates.eType = State
-FunctionalChain.firstFunctionalChainInvolvements.eType = FunctionalChainInvolvement
-FunctionalChain.involvingCapabilities.eType = Capability
-FunctionalChain.involvingCapabilityRealizations.eType = CapabilityRealization
-FunctionalChain.realizedFunctionalChains.eType = FunctionalChain
-FunctionalChain.realizingFunctionalChains.eType = FunctionalChain
-FunctionalChain.preCondition.eType = Constraint
-FunctionalChain.postCondition.eType = Constraint
-FunctionalChain.ownedSequenceNodes.eType = ControlNode
-FunctionalChain.ownedSequenceLinks.eType = SequenceLink
-AbstractFunctionalChainContainer.ownedFunctionalChains.eType = FunctionalChain
-FunctionalChainInvolvement.nextFunctionalChainInvolvements.eType = FunctionalChainInvolvement
-FunctionalChainInvolvement.previousFunctionalChainInvolvements.eType = FunctionalChainInvolvement
-FunctionalChainInvolvement._involvedElement.eType = InvolvedElement
-FunctionalChainReference._referencedFunctionalChain.eType = FunctionalChain
-FunctionInputPort.incomingExchangeItems.eType = ExchangeItem
-FunctionInputPort.incomingFunctionalExchanges.eType = FunctionalExchange
-FunctionOutputPort.outgoingExchangeItems.eType = ExchangeItem
-FunctionOutputPort.outgoingFunctionalExchanges.eType = FunctionalExchange
-FunctionalExchange.exchangeSpecifications.eType = FunctionalExchangeSpecification
-FunctionalExchange.exchangedItems.eType = ExchangeItem
-FunctionalExchange.categories.eType = ExchangeCategory
-FunctionalExchange.ownedFunctionalExchangeRealizations.eType = FunctionalExchangeRealization
-FunctionalExchange._sourceFunctionOutputPort.eType = FunctionOutputPort
-FunctionalExchange._targetFunctionInputPort.eType = FunctionInputPort
-AbstractFunction.ownedFunctions.eType = AbstractFunction
-AbstractFunction.ownedFunctionRealizations.eType = FunctionRealization
-AbstractFunction.ownedFunctionalExchanges.eType = FunctionalExchange
-AbstractFunction.subFunctions.eType = AbstractFunction
-AbstractFunction.availableInStates.eType = State
-AbstractFunction.involvingCapabilities.eType = Capability
-AbstractFunction.involvingCapabilityRealizations.eType = CapabilityRealization
-AbstractFunction._linkedStateMachine.eType = StateMachine
-AbstractFunction._linkedFunctionSpecification.eType = FunctionSpecification
-FunctionPort.representedComponentPort.eType = ComponentPort
-FunctionPort.realizedFunctionPorts.eType = FunctionPort
-FunctionPort.realizingFunctionPorts.eType = FunctionPort
-ComponentExchange.ownedComponentExchangeFunctionalExchangeAllocations.eType = ComponentExchangeFunctionalExchangeAllocation
-ComponentExchange.ownedComponentExchangeRealizations.eType = ComponentExchangeRealization
-ComponentExchange.ownedComponentExchangeEnds.eType = ComponentExchangeEnd
-ComponentExchange._sourcePort.eType = Port
-ComponentExchange._sourcePart.eType = Part
-ComponentExchange._targetPort.eType = Port
-ComponentExchange._targetPart.eType = Part
-ComponentExchange.categories.eType = ComponentExchangeCategory
-ComponentExchange.allocatorPhysicalLinks.eType = PhysicalLink
-ComponentExchangeAllocation._componentExchangeAllocated.eType = ComponentExchange
-ComponentExchangeAllocation._componentExchangeAllocator.eType = ComponentExchangeAllocator
-ComponentExchangeAllocator.ownedComponentExchangeAllocations.eType = ComponentExchangeAllocation
-ComponentExchangeAllocator.allocatedComponentExchanges.eType = ComponentExchange
-ComponentExchangeCategory.exchanges.eType = ComponentExchange
-ComponentExchangeEnd.port.eType = Port
-ComponentExchangeEnd.part.eType = Part
-ComponentPort.componentExchanges.eType = ComponentExchange
-ComponentPortAllocation.ownedComponentPortAllocationEnds.eType = ComponentPortAllocationEnd
-ComponentPortAllocation._allocatedPort.eType = Port
-ComponentPortAllocation._allocatingPort.eType = Port
-ComponentPortAllocationEnd.port.eType = Port
-ComponentPortAllocationEnd.part.eType = Part
-ComponentPortAllocationEnd._owningComponentPortAllocation.eType = ComponentPortAllocation
-FunctionalChainInvolvementLink.exchangeContext.eType = Constraint
-FunctionalChainInvolvementLink.exchangedItems.eType = ExchangeItem
-FunctionalChainInvolvementLink.source.eType = FunctionalChainInvolvementFunction
-FunctionalChainInvolvementLink.target.eType = FunctionalChainInvolvementFunction
-SequenceLink.condition.eType = Constraint
-SequenceLink.links.eType = FunctionalChainInvolvementLink
-SequenceLink.source.eType = SequenceLinkEnd
-SequenceLink.target.eType = SequenceLinkEnd
-FunctionalChainInvolvementFunction.outgoingInvolvementLinks.eType = FunctionalChainInvolvementLink
-FunctionalChainInvolvementFunction.incomingInvolvementLinks.eType = FunctionalChainInvolvementLink
-ReferenceHierarchyContext.sourceReferenceHierarchy.eType = FunctionalChainReference
-ReferenceHierarchyContext.targetReferenceHierarchy.eType = FunctionalChainReference
-AbstractFunctionalBlock.functionalAllocations.eType = ComponentFunctionalAllocation
-AbstractFunctionalBlock.allocatedFunctions.eType = AbstractFunction
-ExchangeLink.exchangeContainmentLinks.eType = ExchangeContainment
-ExchangeContainment.exchange.eType = ExchangeSpecification
-ExchangeContainment.link.eType = ExchangeLink
-ExchangeContainment.link.eOpposite = ExchangeLink.exchangeContainmentLinks
-ExchangeSpecification.link.eType = ExchangeContainment
-ExchangeSpecification.link.eOpposite = ExchangeContainment.exchange
-ExchangeSpecification.outgoingExchangeSpecificationRealizations.eType = ExchangeSpecificationRealization
-ExchangeSpecification.incomingExchangeSpecificationRealizations.eType = ExchangeSpecificationRealization
-FunctionalChain.involvedFunctions.eType = AbstractFunction
-FunctionalChain.involvedFunctionalExchanges.eType = FunctionalExchange
-ComponentFunctionalAllocation._function.eType = AbstractFunction
-ComponentFunctionalAllocation._block.eType = AbstractFunctionalBlock
-ComponentFunctionalAllocation._block.eOpposite = AbstractFunctionalBlock.functionalAllocations
-ExchangeSpecificationRealization._realizedExchangeSpecification.eType = ExchangeSpecification
-ExchangeSpecificationRealization._realizedExchangeSpecification.eOpposite = ExchangeSpecification.incomingExchangeSpecificationRealizations
-ExchangeSpecificationRealization._realizingExchangeSpecification.eType = ExchangeSpecification
-ExchangeSpecificationRealization._realizingExchangeSpecification.eOpposite = ExchangeSpecification.outgoingExchangeSpecificationRealizations
-FunctionalExchangeRealization._realizedFunctionalExchange.eType = FunctionalExchange
-FunctionalExchangeRealization._realizingFunctionalExchange.eType = FunctionalExchange
-FunctionRealization._allocatedFunction.eType = AbstractFunction
-FunctionRealization._allocatingFunction.eType = AbstractFunction
-FunctionalExchange.involvingFunctionalChains.eType = FunctionalChain
-FunctionalExchange.involvingFunctionalChains.eOpposite = FunctionalChain.involvedFunctionalExchanges
-FunctionalExchange.allocatingComponentExchanges.eType = ComponentExchange
-FunctionalExchange.incomingComponentExchangeFunctionalExchangeRealizations.eType = ComponentExchangeFunctionalExchangeAllocation
-FunctionalExchange.incomingFunctionalExchangeRealizations.eType = FunctionalExchangeRealization
-#FunctionalExchange.incomingFunctionalExchangeRealizations.eOpposite = FunctionalExchangeRealization.realizedFunctionalExchange
-FunctionalExchange.outgoingFunctionalExchangeRealizations.eType = FunctionalExchangeRealization
-#FunctionalExchange.outgoingFunctionalExchangeRealizations.eOpposite = FunctionalExchangeRealization.realizingFunctionalExchange
-FunctionalExchange.realizedFunctionalExchanges.eType = FunctionalExchange
-FunctionalExchange.realizingFunctionalExchanges.eType = FunctionalExchange
-FunctionalExchange.realizingFunctionalExchanges.eOpposite = FunctionalExchange.realizedFunctionalExchanges
-AbstractFunction.outFunctionRealizations.eType = FunctionRealization
-#AbstractFunction.outFunctionRealizations.eOpposite = FunctionRealization.allocatingFunction
-AbstractFunction.inFunctionRealizations.eType = FunctionRealization
-#AbstractFunction.inFunctionRealizations.eOpposite = FunctionRealization.allocatedFunction
-AbstractFunction.componentFunctionalAllocations.eType = ComponentFunctionalAllocation
-#AbstractFunction.componentFunctionalAllocations.eOpposite = ComponentFunctionalAllocation.function
-AbstractFunction.allocationBlocks.eType = AbstractFunctionalBlock
-AbstractFunction.allocationBlocks.eOpposite = AbstractFunctionalBlock.allocatedFunctions
-AbstractFunction.involvingFunctionalChains.eType = FunctionalChain
-AbstractFunction.involvingFunctionalChains.eOpposite = FunctionalChain.involvedFunctions
-FunctionPort.allocatorComponentPorts.eType = ComponentPort
-ComponentExchange.allocatedFunctionalExchanges.eType = FunctionalExchange
-ComponentExchange.allocatedFunctionalExchanges.eOpposite = FunctionalExchange.allocatingComponentExchanges
-ComponentExchange.incomingComponentExchangeRealizations.eType = ComponentExchangeRealization
-ComponentExchange.outgoingComponentExchangeRealizations.eType = ComponentExchangeRealization
-ComponentExchange.outgoingComponentExchangeFunctionalExchangeAllocations.eType = ComponentExchangeFunctionalExchangeAllocation
-ComponentExchange.realizedComponentExchanges.eType = ComponentExchange
-ComponentExchange.realizingComponentExchanges.eType = ComponentExchange
-ComponentExchange.realizingComponentExchanges.eOpposite = ComponentExchange.realizedComponentExchanges
-ComponentExchangeFunctionalExchangeAllocation._allocatedFunctionalExchange.eType = FunctionalExchange
-ComponentExchangeFunctionalExchangeAllocation._allocatedFunctionalExchange.eOpposite = FunctionalExchange.incomingComponentExchangeFunctionalExchangeRealizations
-ComponentExchangeFunctionalExchangeAllocation._allocatingComponentExchange.eType = ComponentExchange
-ComponentExchangeFunctionalExchangeAllocation._allocatingComponentExchange.eOpposite = ComponentExchange.outgoingComponentExchangeFunctionalExchangeAllocations
-ComponentExchangeRealization._allocatedComponentExchange.eType = ComponentExchange
-ComponentExchangeRealization._allocatedComponentExchange.eOpposite = ComponentExchange.incomingComponentExchangeRealizations
-ComponentExchangeRealization._allocatingComponentExchange.eType = ComponentExchange
-ComponentExchangeRealization._allocatingComponentExchange.eOpposite = ComponentExchange.outgoingComponentExchangeRealizations
-ComponentPort.allocatedFunctionPorts.eType = FunctionPort
-ComponentPort.allocatedFunctionPorts.eOpposite = FunctionPort.allocatorComponentPorts
-ComponentPort.delegatedComponentPorts.eType = ComponentPort
-ComponentPort.delegatingComponentPorts.eType = ComponentPort
-ComponentPort.delegatingComponentPorts.eOpposite = ComponentPort.delegatedComponentPorts
-ComponentPort.allocatingPhysicalPorts.eType = PhysicalPort
-ComponentPort.realizedComponentPorts.eType = ComponentPort
-ComponentPort.realizingComponentPorts.eType = ComponentPort
-ComponentPort.realizingComponentPorts.eOpposite = ComponentPort.realizedComponentPorts
-
-print('fa.cross_init done')
-
-print('communication.cross_init starting')
-
-
-print('communication.cross_init done')
-
-print('datatype.cross_init starting')
-
-
-print('datatype.cross_init done')
-
-print('datavalue.cross_init starting')
-
-
-print('datavalue.cross_init done')
-
-print('information.cross_init starting')
-
-
-CommunicationItem.ownedStateMachines.eType = StateMachine
-CommunicationItem.properties.eType = Property
-MessageReference.message.eType = Message
-MessageReferencePkg.ownedMessageReferences.eType = MessageReference
-Signal.signalInstances.eType = SignalInstance
-CommunicationLink.exchangeItem.eType = ExchangeItem
-CommunicationLinkExchanger.ownedCommunicationLinks.eType = CommunicationLink
-CommunicationLinkExchanger.produce.eType = CommunicationLink
-CommunicationLinkExchanger.consume.eType = CommunicationLink
-CommunicationLinkExchanger.send.eType = CommunicationLink
-CommunicationLinkExchanger.receive.eType = CommunicationLink
-CommunicationLinkExchanger.call.eType = CommunicationLink
-CommunicationLinkExchanger.execute.eType = CommunicationLink
-CommunicationLinkExchanger.write.eType = CommunicationLink
-CommunicationLinkExchanger.access.eType = CommunicationLink
-CommunicationLinkExchanger.acquire.eType = CommunicationLink
-CommunicationLinkExchanger.transmit.eType = CommunicationLink
-DataType._defaultValue.eType = DataValue
-DataType._nullValue.eType = DataValue
-DataType.ownedInformationRealizations.eType = InformationRealization
-BooleanType.ownedLiterals.eType = LiteralBooleanValue
-BooleanType.ownedDefaultValue.eType = AbstractBooleanValue
-Enumeration.ownedLiterals.eType = EnumerationLiteral
-Enumeration.ownedDefaultValue.eType = AbstractEnumerationValue
-Enumeration.ownedNullValue.eType = AbstractEnumerationValue
-Enumeration.ownedMinValue.eType = AbstractEnumerationValue
-Enumeration.ownedMaxValue.eType = AbstractEnumerationValue
-Enumeration.domainType.eType = DataType
-StringType.ownedDefaultValue.eType = AbstractStringValue
-StringType.ownedNullValue.eType = AbstractStringValue
-StringType.ownedMinLength.eType = NumericValue
-StringType.ownedMaxLength.eType = NumericValue
-NumericType.ownedDefaultValue.eType = NumericValue
-NumericType.ownedNullValue.eType = NumericValue
-NumericType.ownedMinValue.eType = NumericValue
-NumericType.ownedMaxValue.eType = NumericValue
-PhysicalQuantity.unit.eType = Unit
-DataValue._type.eType = Type
-DataValueContainer.ownedDataValues.eType = DataValue
-AbstractBooleanValue._booleanType.eType = BooleanType
-BooleanReference.referencedValue.eType = AbstractBooleanValue
-BooleanReference.referencedProperty.eType = Property
-AbstractEnumerationValue._enumerationType.eType = Enumeration
-EnumerationLiteral.domainValue.eType = DataValue
-EnumerationReference.referencedValue.eType = AbstractEnumerationValue
-EnumerationReference.referencedProperty.eType = Property
-AbstractStringValue._stringType.eType = StringType
-StringReference.referencedValue.eType = AbstractStringValue
-StringReference.referencedProperty.eType = Property
-NumericValue.unit.eType = Unit
-NumericValue._numericType.eType = NumericType
-NumericReference.referencedValue.eType = NumericValue
-NumericReference.referencedProperty.eType = Property
-AbstractComplexValue._complexType.eType = Classifier
-ComplexValue.ownedParts.eType = ValuePart
-ComplexValueReference.referencedValue.eType = AbstractComplexValue
-ComplexValueReference.referencedProperty.eType = Property
-ValuePart.referencedProperty.eType = Property
-ValuePart.ownedValue.eType = DataValue
-AbstractExpressionValue._expressionType.eType = DataType
-BinaryExpression.ownedLeftOperand.eType = DataValue
-BinaryExpression.ownedRightOperand.eType = DataValue
-UnaryExpression.ownedOperand.eType = DataValue
-AbstractInstance.representingInstanceRoles.eType = InstanceRole
-AssociationPkg.ownedAssociations.eType = Association
-Association.ownedMembers.eType = Property
-Association.navigableMembers.eType = Property
-Class.keyParts.eType = KeyPart
-Class.ownedStateMachines.eType = StateMachine
-Class.ownedDataValues.eType = DataValue
-Class.ownedInformationRealizations.eType = InformationRealization
-Collection.type.eType = Type
-Collection.index.eType = DataType
-Collection.containedOperations.eType = Operation
-CollectionValue.ownedElements.eType = DataValue
-CollectionValue.ownedDefaultElement.eType = DataValue
-CollectionValueReference.referencedValue.eType = AbstractCollectionValue
-CollectionValueReference.referencedProperty.eType = Property
-DataPkg.ownedDataPkgs.eType = DataPkg
-DataPkg.ownedClasses.eType = Class
-DataPkg.ownedKeyParts.eType = KeyPart
-DataPkg.ownedCollections.eType = Collection
-DataPkg.ownedUnits.eType = Unit
-DataPkg.ownedDataTypes.eType = DataType
-DataPkg.ownedSignals.eType = Signal
-DataPkg.ownedMessages.eType = Message
-DataPkg.ownedExceptions.eType = Exception
-DataPkg.ownedStateEvents.eType = StateEvent
-KeyPart.property.eType = Property
-MultiplicityElement.ownedDefaultValue.eType = DataValue
-MultiplicityElement.ownedMinValue.eType = DataValue
-MultiplicityElement.ownedMaxValue.eType = DataValue
-MultiplicityElement.ownedNullValue.eType = DataValue
-MultiplicityElement.ownedMinCard.eType = NumericValue
-MultiplicityElement.ownedMinLength.eType = NumericValue
-MultiplicityElement.ownedMaxCard.eType = NumericValue
-MultiplicityElement.ownedMaxLength.eType = NumericValue
-Operation.ownedParameters.eType = Parameter
-Operation.ownedOperationAllocation.eType = OperationAllocation
-Operation.ownedExchangeItemRealizations.eType = ExchangeItemRealization
-OperationAllocation._allocatedOperation.eType = Operation
-OperationAllocation._allocatingOperation.eType = Operation
-Property._association.eType = Association
-Service.thrownExceptions.eType = Exception
-Service.messages.eType = Message
-Service.messageReferences.eType = MessageReference
-Union.discriminant.eType = UnionProperty
-Union.defaultProperty.eType = UnionProperty
-Union.containedUnionProperties.eType = UnionProperty
-UnionProperty.qualifier.eType = DataValue
-Port.ownedProtocols.eType = StateMachine
-Port.providedInterfaces.eType = Interface
-Port.requiredInterfaces.eType = Interface
-Port.ownedPortRealizations.eType = PortRealization
-Port.ownedPortAllocations.eType = PortAllocation
-ExchangeItem.ownedElements.eType = ExchangeItemElement
-ExchangeItem.ownedInformationRealizations.eType = InformationRealization
-ExchangeItem.ownedExchangeItemInstances.eType = ExchangeItemInstance
-ExchangeItem.allocatorInterfaces.eType = Interface
-ExchangeItemElement.referencedProperties.eType = Property
-ExchangeItemRealization._realizedItem.eType = AbstractExchangeItem
-ExchangeItemRealization._realizingOperation.eType = Operation
-AbstractEventOperation.invokingSequenceMessages.eType = SequenceMessage
-DataType.realizedDataTypes.eType = DataType
-DataType.realizingDataTypes.eType = DataType
-DataType.realizingDataTypes.eOpposite = DataType.realizedDataTypes
-Class.realizedClasses.eType = Class
-Class.realizingClasses.eType = Class
-Class.realizingClasses.eOpposite = Class.realizedClasses
-Operation.allocatingOperations.eType = Operation
-Operation.allocatedOperations.eType = Operation
-Operation.allocatedOperations.eOpposite = Operation.allocatingOperations
-Operation.realizedExchangeItems.eType = ExchangeItem
-Port.incomingPortRealizations.eType = PortRealization
-Port.outgoingPortRealizations.eType = PortRealization
-Port.incomingPortAllocations.eType = PortAllocation
-Port.outgoingPortAllocations.eType = PortAllocation
-PortRealization._realizedPort.eType = Port
-PortRealization._realizedPort.eOpposite = Port.incomingPortRealizations
-PortRealization._realizingPort.eType = Port
-PortRealization._realizingPort.eOpposite = Port.outgoingPortRealizations
-PortAllocation._allocatedPort.eType = Port
-PortAllocation._allocatedPort.eOpposite = Port.incomingPortAllocations
-PortAllocation._allocatingPort.eType = Port
-PortAllocation._allocatingPort.eOpposite = Port.outgoingPortAllocations
-ExchangeItem.realizedExchangeItems.eType = ExchangeItem
-ExchangeItem.realizingExchangeItems.eType = ExchangeItem
-ExchangeItem.realizingExchangeItems.eOpposite = ExchangeItem.realizedExchangeItems
-ExchangeItem.realizingOperations.eType = Operation
-ExchangeItem.realizingOperations.eOpposite = Operation.realizedExchangeItems
-
-print('information.cross_init done')
-
-print('interaction.cross_init starting')
-
-
-SequenceMessage.exchangeContext.eType = Constraint
-SequenceMessage.sendingEnd.eType = MessageEnd
-SequenceMessage.receivingEnd.eType = MessageEnd
-SequenceMessage._invokedOperation.eType = AbstractEventOperation
-SequenceMessage.exchangedItems.eType = ExchangeItem
-SequenceMessage._sendingPart.eType = Part
-SequenceMessage._receivingPart.eType = Part
-SequenceMessage._sendingFunction.eType = AbstractFunction
-SequenceMessage._receivingFunction.eType = AbstractFunction
-SequenceMessage.ownedSequenceMessageValuations.eType = SequenceMessageValuation
-Scenario.preCondition.eType = Constraint
-Scenario.postCondition.eType = Constraint
-Scenario.ownedInstanceRoles.eType = InstanceRole
-Scenario.ownedMessages.eType = SequenceMessage
-Scenario.ownedInteractionFragments.eType = InteractionFragment
-Scenario.ownedTimeLapses.eType = TimeLapse
-Scenario.ownedEvents.eType = Event
-Scenario.ownedFormalGates.eType = Gate
-Scenario.ownedScenarioRealization.eType = ScenarioRealization
-Scenario.ownedConstraintDurations.eType = ConstraintDuration
-Scenario.containedFunctions.eType = AbstractFunction
-Scenario.containedParts.eType = Part
-Scenario.referencedScenarios.eType = Scenario
-MessageEnd._message.eType = SequenceMessage
-Execution._covered.eType = InstanceRole
-ExecutionEnd._execution.eType = Execution
-InstanceRole.representedInstance.eType = AbstractInstance
-AbstractEnd.event.eType = Event
-EventReceiptOperation.operation.eType = AbstractEventOperation
-EventSentOperation.operation.eType = AbstractEventOperation
-AbstractCapability.preCondition.eType = Constraint
-AbstractCapability.postCondition.eType = Constraint
-AbstractCapability.ownedScenarios.eType = Scenario
-AbstractCapability.extends.eType = AbstractCapabilityExtend
-AbstractCapability.extending.eType = AbstractCapabilityExtend
-AbstractCapability.abstractCapabilityExtensionPoints.eType = AbstractCapabilityExtensionPoint
-AbstractCapability.superGeneralizations.eType = AbstractCapabilityGeneralization
-AbstractCapability.subGeneralizations.eType = AbstractCapabilityGeneralization
-AbstractCapability.includes.eType = AbstractCapabilityInclude
-AbstractCapability.including.eType = AbstractCapabilityInclude
-AbstractCapability.super.eType = AbstractCapability
-AbstractCapability.sub.eType = AbstractCapability
-AbstractCapability.includedAbstractCapabilities.eType = AbstractCapability
-AbstractCapability.includingAbstractCapabilities.eType = AbstractCapability
-AbstractCapability.extendedAbstractCapabilities.eType = AbstractCapability
-AbstractCapability.extendingAbstractCapabilities.eType = AbstractCapability
-AbstractCapability.ownedFunctionalChainAbstractCapabilityInvolvements.eType = FunctionalChainAbstractCapabilityInvolvement
-AbstractCapability.ownedAbstractFunctionAbstractCapabilityInvolvements.eType = AbstractFunctionAbstractCapabilityInvolvement
-AbstractCapability.availableInStates.eType = State
-AbstractCapability.ownedAbstractCapabilityRealizations.eType = AbstractCapabilityRealization
-AbstractCapability.involvedAbstractFunctions.eType = AbstractFunction
-AbstractCapability.involvedFunctionalChains.eType = FunctionalChain
-AbstractCapabilityExtend.extended.eType = AbstractCapability
-AbstractCapabilityExtend._extension.eType = AbstractCapability
-AbstractCapabilityExtensionPoint._abstractCapability.eType = AbstractCapability
-AbstractCapabilityGeneralization.super.eType = AbstractCapability
-AbstractCapabilityGeneralization._sub.eType = AbstractCapability
-AbstractCapabilityInclude.included.eType = AbstractCapability
-AbstractCapabilityInclude._inclusion.eType = AbstractCapability
-InteractionFragment.coveredInstanceRoles.eType = InstanceRole
-InteractionState.relatedAbstractState.eType = AbstractState
-InteractionState.relatedAbstractFunction.eType = AbstractFunction
-InteractionState._covered.eType = InstanceRole
-InteractionUse.referencedScenario.eType = Scenario
-InteractionUse.actualGates.eType = Gate
-CombinedFragment.referencedOperands.eType = InteractionOperand
-CombinedFragment.expressionGates.eType = Gate
-InteractionOperand.referencedInteractionFragments.eType = InteractionFragment
-InteractionOperand.guard.eType = Constraint
-TimeLapse.start.eType = InteractionFragment
-TimeLapse.finish.eType = InteractionFragment
-AbstractFragment.ownedGates.eType = Gate
-FragmentEnd._abstractFragment.eType = AbstractFragment
-FunctionalChainAbstractCapabilityInvolvement._capability.eType = AbstractCapability
-FunctionalChainAbstractCapabilityInvolvement._functionalChain.eType = FunctionalChain
-AbstractFunctionAbstractCapabilityInvolvement._capability.eType = AbstractCapability
-AbstractFunctionAbstractCapabilityInvolvement._function.eType = AbstractFunction
-ScenarioRealization._realizedScenario.eType = Scenario
-ScenarioRealization._realizingScenario.eType = Scenario
-StateFragment.relatedAbstractState.eType = AbstractState
-StateFragment.relatedAbstractFunction.eType = AbstractFunction
-ConstraintDuration.start.eType = InteractionFragment
-ConstraintDuration.finish.eType = InteractionFragment
-SequenceMessageValuation.exchangeItemElement.eType = ExchangeItemElement
-SequenceMessageValuation.value.eType = ValueSpecification
-Scenario.realizedScenarios.eType = Scenario
-Scenario.realizingScenarios.eType = Scenario
-Scenario.realizingScenarios.eOpposite = Scenario.realizedScenarios
-InstanceRole.abstractEnds.eType = AbstractEnd
-AbstractEnd._covered.eType = InstanceRole
-AbstractEnd._covered.eOpposite = InstanceRole.abstractEnds
-AbstractCapabilityRealization._realizedCapability.eType = AbstractCapability
-AbstractCapabilityRealization._realizingCapability.eType = AbstractCapability
-AbstractCapability.incomingCapabilityAllocation.eType = AbstractCapabilityRealization
-#AbstractCapability.incomingCapabilityAllocation.eOpposite = AbstractCapabilityRealization.realizedCapability
-AbstractCapability.outgoingCapabilityAllocation.eType = AbstractCapabilityRealization
-#AbstractCapability.outgoingCapabilityAllocation.eOpposite = AbstractCapabilityRealization.realizingCapability
-AbstractCapabilityExtend.extensionLocation.eType = AbstractCapabilityExtensionPoint
-AbstractCapabilityExtensionPoint.extendLinks.eType = AbstractCapabilityExtend
-AbstractCapabilityExtensionPoint.extendLinks.eOpposite = AbstractCapabilityExtend.extensionLocation
-
-print('interaction.cross_init done')
-
-print('la.cross_init starting')
-
-
-LogicalArchitecturePkg.ownedLogicalArchitectures.eType = LogicalArchitecture
-LogicalArchitecture.ownedLogicalComponentPkg.eType = LogicalComponentPkg
-LogicalArchitecture._containedCapabilityRealizationPkg.eType = CapabilityRealizationPkg
-LogicalArchitecture._containedLogicalFunctionPkg.eType = LogicalFunctionPkg
-LogicalArchitecture.ownedSystemAnalysisRealizations.eType = SystemAnalysisRealization
-LogicalArchitecture.allocatedSystemAnalysisRealizations.eType = SystemAnalysisRealization
-LogicalFunction.ownedLogicalFunctionPkgs.eType = LogicalFunctionPkg
-LogicalFunction.containedLogicalFunctions.eType = LogicalFunction
-LogicalFunction.childrenLogicalFunctions.eType = LogicalFunction
-LogicalFunctionPkg.ownedLogicalFunctions.eType = LogicalFunction
-LogicalFunctionPkg.ownedLogicalFunctionPkgs.eType = LogicalFunctionPkg
-LogicalComponent.ownedLogicalComponents.eType = LogicalComponent
-LogicalComponent.ownedLogicalArchitectures.eType = LogicalArchitecture
-LogicalComponent.ownedLogicalComponentPkgs.eType = LogicalComponentPkg
-LogicalComponent.subLogicalComponents.eType = LogicalComponent
-LogicalComponent.realizedSystemComponents.eType = SystemComponent
-LogicalComponentPkg.ownedLogicalComponents.eType = LogicalComponent
-LogicalComponentPkg.ownedLogicalComponentPkgs.eType = LogicalComponentPkg
-CapabilityRealization.ownedCapabilityRealizationInvolvements.eType = CapabilityRealizationInvolvement
-CapabilityRealization.involvedComponents.eType = CapabilityRealizationInvolvedElement
-CapabilityRealizationPkg.ownedCapabilityRealizations.eType = CapabilityRealization
-CapabilityRealizationPkg.ownedCapabilityRealizationPkgs.eType = CapabilityRealizationPkg
-LogicalArchitecture.allocatedSystemAnalyses.eType = SystemAnalysis
-LogicalArchitecture.allocatingPhysicalArchitectures.eType = PhysicalArchitecture
-LogicalFunction.allocatingLogicalComponents.eType = LogicalComponent
-LogicalFunction.realizedSystemFunctions.eType = SystemFunction
-LogicalFunction.realizingPhysicalFunctions.eType = PhysicalFunction
-LogicalComponent.allocatedLogicalFunctions.eType = LogicalFunction
-LogicalComponent.allocatedLogicalFunctions.eOpposite = LogicalFunction.allocatingLogicalComponents
-LogicalComponent.realizingPhysicalComponents.eType = PhysicalComponent
-CapabilityRealization.realizedCapabilities.eType = Capability
-CapabilityRealization.realizedCapabilityRealizations.eType = CapabilityRealization
-CapabilityRealization.realizingCapabilityRealizations.eType = CapabilityRealization
-CapabilityRealization.realizingCapabilityRealizations.eOpposite = CapabilityRealization.realizedCapabilityRealizations
-
-print('la.cross_init done')
-
-print('libraries.cross_init starting')
-
-
-ModelInformation.ownedReferences.eType = LibraryReference
-ModelInformation.version.eType = ModelVersion
-LibraryReference.library.eType = ModelInformation
-LibraryReference.version.eType = ModelVersion
-
-print('libraries.cross_init done')
-
-print('modellingcore.cross_init starting')
-
-
-ModelElement.constraints.eType = AbstractConstraint
-ModelElement.ownedConstraints.eType = AbstractConstraint
-ModelElement.ownedMigratedElements.eType = ModelElement
-InformationsExchanger.incomingInformationFlows.eType = AbstractInformationFlow
-InformationsExchanger.outgoingInformationFlows.eType = AbstractInformationFlow
-InformationsExchanger.informationFlows.eType = AbstractInformationFlow
-TraceableElement.incomingTraces.eType = AbstractTrace
-TraceableElement.outgoingTraces.eType = AbstractTrace
-AbstractType.abstractTypedElements.eType = AbstractTypedElement
-AbstractTypedElement.abstractType.eType = AbstractType
-AbstractTrace.targetElement.eType = TraceableElement
-AbstractTrace.sourceElement.eType = TraceableElement
-AbstractConstraint.constrainedElements.eType = ModelElement
-AbstractConstraint.ownedSpecification.eType = ValueSpecification
-AbstractConstraint._context.eType = ModelElement
-AbstractParameter.rate.eType = ValueSpecification
-AbstractParameter.probability.eType = ValueSpecification
-AbstractParameterSet.ownedConditions.eType = AbstractConstraint
-AbstractParameterSet.probability.eType = ValueSpecification
-AbstractInformationFlow.convoyedInformations.eType = AbstractExchangeItem
-AbstractInformationFlow.source.eType = InformationsExchanger
-AbstractInformationFlow.target.eType = InformationsExchanger
-IState.referencedStates.eType = IState
-IState.exploitedStates.eType = IState
-AbstractRelationship.realizedFlow.eType = AbstractInformationFlow
-AbstractParameter.parameterSet.eType = AbstractParameterSet
-AbstractParameterSet.parameters.eType = AbstractParameter
-AbstractParameterSet.parameters.eOpposite = AbstractParameter.parameterSet
-AbstractInformationFlow.realizations.eType = AbstractRelationship
-AbstractInformationFlow.realizations.eOpposite = AbstractRelationship.realizedFlow
-
-print('modellingcore.cross_init done')
-
-print('oa.cross_init starting')
-
-
-OperationalAnalysis.ownedRolePkg.eType = RolePkg
-OperationalAnalysis.ownedEntityPkg.eType = EntityPkg
-OperationalAnalysis.ownedConceptPkg.eType = ConceptPkg
-OperationalAnalysis._containedOperationalCapabilityPkg.eType = OperationalCapabilityPkg
-OperationalAnalysis._containedOperationalActivityPkg.eType = OperationalActivityPkg
-OperationalActivityPkg.ownedOperationalActivities.eType = OperationalActivity
-OperationalActivityPkg.ownedOperationalActivityPkgs.eType = OperationalActivityPkg
-OperationalActivity.ownedOperationalActivityPkgs.eType = OperationalActivityPkg
-OperationalActivity.ownedSwimlanes.eType = Swimlane
-OperationalActivity.ownedProcess.eType = OperationalProcess
-OperationalActivity.allocatingRoles.eType = Role
-OperationalActivity.containedOperationalActivities.eType = OperationalActivity
-OperationalActivity.childrenOperationalActivities.eType = OperationalActivity
-OperationalProcess.involvingOperationalCapabilities.eType = OperationalCapability
-Swimlane._representedEntity.eType = Entity
-OperationalCapabilityPkg.ownedOperationalCapabilities.eType = OperationalCapability
-OperationalCapabilityPkg.ownedOperationalCapabilityPkgs.eType = OperationalCapabilityPkg
-OperationalCapabilityPkg.ownedCapabilityConfigurations.eType = CapabilityConfiguration
-OperationalCapabilityPkg.ownedConceptCompliances.eType = ConceptCompliance
-OperationalCapability.compliances.eType = ConceptCompliance
-OperationalCapability.configurations.eType = CapabilityConfiguration
-OperationalCapability.ownedEntityOperationalCapabilityInvolvements.eType = EntityOperationalCapabilityInvolvement
-OperationalCapability.involvedEntities.eType = Entity
-RolePkg.ownedRolePkgs.eType = RolePkg
-RolePkg.ownedRoles.eType = Role
-Role.ownedRoleAssemblyUsages.eType = RoleAssemblyUsage
-Role.ownedActivityAllocations.eType = ActivityAllocation
-Role.allocatingEntities.eType = Entity
-Role.allocatedOperationalActivities.eType = OperationalActivity
-RoleAssemblyUsage.child.eType = Role
-EntityPkg.ownedEntities.eType = Entity
-EntityPkg.ownedEntityPkgs.eType = EntityPkg
-EntityPkg.ownedLocations.eType = Location
-EntityPkg.ownedCommunicationMeans.eType = CommunicationMean
-Entity.organisationalUnitMemberships.eType = OrganisationalUnitComposition
-Entity.actualLocation.eType = Location
-Entity.subEntities.eType = Entity
-Entity.ownedEntities.eType = Entity
-Entity.ownedCommunicationMeans.eType = CommunicationMean
-Entity.ownedRoleAllocations.eType = RoleAllocation
-Entity.allocatedRoles.eType = Role
-Entity.involvingOperationalCapabilities.eType = OperationalCapability
-Entity.realizingSystemComponents.eType = SystemComponent
-ConceptPkg.ownedConceptPkgs.eType = ConceptPkg
-ConceptPkg.ownedConcepts.eType = Concept
-Concept.compliances.eType = ConceptCompliance
-Concept.compositeLinks.eType = ItemInConcept
-ConceptCompliance.complyWithConcept.eType = Concept
-ConceptCompliance.compliantCapability.eType = OperationalCapability
-ItemInConcept.concept.eType = Concept
-ItemInConcept.item.eType = AbstractConceptItem
-AbstractConceptItem.composingLinks.eType = ItemInConcept
-CommunityOfInterest.communityOfInterestCompositions.eType = CommunityOfInterestComposition
-CommunityOfInterestComposition.communityOfInterest.eType = CommunityOfInterest
-CommunityOfInterestComposition.interestedOrganisationUnit.eType = OrganisationalUnit
-OrganisationalUnit.organisationalUnitCompositions.eType = OrganisationalUnitComposition
-OrganisationalUnit.communityOfInterestMemberships.eType = CommunityOfInterestComposition
-OrganisationalUnitComposition.organisationalUnit.eType = OrganisationalUnit
-OrganisationalUnitComposition.participatingEntity.eType = Entity
-Location.locatedEntities.eType = Entity
-CapabilityConfiguration.configuredCapability.eType = OperationalCapability
-CommunicationMean._sourceEntity.eType = Entity
-CommunicationMean._targetEntity.eType = Entity
-EntityOperationalCapabilityInvolvement._entity.eType = Entity
-EntityOperationalCapabilityInvolvement._capability.eType = OperationalCapability
-OperationalAnalysis.allocatingSystemAnalyses.eType = SystemAnalysis
-OperationalActivity.activityAllocations.eType = ActivityAllocation
-OperationalActivity.allocatorEntities.eType = Entity
-OperationalActivity.realizingSystemFunctions.eType = SystemFunction
-OperationalCapability.realizingCapabilities.eType = Capability
-ActivityAllocation._role.eType = Role
-ActivityAllocation._activity.eType = OperationalActivity
-ActivityAllocation._activity.eOpposite = OperationalActivity.activityAllocations
-Role.roleAllocations.eType = RoleAllocation
-Role.activityAllocations.eType = ActivityAllocation
-#Role.activityAllocations.eOpposite = ActivityAllocation.role
-RoleAllocation._role.eType = Role
-RoleAllocation._role.eOpposite = Role.roleAllocations
-RoleAllocation._entity.eType = Entity
-Entity.roleAllocations.eType = RoleAllocation
-#Entity.roleAllocations.eOpposite = RoleAllocation.entity
-Entity.allocatedOperationalActivities.eType = OperationalActivity
-Entity.allocatedOperationalActivities.eOpposite = OperationalActivity.allocatorEntities
-
-print('oa.cross_init done')
-
-print('pa.cross_init starting')
-
-
-ComponentInstance.portInstances.eType = PortInstance
-ComponentInstance.ownedAbstractPhysicalInstances.eType = AbstractPhysicalInstance
-ComponentInstance.ownedInstanceDeploymentLinks.eType = InstanceDeploymentLink
-ComponentInstance.type.eType = PhysicalComponent
-ConnectionInstance.type.eType = ComponentExchange
-DeploymentAspect.ownedConfigurations.eType = DeploymentConfiguration
-DeploymentAspect.ownedDeploymentAspects.eType = DeploymentAspect
-DeploymentConfiguration.ownedDeploymentLinks.eType = AbstractDeploymentLink
-DeploymentConfiguration.ownedPhysicalInstances.eType = AbstractPhysicalInstance
-PortInstance._component.eType = ComponentInstance
-PortInstance.type.eType = ComponentPort
-PhysicalArchitecturePkg.ownedPhysicalArchitecturePkgs.eType = PhysicalArchitecturePkg
-PhysicalArchitecturePkg.ownedPhysicalArchitectures.eType = PhysicalArchitecture
-PhysicalArchitecture.ownedPhysicalComponentPkg.eType = PhysicalComponentPkg
-PhysicalArchitecture._containedCapabilityRealizationPkg.eType = CapabilityRealizationPkg
-PhysicalArchitecture._containedPhysicalFunctionPkg.eType = PhysicalFunctionPkg
-PhysicalArchitecture.ownedDeployments.eType = AbstractDeploymentLink
-PhysicalArchitecture.ownedLogicalArchitectureRealizations.eType = LogicalArchitectureRealization
-PhysicalArchitecture.allocatedLogicalArchitectureRealizations.eType = LogicalArchitectureRealization
-PhysicalFunction.ownedPhysicalFunctionPkgs.eType = PhysicalFunctionPkg
-PhysicalFunction.containedPhysicalFunctions.eType = PhysicalFunction
-PhysicalFunction.childrenPhysicalFunctions.eType = PhysicalFunction
-PhysicalFunctionPkg.ownedPhysicalFunctions.eType = PhysicalFunction
-PhysicalFunctionPkg.ownedPhysicalFunctionPkgs.eType = PhysicalFunctionPkg
-PhysicalComponent.ownedDeploymentLinks.eType = AbstractDeploymentLink
-PhysicalComponent.ownedPhysicalComponents.eType = PhysicalComponent
-PhysicalComponent.ownedPhysicalComponentPkgs.eType = PhysicalComponentPkg
-PhysicalComponent.logicalInterfaceRealizations.eType = LogicalInterfaceRealization
-PhysicalComponent.subPhysicalComponents.eType = PhysicalComponent
-PhysicalComponent.deployedPhysicalComponents.eType = PhysicalComponent
-PhysicalComponent.deployingPhysicalComponents.eType = PhysicalComponent
-PhysicalComponentPkg.ownedPhysicalComponents.eType = PhysicalComponent
-PhysicalComponentPkg.ownedPhysicalComponentPkgs.eType = PhysicalComponentPkg
-PhysicalComponentPkg.ownedKeyParts.eType = KeyPart
-PhysicalComponentPkg.ownedDeployments.eType = AbstractDeploymentLink
-PhysicalNode.subPhysicalNodes.eType = PhysicalNode
-ConnectionInstance.connectionEnds.eType = PortInstance
-PortInstance.connections.eType = ConnectionInstance
-PortInstance.connections.eOpposite = ConnectionInstance.connectionEnds
-PhysicalArchitecture.allocatedLogicalArchitectures.eType = LogicalArchitecture
-PhysicalArchitecture.allocatingEpbsArchitectures.eType = EPBSArchitecture
-PhysicalFunction.allocatingPhysicalComponents.eType = PhysicalComponent
-PhysicalFunction.realizedLogicalFunctions.eType = LogicalFunction
-PhysicalComponent.realizedLogicalComponents.eType = LogicalComponent
-PhysicalComponent.allocatedPhysicalFunctions.eType = PhysicalFunction
-PhysicalComponent.allocatedPhysicalFunctions.eOpposite = PhysicalFunction.allocatingPhysicalComponents
-
-print('pa.cross_init done')
-
-print('deployment.cross_init starting')
-
-
-print('deployment.cross_init done')
-
-print('requirement.cross_init starting')
-
-
-RequirementsPkg.ownedRequirements.eType = Requirement
-RequirementsPkg.ownedRequirementPkgs.eType = RequirementsPkg
-RequirementsTrace._source.eType = TraceableElement
-RequirementsTrace._target.eType = TraceableElement
-Requirement.relatedCapellaElements.eType = CapellaElement
-
-print('requirement.cross_init done')
-
-print('sharedmodel.cross_init starting')
-
-
-SharedPkg.ownedDataPkg.eType = DataPkg
-SharedPkg.ownedGenericPkg.eType = GenericPkg
-GenericPkg.subGenericPkgs.eType = GenericPkg
-GenericPkg.capellaElements.eType = CapellaElement
-
-print('sharedmodel.cross_init done')
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+
+import behavior
+import modellingcore
+import activity
+import capellacommon
+import capellacore
+import capellamodeller
+import cs
+import ctx
+import epbs
+import fa
+import information
+import information.communication
+import information.datatype
+import information.datavalue
+import interaction
+import la
+import oa
+import pa
+import pa.deployment
+import requirement
+import sharedmodel
+import libraries
+import emde
+
+#print('behavior.cross_init starting')
+
+
+behavior.AbstractBehavior.ownedParameterSet.eType = modellingcore.AbstractParameterSet
+behavior.AbstractBehavior.ownedParameter.eType = modellingcore.AbstractParameter
+behavior.AbstractTimeEvent.when.eType = behavior.TimeExpression
+behavior.AbstractSignalEvent.signal.eType = behavior.AbstractSignal
+behavior.TimeExpression.observations.eType = modellingcore.AbstractNamedElement
+behavior.TimeExpression.expression.eType = modellingcore.ValueSpecification
+
+#print('behavior.cross_init done')
+
+#print('modellingcore.cross_init starting')
+
+
+modellingcore.ModelElement.constraints.eType = modellingcore.AbstractConstraint
+modellingcore.ModelElement.ownedConstraints.eType = modellingcore.AbstractConstraint
+modellingcore.ModelElement.ownedMigratedElements.eType = modellingcore.ModelElement
+modellingcore.InformationsExchanger.incomingInformationFlows.eType = modellingcore.AbstractInformationFlow
+modellingcore.InformationsExchanger.outgoingInformationFlows.eType = modellingcore.AbstractInformationFlow
+modellingcore.InformationsExchanger.informationFlows.eType = modellingcore.AbstractInformationFlow
+modellingcore.TraceableElement.incomingTraces.eType = modellingcore.AbstractTrace
+modellingcore.TraceableElement.outgoingTraces.eType = modellingcore.AbstractTrace
+modellingcore.AbstractType.abstractTypedElements.eType = modellingcore.AbstractTypedElement
+modellingcore.AbstractTypedElement.abstractType.eType = modellingcore.AbstractType
+modellingcore.AbstractTrace.targetElement.eType = modellingcore.TraceableElement
+modellingcore.AbstractTrace.sourceElement.eType = modellingcore.TraceableElement
+modellingcore.AbstractConstraint.constrainedElements.eType = modellingcore.ModelElement
+modellingcore.AbstractConstraint.ownedSpecification.eType = modellingcore.ValueSpecification
+modellingcore.AbstractConstraint._context.eType = modellingcore.ModelElement
+modellingcore.AbstractParameter.rate.eType = modellingcore.ValueSpecification
+modellingcore.AbstractParameter.probability.eType = modellingcore.ValueSpecification
+modellingcore.AbstractParameterSet.ownedConditions.eType = modellingcore.AbstractConstraint
+modellingcore.AbstractParameterSet.probability.eType = modellingcore.ValueSpecification
+modellingcore.AbstractInformationFlow.convoyedInformations.eType = modellingcore.AbstractExchangeItem
+modellingcore.AbstractInformationFlow.source.eType = modellingcore.InformationsExchanger
+modellingcore.AbstractInformationFlow.target.eType = modellingcore.InformationsExchanger
+modellingcore.IState.referencedStates.eType = modellingcore.IState
+modellingcore.IState.exploitedStates.eType = modellingcore.IState
+modellingcore.AbstractRelationship.realizedFlow.eType = modellingcore.AbstractInformationFlow
+modellingcore.AbstractParameter.parameterSet.eType = modellingcore.AbstractParameterSet
+modellingcore.AbstractParameterSet.parameters.eType = modellingcore.AbstractParameter
+modellingcore.AbstractParameterSet.parameters.eOpposite = modellingcore.AbstractParameter.parameterSet
+modellingcore.AbstractInformationFlow.realizations.eType = modellingcore.AbstractRelationship
+modellingcore.AbstractInformationFlow.realizations.eOpposite = modellingcore.AbstractRelationship.realizedFlow
+
+#print('modellingcore.cross_init done')
+
+#print('activity.cross_init starting')
+
+
+activity.AbstractActivity.ownedNodes.eType = activity.ActivityNode
+activity.AbstractActivity.ownedEdges.eType = activity.ActivityEdge
+activity.AbstractActivity.ownedGroups.eType = activity.ActivityGroup
+activity.AbstractActivity.ownedStructuredNodes.eType = activity.StructuredActivityNode
+activity.ExceptionHandler.handlerBody.eType = activity.ExecutableNode
+activity.ExceptionHandler.exceptionInput.eType = activity.ObjectNode
+activity.ExceptionHandler.exceptionTypes.eType = modellingcore.AbstractType
+activity.ActivityGroup.ownedNodes.eType = activity.ActivityNode
+activity.ActivityGroup.ownedEdges.eType = activity.ActivityEdge
+activity.ActivityEdge._inActivityPartition.eType = activity.ActivityPartition
+activity.ActivityEdge._inInterruptibleRegion.eType = activity.InterruptibleActivityRegion
+activity.ActivityEdge._inStructuredNode.eType = activity.StructuredActivityNode
+activity.ActivityEdge.rate.eType = modellingcore.ValueSpecification
+activity.ActivityEdge.probability.eType = modellingcore.ValueSpecification
+activity.ActivityEdge.target.eType = activity.ActivityNode
+activity.ActivityEdge.source.eType = activity.ActivityNode
+activity.ActivityEdge.guard.eType = modellingcore.ValueSpecification
+activity.ActivityEdge.weight.eType = modellingcore.ValueSpecification
+activity.ObjectFlow.transformation.eType = behavior.AbstractBehavior
+activity.ObjectFlow.selection.eType = behavior.AbstractBehavior
+activity.ActivityPartition.representedElement.eType = modellingcore.AbstractType
+activity.ActivityPartition._superPartition.eType = activity.ActivityPartition
+activity.ActivityPartition.subPartitions.eType = activity.ActivityPartition
+activity.ActivityExchange.realizingActivityFlows.eType = activity.ActivityEdge
+activity.ActivityNode._inActivityPartition.eType = activity.ActivityPartition
+activity.ActivityNode._inInterruptibleRegion.eType = activity.InterruptibleActivityRegion
+activity.ActivityNode._inStructuredNode.eType = activity.InterruptibleActivityRegion
+activity.ActivityNode.outgoing.eType = activity.ActivityEdge
+activity.ActivityNode.incoming.eType = activity.ActivityEdge
+activity.AbstractAction.localPrecondition.eType = modellingcore.AbstractConstraint
+activity.AbstractAction.localPostcondition.eType = modellingcore.AbstractConstraint
+activity.AbstractAction.context.eType = modellingcore.AbstractType
+activity.AbstractAction.inputs.eType = activity.InputPin
+activity.AbstractAction.outputs.eType = activity.OutputPin
+activity.AcceptEventAction.result.eType = activity.OutputPin
+activity.InvocationAction.arguments.eType = activity.InputPin
+activity.SendSignalAction.target.eType = activity.InputPin
+activity.SendSignalAction.signal.eType = behavior.AbstractSignal
+activity.CallAction.results.eType = activity.OutputPin
+activity.CallBehaviorAction.behavior.eType = behavior.AbstractBehavior
+activity.ObjectNode.upperBound.eType = modellingcore.ValueSpecification
+activity.ObjectNode.inState.eType = modellingcore.IState
+activity.ObjectNode.selection.eType = behavior.AbstractBehavior
+activity.InputPin.inputEvaluationAction.eType = activity.AbstractAction
+activity.ValuePin.value.eType = modellingcore.ValueSpecification
+activity.ExceptionHandler.protectedNode.eType = activity.ExecutableNode
+activity.ActivityGroup.superGroup.eType = activity.ActivityGroup
+activity.ActivityGroup.subGroups.eType = activity.ActivityGroup
+activity.ActivityGroup.subGroups.eOpposite = activity.ActivityGroup.superGroup
+activity.InterruptibleActivityRegion.interruptingEdges.eType = activity.ActivityEdge
+activity.ActivityEdge.interrupts.eType = activity.InterruptibleActivityRegion
+activity.ActivityEdge.interrupts.eOpposite = activity.InterruptibleActivityRegion.interruptingEdges
+activity.ExecutableNode.ownedHandlers.eType = activity.ExceptionHandler
+activity.ExecutableNode.ownedHandlers.eOpposite = activity.ExceptionHandler.protectedNode
+
+#print('activity.cross_init done')
+
+#print('capellacommon.cross_init starting')
+
+
+capellacommon.GenericTrace.keyValuePairs.eType = capellacore.KeyValue
+capellacommon.GenericTrace._source.eType = modellingcore.TraceableElement
+capellacommon.GenericTrace._target.eType = modellingcore.TraceableElement
+capellacommon.CapabilityRealizationInvolvement._involvedCapabilityRealizationInvolvedElement.eType = capellacommon.CapabilityRealizationInvolvedElement
+capellacommon.CapabilityRealizationInvolvedElement.capabilityRealizationInvolvements.eType = capellacommon.CapabilityRealizationInvolvement
+capellacommon.CapabilityRealizationInvolvedElement.involvingCapabilityRealizations.eType = la.CapabilityRealization
+capellacommon.StateMachine.ownedRegions.eType = capellacommon.Region
+capellacommon.StateMachine.ownedConnectionPoints.eType = capellacommon.Pseudostate
+capellacommon.Region.ownedStates.eType = capellacommon.AbstractState
+capellacommon.Region.ownedTransitions.eType = capellacommon.StateTransition
+capellacommon.Region.involvedStates.eType = capellacommon.AbstractState
+capellacommon.State.ownedRegions.eType = capellacommon.Region
+capellacommon.State.ownedConnectionPoints.eType = capellacommon.Pseudostate
+capellacommon.State.availableAbstractFunctions.eType = fa.AbstractFunction
+capellacommon.State.availableFunctionalChains.eType = fa.FunctionalChain
+capellacommon.State.availableAbstractCapabilities.eType = interaction.AbstractCapability
+capellacommon.State.entry.eType = behavior.AbstractEvent
+capellacommon.State.doActivity.eType = behavior.AbstractEvent
+capellacommon.State.exit.eType = behavior.AbstractEvent
+capellacommon.State.stateInvariant.eType = modellingcore.AbstractConstraint
+capellacommon.AbstractState.ownedAbstractStateRealizations.eType = capellacommon.AbstractStateRealization
+capellacommon.AbstractState.realizedAbstractStates.eType = capellacommon.AbstractState
+capellacommon.AbstractState.realizingAbstractStates.eType = capellacommon.AbstractState
+capellacommon.AbstractState.outgoing.eType = capellacommon.StateTransition
+capellacommon.AbstractState.incoming.eType = capellacommon.StateTransition
+capellacommon.AbstractState.involverRegions.eType = capellacommon.Region
+capellacommon.StateTransition.guard.eType = capellacore.Constraint
+capellacommon.StateTransition.source.eType = capellacommon.AbstractState
+capellacommon.StateTransition.target.eType = capellacommon.AbstractState
+capellacommon.StateTransition.effect.eType = behavior.AbstractEvent
+capellacommon.StateTransition.triggers.eType = behavior.AbstractEvent
+capellacommon.StateTransition.ownedStateTransitionRealizations.eType = capellacommon.StateTransitionRealization
+capellacommon.StateTransition.realizedStateTransitions.eType = capellacommon.StateTransition
+capellacommon.StateTransition.realizingStateTransitions.eType = capellacommon.StateTransition
+capellacommon.AbstractStateRealization._realizedAbstractState.eType = capellacommon.AbstractState
+capellacommon.AbstractStateRealization._realizingAbstractState.eType = capellacommon.AbstractState
+capellacommon.StateTransitionRealization._realizedStateTransition.eType = capellacommon.StateTransition
+capellacommon.StateTransitionRealization._realizingStateTransition.eType = capellacommon.StateTransition
+capellacommon.StateEventRealization._realizedEvent.eType = capellacommon.StateEvent
+capellacommon.StateEventRealization._realizingEvent.eType = capellacommon.StateEvent
+capellacommon.StateEvent.expression.eType = capellacore.Constraint
+capellacommon.StateEvent.ownedStateEventRealizations.eType = capellacommon.StateEventRealization
+
+#print('capellacommon.cross_init done')
+
+#print('capellacore.cross_init starting')
+
+
+capellacore.CapellaElement.ownedPropertyValues.eType = capellacore.AbstractPropertyValue
+capellacore.CapellaElement.ownedEnumerationPropertyTypes.eType = capellacore.EnumerationPropertyType
+capellacore.CapellaElement.appliedPropertyValues.eType = capellacore.AbstractPropertyValue
+capellacore.CapellaElement.ownedPropertyValueGroups.eType = capellacore.PropertyValueGroup
+capellacore.CapellaElement.appliedPropertyValueGroups.eType = capellacore.PropertyValueGroup
+capellacore.CapellaElement.status.eType = capellacore.EnumerationPropertyLiteral
+capellacore.CapellaElement.features.eType = capellacore.EnumerationPropertyLiteral
+capellacore.CapellaElement.appliedRequirements.eType = requirement.Requirement
+capellacore.Namespace.ownedTraces.eType = capellacore.Trace
+capellacore.Namespace.containedGenericTraces.eType = capellacommon.GenericTrace
+capellacore.Namespace.containedRequirementsTraces.eType = requirement.RequirementsTrace
+capellacore.Namespace.namingRules.eType = capellacore.NamingRule
+capellacore.NamedRelationship.namingRules.eType = capellacore.NamingRule
+capellacore.Structure.ownedPropertyValuePkgs.eType = capellacore.PropertyValuePkg
+capellacore.AbstractModellingStructure.ownedArchitectures.eType = capellacore.ModellingArchitecture
+capellacore.AbstractModellingStructure.ownedArchitecturePkgs.eType = capellacore.ModellingArchitecturePkg
+capellacore.Type.typedElements.eType = capellacore.TypedElement
+capellacore.TypedElement._type.eType = capellacore.Type
+capellacore.ReuseLink.reused.eType = capellacore.ReuseableStructure
+capellacore.ReuseLink.reuser.eType = capellacore.ReuserStructure
+capellacore.ReuseableStructure.reuseLinks.eType = capellacore.ReuseLink
+capellacore.ReuserStructure.reuseLinks.eType = capellacore.ReuseLink
+capellacore.ReuserStructure.ownedReuseLinks.eType = capellacore.ReuseLink
+capellacore.GeneralizableElement.ownedGeneralizations.eType = capellacore.Generalization
+capellacore.GeneralizableElement.superGeneralizations.eType = capellacore.Generalization
+capellacore.GeneralizableElement.subGeneralizations.eType = capellacore.Generalization
+capellacore.Classifier.ownedFeatures.eType = capellacore.Feature
+capellacore.Classifier.containedProperties.eType = information.Property
+capellacore.GeneralClass.containedOperations.eType = information.Operation
+capellacore.GeneralClass.nestedGeneralClasses.eType = capellacore.GeneralClass
+capellacore.Generalization.super_.eType = capellacore.GeneralizableElement
+capellacore.Generalization.sub.eType = capellacore.GeneralizableElement
+capellacore.AbstractExchangeItemPkg.ownedExchangeItems.eType = information.ExchangeItem
+capellacore.Involvement._involver.eType = capellacore.InvolverElement
+capellacore.Involvement.involved.eType = capellacore.InvolvedElement
+capellacore.InvolverElement.involvedInvolvements.eType = capellacore.Involvement
+capellacore.InvolvedElement.involvingInvolvements.eType = capellacore.Involvement
+capellacore.AbstractPropertyValue.involvedElements.eType = capellacore.CapellaElement
+capellacore.AbstractPropertyValue.valuedElements.eType = capellacore.CapellaElement
+capellacore.EnumerationPropertyValue.type.eType = capellacore.EnumerationPropertyType
+capellacore.EnumerationPropertyValue.value.eType = capellacore.EnumerationPropertyLiteral
+capellacore.EnumerationPropertyType.ownedLiterals.eType = capellacore.EnumerationPropertyLiteral
+capellacore.PropertyValueGroup.valuedElements.eType = capellacore.CapellaElement
+capellacore.GeneralizableElement.super_.eType = capellacore.GeneralizableElement
+capellacore.GeneralizableElement.sub.eType = capellacore.GeneralizableElement
+capellacore.GeneralizableElement.sub.eOpposite = capellacore.GeneralizableElement.super_
+
+#print('capellacore.cross_init done')
+
+#print('capellamodeller.cross_init starting')
+
+
+capellamodeller.Project.keyValuePairs.eType = capellacore.KeyValue
+capellamodeller.Project.ownedFolders.eType = capellamodeller.Folder
+capellamodeller.Project.ownedModelRoots.eType = capellamodeller.ModelRoot
+capellamodeller.Folder.ownedFolders.eType = capellamodeller.Folder
+capellamodeller.Folder.ownedModelRoots.eType = capellamodeller.ModelRoot
+capellamodeller.SystemEngineering.containedOperationalAnalysis.eType = oa.OperationalAnalysis
+capellamodeller.SystemEngineering.containedSystemAnalysis.eType = ctx.SystemAnalysis
+capellamodeller.SystemEngineering.containedLogicalArchitectures.eType = la.LogicalArchitecture
+capellamodeller.SystemEngineering.containedPhysicalArchitectures.eType = pa.PhysicalArchitecture
+capellamodeller.SystemEngineering.containedEPBSArchitectures.eType = epbs.EPBSArchitecture
+capellamodeller.SystemEngineering.containedSharedPkgs.eType = sharedmodel.SharedPkg
+capellamodeller.SystemEngineeringPkg.ownedSystemEngineerings.eType = capellamodeller.SystemEngineering
+
+#print('capellamodeller.cross_init done')
+
+#print('cs.cross_init starting')
+
+
+cs.BlockArchitecture.ownedRequirementPkgs.eType = requirement.RequirementsPkg
+cs.BlockArchitecture.ownedAbstractCapabilityPkg.eType = capellacommon.AbstractCapabilityPkg
+cs.BlockArchitecture.ownedInterfacePkg.eType = cs.InterfacePkg
+cs.BlockArchitecture.ownedDataPkg.eType = information.DataPkg
+cs.BlockArchitecture.allocatedArchitectures.eType = cs.BlockArchitecture
+cs.BlockArchitecture.allocatingArchitectures.eType = cs.BlockArchitecture
+cs.BlockArchitecture._system.eType = cs.Component
+cs.Block.ownedAbstractCapabilityPkg.eType = capellacommon.AbstractCapabilityPkg
+cs.Block.ownedInterfacePkg.eType = cs.InterfacePkg
+cs.Block.ownedDataPkg.eType = information.DataPkg
+cs.Block.ownedStateMachines.eType = capellacommon.StateMachine
+cs.Component.ownedInterfaceUses.eType = cs.InterfaceUse
+cs.Component.ownedInterfaceImplementations.eType = cs.InterfaceImplementation
+cs.Component.ownedComponentRealizations.eType = cs.ComponentRealization
+cs.Component.realizedComponents.eType = cs.Component
+cs.Component.realizingComponents.eType = cs.Component
+cs.Component.providedInterfaces.eType = cs.Interface
+cs.Component.requiredInterfaces.eType = cs.Interface
+cs.Component.containedComponentPorts.eType = fa.ComponentPort
+cs.Component.containedParts.eType = cs.Part
+cs.Component.containedPhysicalPorts.eType = cs.PhysicalPort
+cs.Component.ownedPhysicalPath.eType = cs.PhysicalPath
+cs.Component.ownedPhysicalLinks.eType = cs.PhysicalLink
+cs.Component.ownedPhysicalLinkCategories.eType = cs.PhysicalLinkCategory
+cs.Component.representingParts.eType = cs.Part
+cs.Part.providedInterfaces.eType = cs.Interface
+cs.Part.requiredInterfaces.eType = cs.Interface
+cs.Part.ownedDeploymentLinks.eType = cs.AbstractDeploymentLink
+cs.Part.deployedParts.eType = cs.Part
+cs.Part.deployingParts.eType = cs.Part
+cs.Part.ownedAbstractType.eType = modellingcore.AbstractType
+cs.ComponentRealization._realizedComponent.eType = cs.Component
+cs.ComponentRealization._realizingComponent.eType = cs.Component
+cs.InterfacePkg.ownedInterfaces.eType = cs.Interface
+cs.InterfacePkg.ownedInterfacePkgs.eType = cs.InterfacePkg
+cs.Interface.interfaceImplementations.eType = cs.InterfaceImplementation
+cs.Interface.interfaceUses.eType = cs.InterfaceUse
+cs.Interface.allocatingInterfaces.eType = cs.Interface
+cs.Interface.allocatingComponents.eType = cs.Component
+cs.Interface.exchangeItems.eType = information.ExchangeItem
+cs.Interface.ownedExchangeItemAllocations.eType = cs.ExchangeItemAllocation
+cs.Interface.requiringComponents.eType = cs.Component
+cs.Interface.requiringComponentPorts.eType = fa.ComponentPort
+cs.Interface.providingComponents.eType = cs.Component
+cs.Interface.providingComponentPorts.eType = fa.ComponentPort
+cs.Interface.realizingLogicalInterfaces.eType = cs.Interface
+cs.Interface.realizedContextInterfaces.eType = cs.Interface
+cs.Interface.realizingPhysicalInterfaces.eType = cs.Interface
+cs.Interface.realizedLogicalInterfaces.eType = cs.Interface
+cs.InterfaceImplementation.implementedInterface.eType = cs.Interface
+cs.InterfaceUse.usedInterface.eType = cs.Interface
+cs.ProvidedInterfaceLink.interface.eType = cs.Interface
+cs.RequiredInterfaceLink.interface.eType = cs.Interface
+cs.InterfaceAllocator.ownedInterfaceAllocations.eType = cs.InterfaceAllocation
+cs.InterfaceAllocator.allocatedInterfaces.eType = cs.Interface
+cs.ExchangeItemAllocation.allocatedItem.eType = information.ExchangeItem
+cs.ExchangeItemAllocation._allocatingInterface.eType = cs.Interface
+cs.DeployableElement.deployingLinks.eType = cs.AbstractDeploymentLink
+cs.DeploymentTarget.deploymentLinks.eType = cs.AbstractDeploymentLink
+cs.AbstractDeploymentLink.deployedElement.eType = cs.DeployableElement
+cs.AbstractDeploymentLink.location.eType = cs.DeploymentTarget
+cs.AbstractPhysicalLinkEnd.involvedLinks.eType = cs.PhysicalLink
+cs.PhysicalLink.linkEnds.eType = cs.AbstractPhysicalLinkEnd
+cs.PhysicalLink.ownedComponentExchangeFunctionalExchangeAllocations.eType = fa.ComponentExchangeFunctionalExchangeAllocation
+cs.PhysicalLink.ownedPhysicalLinkEnds.eType = cs.PhysicalLinkEnd
+cs.PhysicalLink.ownedPhysicalLinkRealizations.eType = cs.PhysicalLinkRealization
+cs.PhysicalLink.categories.eType = cs.PhysicalLinkCategory
+cs.PhysicalLink._sourcePhysicalPort.eType = cs.PhysicalPort
+cs.PhysicalLink._targetPhysicalPort.eType = cs.PhysicalPort
+cs.PhysicalLink.realizedPhysicalLinks.eType = cs.PhysicalLink
+cs.PhysicalLink.realizingPhysicalLinks.eType = cs.PhysicalLink
+cs.PhysicalLinkCategory.links.eType = cs.PhysicalLink
+cs.PhysicalLinkEnd.port.eType = cs.PhysicalPort
+cs.PhysicalLinkEnd.part.eType = cs.Part
+cs.PhysicalPath.involvedLinks.eType = cs.AbstractPhysicalPathLink
+cs.PhysicalPath.ownedPhysicalPathInvolvements.eType = cs.PhysicalPathInvolvement
+cs.PhysicalPath.firstPhysicalPathInvolvements.eType = cs.PhysicalPathInvolvement
+cs.PhysicalPath.ownedPhysicalPathRealizations.eType = cs.PhysicalPathRealization
+cs.PhysicalPath.realizedPhysicalPaths.eType = cs.PhysicalPath
+cs.PhysicalPath.realizingPhysicalPaths.eType = cs.PhysicalPath
+cs.PhysicalPathInvolvement.nextInvolvements.eType = cs.PhysicalPathInvolvement
+cs.PhysicalPathInvolvement.previousInvolvements.eType = cs.PhysicalPathInvolvement
+cs.PhysicalPathInvolvement._involvedElement.eType = cs.AbstractPathInvolvedElement
+cs.PhysicalPathInvolvement._involvedComponent.eType = cs.Component
+cs.PhysicalPathReference._referencedPhysicalPath.eType = cs.PhysicalPath
+cs.PhysicalPort.ownedComponentPortAllocations.eType = fa.ComponentPortAllocation
+cs.PhysicalPort.ownedPhysicalPortRealizations.eType = cs.PhysicalPortRealization
+cs.PhysicalPort.realizedPhysicalPorts.eType = cs.PhysicalPort
+cs.PhysicalPort.realizingPhysicalPorts.eType = cs.PhysicalPort
+cs.ComponentPkg.ownedParts.eType = cs.Part
+cs.ComponentPkg.ownedComponentExchanges.eType = fa.ComponentExchange
+cs.ComponentPkg.ownedComponentExchangeCategories.eType = fa.ComponentExchangeCategory
+cs.ComponentPkg.ownedFunctionalLinks.eType = fa.ExchangeLink
+cs.ComponentPkg.ownedFunctionalAllocations.eType = fa.ComponentFunctionalAllocation
+cs.ComponentPkg.ownedComponentExchangeRealizations.eType = fa.ComponentExchangeRealization
+cs.ComponentPkg.ownedPhysicalLinks.eType = cs.PhysicalLink
+cs.ComponentPkg.ownedPhysicalLinkCategories.eType = cs.PhysicalLinkCategory
+cs.ComponentPkg.ownedStateMachines.eType = capellacommon.StateMachine
+cs.BlockArchitecture.provisionedArchitectureAllocations.eType = cs.ArchitectureAllocation
+cs.BlockArchitecture.provisioningArchitectureAllocations.eType = cs.ArchitectureAllocation
+cs.Component.usedInterfaceLinks.eType = cs.InterfaceUse
+cs.Component.usedInterfaces.eType = cs.Interface
+cs.Component.implementedInterfaceLinks.eType = cs.InterfaceImplementation
+cs.Component.implementedInterfaces.eType = cs.Interface
+cs.ArchitectureAllocation._allocatedArchitecture.eType = cs.BlockArchitecture
+cs.ArchitectureAllocation._allocatedArchitecture.eOpposite = cs.BlockArchitecture.provisioningArchitectureAllocations
+cs.ArchitectureAllocation._allocatingArchitecture.eType = cs.BlockArchitecture
+cs.ArchitectureAllocation._allocatingArchitecture.eOpposite = cs.BlockArchitecture.provisionedArchitectureAllocations
+cs.Interface.implementorComponents.eType = cs.Component
+cs.Interface.implementorComponents.eOpposite = cs.Component.implementedInterfaces
+cs.Interface.userComponents.eType = cs.Component
+cs.Interface.userComponents.eOpposite = cs.Component.usedInterfaces
+cs.Interface.provisioningInterfaceAllocations.eType = cs.InterfaceAllocation
+cs.InterfaceImplementation._interfaceImplementor.eType = cs.Component
+cs.InterfaceImplementation._interfaceImplementor.eOpposite = cs.Component.implementedInterfaceLinks
+cs.InterfaceUse._interfaceUser.eType = cs.Component
+cs.InterfaceUse._interfaceUser.eOpposite = cs.Component.usedInterfaceLinks
+cs.InterfaceAllocation._allocatedInterface.eType = cs.Interface
+cs.InterfaceAllocation._allocatedInterface.eOpposite = cs.Interface.provisioningInterfaceAllocations
+cs.InterfaceAllocation._allocatingInterfaceAllocator.eType = cs.InterfaceAllocator
+cs.InterfaceAllocator.provisionedInterfaceAllocations.eType = cs.InterfaceAllocation
+cs.InterfaceAllocator.provisionedInterfaceAllocations.eOpposite = cs.InterfaceAllocation._allocatingInterfaceAllocator
+cs.AbstractPhysicalArtifact.allocatorConfigurationItems.eType = epbs.ConfigurationItem
+cs.PhysicalPort.allocatedComponentPorts.eType = fa.ComponentPort
+
+#print('cs.cross_init done')
+
+#print('ctx.cross_init starting')
+
+
+ctx.SystemAnalysis.ownedSystemComponentPkg.eType = ctx.SystemComponentPkg
+ctx.SystemAnalysis.ownedMissionPkg.eType = ctx.MissionPkg
+ctx.SystemAnalysis._containedCapabilityPkg.eType = ctx.CapabilityPkg
+ctx.SystemAnalysis._containedSystemFunctionPkg.eType = ctx.SystemFunctionPkg
+ctx.SystemAnalysis.ownedOperationalAnalysisRealizations.eType = ctx.OperationalAnalysisRealization
+ctx.SystemAnalysis.allocatedOperationalAnalysisRealizations.eType = ctx.OperationalAnalysisRealization
+ctx.SystemFunction.ownedSystemFunctionPkgs.eType = ctx.SystemFunctionPkg
+ctx.SystemFunction.allocatingSystemComponents.eType = ctx.SystemComponent
+ctx.SystemFunction.containedSystemFunctions.eType = ctx.SystemFunction
+ctx.SystemFunction.childrenSystemFunctions.eType = ctx.SystemFunction
+ctx.SystemFunctionPkg.ownedSystemFunctions.eType = ctx.SystemFunction
+ctx.SystemFunctionPkg.ownedSystemFunctionPkgs.eType = ctx.SystemFunctionPkg
+ctx.SystemCommunicationHook.communication.eType = ctx.SystemCommunication
+ctx.SystemCommunicationHook.type.eType = cs.Component
+ctx.SystemCommunication.ends.eType = ctx.SystemCommunicationHook
+ctx.CapabilityInvolvement._systemComponent.eType = ctx.SystemComponent
+ctx.CapabilityInvolvement._capability.eType = ctx.Capability
+ctx.MissionInvolvement._systemComponent.eType = ctx.SystemComponent
+ctx.MissionInvolvement._mission.eType = ctx.Mission
+ctx.Mission.ownedMissionInvolvements.eType = ctx.MissionInvolvement
+ctx.Mission.involvedSystemComponents.eType = ctx.SystemComponent
+ctx.Mission.ownedCapabilityExploitations.eType = ctx.CapabilityExploitation
+ctx.MissionPkg.ownedMissionPkgs.eType = ctx.MissionPkg
+ctx.MissionPkg.ownedMissions.eType = ctx.Mission
+ctx.Capability.ownedCapabilityInvolvements.eType = ctx.CapabilityInvolvement
+ctx.Capability.involvedSystemComponents.eType = ctx.SystemComponent
+ctx.Capability.purposes.eType = ctx.CapabilityExploitation
+ctx.CapabilityExploitation._mission.eType = ctx.Mission
+ctx.CapabilityExploitation.capability.eType = ctx.Capability
+ctx.CapabilityPkg.ownedCapabilities.eType = ctx.Capability
+ctx.CapabilityPkg.ownedCapabilityPkgs.eType = ctx.CapabilityPkg
+ctx.SystemComponentPkg.ownedSystemComponents.eType = ctx.SystemComponent
+ctx.SystemComponentPkg.ownedSystemComponentPkgs.eType = ctx.SystemComponentPkg
+ctx.SystemComponent.ownedSystemComponents.eType = ctx.SystemComponent
+ctx.SystemComponent.ownedSystemComponentPkgs.eType = ctx.SystemComponentPkg
+ctx.SystemComponent.dataType.eType = capellacore.Classifier
+ctx.SystemComponent.involvingCapabilities.eType = ctx.Capability
+ctx.SystemComponent.capabilityInvolvements.eType = ctx.CapabilityInvolvement
+ctx.SystemComponent.involvingMissions.eType = ctx.Mission
+ctx.SystemComponent.missionInvolvements.eType = ctx.MissionInvolvement
+ctx.SystemComponent.realizedEntities.eType = oa.Entity
+ctx.SystemComponent.realizingLogicalComponents.eType = la.LogicalComponent
+ctx.SystemComponent.allocatedSystemFunctions.eType = ctx.SystemFunction
+ctx.SystemAnalysis.allocatedOperationalAnalyses.eType = oa.OperationalAnalysis
+ctx.SystemAnalysis.allocatingLogicalArchitectures.eType = la.LogicalArchitecture
+ctx.SystemFunction.realizedOperationalActivities.eType = oa.OperationalActivity
+ctx.SystemFunction.realizingLogicalFunctions.eType = la.LogicalFunction
+ctx.Mission.exploitedCapabilities.eType = ctx.Capability
+ctx.Capability.purposeMissions.eType = ctx.Mission
+ctx.Capability.purposeMissions.eOpposite = ctx.Mission.exploitedCapabilities
+ctx.Capability.realizedOperationalCapabilities.eType = oa.OperationalCapability
+ctx.Capability.realizingCapabilityRealizations.eType = la.CapabilityRealization
+
+#print('ctx.cross_init done')
+
+#print('epbs.cross_init starting')
+
+
+epbs.EPBSArchitecturePkg.ownedEPBSArchitectures.eType = epbs.EPBSArchitecture
+epbs.EPBSArchitecture.ownedConfigurationItemPkg.eType = epbs.ConfigurationItemPkg
+epbs.EPBSArchitecture._containedCapabilityRealizationPkg.eType = la.CapabilityRealizationPkg
+epbs.EPBSArchitecture.ownedPhysicalArchitectureRealizations.eType = epbs.PhysicalArchitectureRealization
+epbs.EPBSArchitecture.allocatedPhysicalArchitectureRealizations.eType = epbs.PhysicalArchitectureRealization
+epbs.ConfigurationItemPkg.ownedConfigurationItems.eType = epbs.ConfigurationItem
+epbs.ConfigurationItemPkg.ownedConfigurationItemPkgs.eType = epbs.ConfigurationItemPkg
+epbs.ConfigurationItem.ownedConfigurationItems.eType = epbs.ConfigurationItem
+epbs.ConfigurationItem.ownedConfigurationItemPkgs.eType = epbs.ConfigurationItemPkg
+epbs.ConfigurationItem.ownedPhysicalArtifactRealizations.eType = epbs.PhysicalArtifactRealization
+epbs.PhysicalArtifactRealization._realizedPhysicalArtifact.eType = cs.AbstractPhysicalArtifact
+epbs.PhysicalArtifactRealization._realizingConfigurationItem.eType = epbs.ConfigurationItem
+epbs.EPBSArchitecture.allocatedPhysicalArchitectures.eType = pa.PhysicalArchitecture
+epbs.ConfigurationItem.allocatedPhysicalArtifacts.eType = cs.AbstractPhysicalArtifact
+
+#print('epbs.cross_init done')
+
+#print('fa.cross_init starting')
+
+
+fa.AbstractFunctionalArchitecture.ownedFunctionPkg.eType = fa.FunctionPkg
+fa.AbstractFunctionalArchitecture.ownedComponentExchanges.eType = fa.ComponentExchange
+fa.AbstractFunctionalArchitecture.ownedComponentExchangeCategories.eType = fa.ComponentExchangeCategory
+fa.AbstractFunctionalArchitecture.ownedFunctionalLinks.eType = fa.ExchangeLink
+fa.AbstractFunctionalArchitecture.ownedFunctionalAllocations.eType = fa.ComponentFunctionalAllocation
+fa.AbstractFunctionalArchitecture.ownedComponentExchangeRealizations.eType = fa.ComponentExchangeRealization
+fa.AbstractFunctionalBlock.ownedFunctionalAllocation.eType = fa.ComponentFunctionalAllocation
+fa.AbstractFunctionalBlock.ownedComponentExchanges.eType = fa.ComponentExchange
+fa.AbstractFunctionalBlock.ownedComponentExchangeCategories.eType = fa.ComponentExchangeCategory
+fa.AbstractFunctionalBlock.inExchangeLinks.eType = fa.ExchangeLink
+fa.AbstractFunctionalBlock.outExchangeLinks.eType = fa.ExchangeLink
+fa.FunctionPkg.ownedFunctionalLinks.eType = fa.ExchangeLink
+fa.FunctionPkg.ownedExchanges.eType = fa.FunctionalExchangeSpecification
+fa.FunctionPkg.ownedExchangeSpecificationRealizations.eType = fa.ExchangeSpecificationRealization
+fa.FunctionPkg.ownedCategories.eType = fa.ExchangeCategory
+fa.FunctionPkg.ownedFunctionSpecifications.eType = fa.FunctionSpecification
+fa.FunctionSpecification.inExchangeLinks.eType = fa.ExchangeLink
+fa.FunctionSpecification.outExchangeLinks.eType = fa.ExchangeLink
+fa.FunctionSpecification.ownedFunctionPorts.eType = fa.FunctionPort
+fa.FunctionSpecification.subFunctionSpecifications.eType = fa.FunctionSpecification
+fa.ExchangeCategory.exchanges.eType = fa.FunctionalExchange
+fa.ExchangeLink.exchanges.eType = fa.ExchangeSpecification
+fa.ExchangeLink.ownedExchangeContainments.eType = fa.ExchangeContainment
+fa.ExchangeLink.sources.eType = fa.FunctionSpecification
+fa.ExchangeLink.destinations.eType = fa.FunctionSpecification
+fa.ExchangeSpecification._containingLink.eType = fa.ExchangeLink
+fa.FunctionalExchangeSpecification.functionalExchanges.eType = fa.FunctionalExchange
+fa.FunctionalChain.ownedFunctionalChainInvolvements.eType = fa.FunctionalChainInvolvement
+fa.FunctionalChain.ownedFunctionalChainRealizations.eType = fa.FunctionalChainRealization
+fa.FunctionalChain.involvedFunctionalChainInvolvements.eType = fa.FunctionalChainInvolvement
+fa.FunctionalChain.involvedElements.eType = capellacore.InvolvedElement
+fa.FunctionalChain.enactedFunctions.eType = fa.AbstractFunction
+fa.FunctionalChain.enactedFunctionalBlocks.eType = fa.AbstractFunctionalBlock
+fa.FunctionalChain.availableInStates.eType = capellacommon.State
+fa.FunctionalChain.firstFunctionalChainInvolvements.eType = fa.FunctionalChainInvolvement
+fa.FunctionalChain.involvingCapabilities.eType = ctx.Capability
+fa.FunctionalChain.involvingCapabilityRealizations.eType = la.CapabilityRealization
+fa.FunctionalChain.realizedFunctionalChains.eType = fa.FunctionalChain
+fa.FunctionalChain.realizingFunctionalChains.eType = fa.FunctionalChain
+fa.FunctionalChain.preCondition.eType = capellacore.Constraint
+fa.FunctionalChain.postCondition.eType = capellacore.Constraint
+fa.FunctionalChain.ownedSequenceNodes.eType = fa.ControlNode
+fa.FunctionalChain.ownedSequenceLinks.eType = fa.SequenceLink
+fa.AbstractFunctionalChainContainer.ownedFunctionalChains.eType = fa.FunctionalChain
+fa.FunctionalChainInvolvement.nextFunctionalChainInvolvements.eType = fa.FunctionalChainInvolvement
+fa.FunctionalChainInvolvement.previousFunctionalChainInvolvements.eType = fa.FunctionalChainInvolvement
+fa.FunctionalChainInvolvement._involvedElement.eType = capellacore.InvolvedElement
+fa.FunctionalChainReference._referencedFunctionalChain.eType = fa.FunctionalChain
+fa.FunctionInputPort.incomingExchangeItems.eType = information.ExchangeItem
+fa.FunctionInputPort.incomingFunctionalExchanges.eType = fa.FunctionalExchange
+fa.FunctionOutputPort.outgoingExchangeItems.eType = information.ExchangeItem
+fa.FunctionOutputPort.outgoingFunctionalExchanges.eType = fa.FunctionalExchange
+fa.FunctionalExchange.exchangeSpecifications.eType = fa.FunctionalExchangeSpecification
+fa.FunctionalExchange.exchangedItems.eType = information.ExchangeItem
+fa.FunctionalExchange.categories.eType = fa.ExchangeCategory
+fa.FunctionalExchange.ownedFunctionalExchangeRealizations.eType = fa.FunctionalExchangeRealization
+fa.FunctionalExchange._sourceFunctionOutputPort.eType = fa.FunctionOutputPort
+fa.FunctionalExchange._targetFunctionInputPort.eType = fa.FunctionInputPort
+fa.AbstractFunction.ownedFunctions.eType = fa.AbstractFunction
+fa.AbstractFunction.ownedFunctionRealizations.eType = fa.FunctionRealization
+fa.AbstractFunction.ownedFunctionalExchanges.eType = fa.FunctionalExchange
+fa.AbstractFunction.subFunctions.eType = fa.AbstractFunction
+fa.AbstractFunction.availableInStates.eType = capellacommon.State
+fa.AbstractFunction.involvingCapabilities.eType = ctx.Capability
+fa.AbstractFunction.involvingCapabilityRealizations.eType = la.CapabilityRealization
+fa.AbstractFunction._linkedStateMachine.eType = capellacommon.StateMachine
+fa.AbstractFunction._linkedFunctionSpecification.eType = fa.FunctionSpecification
+fa.FunctionPort.representedComponentPort.eType = fa.ComponentPort
+fa.FunctionPort.realizedFunctionPorts.eType = fa.FunctionPort
+fa.FunctionPort.realizingFunctionPorts.eType = fa.FunctionPort
+fa.ComponentExchange.ownedComponentExchangeFunctionalExchangeAllocations.eType = fa.ComponentExchangeFunctionalExchangeAllocation
+fa.ComponentExchange.ownedComponentExchangeRealizations.eType = fa.ComponentExchangeRealization
+fa.ComponentExchange.ownedComponentExchangeEnds.eType = fa.ComponentExchangeEnd
+fa.ComponentExchange._sourcePort.eType = information.Port
+fa.ComponentExchange._sourcePart.eType = cs.Part
+fa.ComponentExchange._targetPort.eType = information.Port
+fa.ComponentExchange._targetPart.eType = cs.Part
+fa.ComponentExchange.categories.eType = fa.ComponentExchangeCategory
+fa.ComponentExchange.allocatorPhysicalLinks.eType = cs.PhysicalLink
+fa.ComponentExchangeAllocation._componentExchangeAllocated.eType = fa.ComponentExchange
+fa.ComponentExchangeAllocation._componentExchangeAllocator.eType = fa.ComponentExchangeAllocator
+fa.ComponentExchangeAllocator.ownedComponentExchangeAllocations.eType = fa.ComponentExchangeAllocation
+fa.ComponentExchangeAllocator.allocatedComponentExchanges.eType = fa.ComponentExchange
+fa.ComponentExchangeCategory.exchanges.eType = fa.ComponentExchange
+fa.ComponentExchangeEnd.port.eType = information.Port
+fa.ComponentExchangeEnd.part.eType = cs.Part
+fa.ComponentPort.componentExchanges.eType = fa.ComponentExchange
+fa.ComponentPortAllocation.ownedComponentPortAllocationEnds.eType = fa.ComponentPortAllocationEnd
+fa.ComponentPortAllocation._allocatedPort.eType = information.Port
+fa.ComponentPortAllocation._allocatingPort.eType = information.Port
+fa.ComponentPortAllocationEnd.port.eType = information.Port
+fa.ComponentPortAllocationEnd.part.eType = cs.Part
+fa.ComponentPortAllocationEnd._owningComponentPortAllocation.eType = fa.ComponentPortAllocation
+fa.FunctionalChainInvolvementLink.exchangeContext.eType = capellacore.Constraint
+fa.FunctionalChainInvolvementLink.exchangedItems.eType = information.ExchangeItem
+fa.FunctionalChainInvolvementLink.source.eType = fa.FunctionalChainInvolvementFunction
+fa.FunctionalChainInvolvementLink.target.eType = fa.FunctionalChainInvolvementFunction
+fa.SequenceLink.condition.eType = capellacore.Constraint
+fa.SequenceLink.links.eType = fa.FunctionalChainInvolvementLink
+fa.SequenceLink.source.eType = fa.SequenceLinkEnd
+fa.SequenceLink.target.eType = fa.SequenceLinkEnd
+fa.FunctionalChainInvolvementFunction.outgoingInvolvementLinks.eType = fa.FunctionalChainInvolvementLink
+fa.FunctionalChainInvolvementFunction.incomingInvolvementLinks.eType = fa.FunctionalChainInvolvementLink
+fa.ReferenceHierarchyContext.sourceReferenceHierarchy.eType = fa.FunctionalChainReference
+fa.ReferenceHierarchyContext.targetReferenceHierarchy.eType = fa.FunctionalChainReference
+fa.AbstractFunctionalBlock.functionalAllocations.eType = fa.ComponentFunctionalAllocation
+fa.AbstractFunctionalBlock.allocatedFunctions.eType = fa.AbstractFunction
+fa.ExchangeLink.exchangeContainmentLinks.eType = fa.ExchangeContainment
+fa.ExchangeContainment.exchange.eType = fa.ExchangeSpecification
+fa.ExchangeContainment.link.eType = fa.ExchangeLink
+fa.ExchangeContainment.link.eOpposite = fa.ExchangeLink.exchangeContainmentLinks
+fa.ExchangeSpecification.link.eType = fa.ExchangeContainment
+fa.ExchangeSpecification.link.eOpposite = fa.ExchangeContainment.exchange
+fa.ExchangeSpecification.outgoingExchangeSpecificationRealizations.eType = fa.ExchangeSpecificationRealization
+fa.ExchangeSpecification.incomingExchangeSpecificationRealizations.eType = fa.ExchangeSpecificationRealization
+fa.FunctionalChain.involvedFunctions.eType = fa.AbstractFunction
+fa.FunctionalChain.involvedFunctionalExchanges.eType = fa.FunctionalExchange
+fa.ComponentFunctionalAllocation._function.eType = fa.AbstractFunction
+fa.ComponentFunctionalAllocation._block.eType = fa.AbstractFunctionalBlock
+fa.ComponentFunctionalAllocation._block.eOpposite = fa.AbstractFunctionalBlock.functionalAllocations
+fa.ExchangeSpecificationRealization._realizedExchangeSpecification.eType = fa.ExchangeSpecification
+fa.ExchangeSpecificationRealization._realizedExchangeSpecification.eOpposite = fa.ExchangeSpecification.incomingExchangeSpecificationRealizations
+fa.ExchangeSpecificationRealization._realizingExchangeSpecification.eType = fa.ExchangeSpecification
+fa.ExchangeSpecificationRealization._realizingExchangeSpecification.eOpposite = fa.ExchangeSpecification.outgoingExchangeSpecificationRealizations
+fa.FunctionalExchangeRealization._realizedFunctionalExchange.eType = fa.FunctionalExchange
+fa.FunctionalExchangeRealization._realizingFunctionalExchange.eType = fa.FunctionalExchange
+fa.FunctionRealization._allocatedFunction.eType = fa.AbstractFunction
+fa.FunctionRealization._allocatingFunction.eType = fa.AbstractFunction
+fa.FunctionalExchange.involvingFunctionalChains.eType = fa.FunctionalChain
+fa.FunctionalExchange.involvingFunctionalChains.eOpposite = fa.FunctionalChain.involvedFunctionalExchanges
+fa.FunctionalExchange.allocatingComponentExchanges.eType = fa.ComponentExchange
+fa.FunctionalExchange.incomingComponentExchangeFunctionalExchangeRealizations.eType = fa.ComponentExchangeFunctionalExchangeAllocation
+fa.FunctionalExchange.incomingFunctionalExchangeRealizations.eType = fa.FunctionalExchangeRealization
+fa.FunctionalExchange.incomingFunctionalExchangeRealizations.eOpposite = fa.FunctionalExchangeRealization._realizedFunctionalExchange
+fa.FunctionalExchange.outgoingFunctionalExchangeRealizations.eType = fa.FunctionalExchangeRealization
+fa.FunctionalExchange.outgoingFunctionalExchangeRealizations.eOpposite = fa.FunctionalExchangeRealization._realizingFunctionalExchange
+fa.FunctionalExchange.realizedFunctionalExchanges.eType = fa.FunctionalExchange
+fa.FunctionalExchange.realizingFunctionalExchanges.eType = fa.FunctionalExchange
+fa.FunctionalExchange.realizingFunctionalExchanges.eOpposite = fa.FunctionalExchange.realizedFunctionalExchanges
+fa.AbstractFunction.outFunctionRealizations.eType = fa.FunctionRealization
+fa.AbstractFunction.outFunctionRealizations.eOpposite = fa.FunctionRealization._allocatingFunction
+fa.AbstractFunction.inFunctionRealizations.eType = fa.FunctionRealization
+fa.AbstractFunction.inFunctionRealizations.eOpposite = fa.FunctionRealization._allocatedFunction
+fa.AbstractFunction.componentFunctionalAllocations.eType = fa.ComponentFunctionalAllocation
+fa.AbstractFunction.componentFunctionalAllocations.eOpposite = fa.ComponentFunctionalAllocation._function
+fa.AbstractFunction.allocationBlocks.eType = fa.AbstractFunctionalBlock
+fa.AbstractFunction.allocationBlocks.eOpposite = fa.AbstractFunctionalBlock.allocatedFunctions
+fa.AbstractFunction.involvingFunctionalChains.eType = fa.FunctionalChain
+fa.AbstractFunction.involvingFunctionalChains.eOpposite = fa.FunctionalChain.involvedFunctions
+fa.FunctionPort.allocatorComponentPorts.eType = fa.ComponentPort
+fa.ComponentExchange.allocatedFunctionalExchanges.eType = fa.FunctionalExchange
+fa.ComponentExchange.allocatedFunctionalExchanges.eOpposite = fa.FunctionalExchange.allocatingComponentExchanges
+fa.ComponentExchange.incomingComponentExchangeRealizations.eType = fa.ComponentExchangeRealization
+fa.ComponentExchange.outgoingComponentExchangeRealizations.eType = fa.ComponentExchangeRealization
+fa.ComponentExchange.outgoingComponentExchangeFunctionalExchangeAllocations.eType = fa.ComponentExchangeFunctionalExchangeAllocation
+fa.ComponentExchange.realizedComponentExchanges.eType = fa.ComponentExchange
+fa.ComponentExchange.realizingComponentExchanges.eType = fa.ComponentExchange
+fa.ComponentExchange.realizingComponentExchanges.eOpposite = fa.ComponentExchange.realizedComponentExchanges
+fa.ComponentExchangeFunctionalExchangeAllocation._allocatedFunctionalExchange.eType = fa.FunctionalExchange
+fa.ComponentExchangeFunctionalExchangeAllocation._allocatedFunctionalExchange.eOpposite = fa.FunctionalExchange.incomingComponentExchangeFunctionalExchangeRealizations
+fa.ComponentExchangeFunctionalExchangeAllocation._allocatingComponentExchange.eType = fa.ComponentExchange
+fa.ComponentExchangeFunctionalExchangeAllocation._allocatingComponentExchange.eOpposite = fa.ComponentExchange.outgoingComponentExchangeFunctionalExchangeAllocations
+fa.ComponentExchangeRealization._allocatedComponentExchange.eType = fa.ComponentExchange
+fa.ComponentExchangeRealization._allocatedComponentExchange.eOpposite = fa.ComponentExchange.incomingComponentExchangeRealizations
+fa.ComponentExchangeRealization._allocatingComponentExchange.eType = fa.ComponentExchange
+fa.ComponentExchangeRealization._allocatingComponentExchange.eOpposite = fa.ComponentExchange.outgoingComponentExchangeRealizations
+fa.ComponentPort.allocatedFunctionPorts.eType = fa.FunctionPort
+fa.ComponentPort.allocatedFunctionPorts.eOpposite = fa.FunctionPort.allocatorComponentPorts
+fa.ComponentPort.delegatedComponentPorts.eType = fa.ComponentPort
+fa.ComponentPort.delegatingComponentPorts.eType = fa.ComponentPort
+fa.ComponentPort.delegatingComponentPorts.eOpposite = fa.ComponentPort.delegatedComponentPorts
+fa.ComponentPort.allocatingPhysicalPorts.eType = cs.PhysicalPort
+fa.ComponentPort.realizedComponentPorts.eType = fa.ComponentPort
+fa.ComponentPort.realizingComponentPorts.eType = fa.ComponentPort
+fa.ComponentPort.realizingComponentPorts.eOpposite = fa.ComponentPort.realizedComponentPorts
+
+#print('fa.cross_init done')
+
+#print('information.cross_init starting')
+
+
+information.communication.CommunicationItem.ownedStateMachines.eType = capellacommon.StateMachine
+information.communication.CommunicationItem.properties.eType = information.Property
+information.communication.MessageReference.message.eType = information.communication.Message
+information.communication.MessageReferencePkg.ownedMessageReferences.eType = information.communication.MessageReference
+information.communication.Signal.signalInstances.eType = information.communication.SignalInstance
+information.communication.CommunicationLink.exchangeItem.eType = information.ExchangeItem
+information.communication.CommunicationLinkExchanger.ownedCommunicationLinks.eType = information.communication.CommunicationLink
+information.communication.CommunicationLinkExchanger.produce.eType = information.communication.CommunicationLink
+information.communication.CommunicationLinkExchanger.consume.eType = information.communication.CommunicationLink
+information.communication.CommunicationLinkExchanger.send.eType = information.communication.CommunicationLink
+information.communication.CommunicationLinkExchanger.receive.eType = information.communication.CommunicationLink
+information.communication.CommunicationLinkExchanger.call.eType = information.communication.CommunicationLink
+information.communication.CommunicationLinkExchanger.execute.eType = information.communication.CommunicationLink
+information.communication.CommunicationLinkExchanger.write.eType = information.communication.CommunicationLink
+information.communication.CommunicationLinkExchanger.access.eType = information.communication.CommunicationLink
+information.communication.CommunicationLinkExchanger.acquire.eType = information.communication.CommunicationLink
+information.communication.CommunicationLinkExchanger.transmit.eType = information.communication.CommunicationLink
+information.datatype.DataType._defaultValue.eType = information.datavalue.DataValue
+information.datatype.DataType._nullValue.eType = information.datavalue.DataValue
+information.datatype.DataType.ownedInformationRealizations.eType = information.InformationRealization
+information.datatype.BooleanType.ownedLiterals.eType = information.datavalue.LiteralBooleanValue
+information.datatype.BooleanType.ownedDefaultValue.eType = information.datavalue.AbstractBooleanValue
+information.datatype.Enumeration.ownedLiterals.eType = information.datavalue.EnumerationLiteral
+information.datatype.Enumeration.ownedDefaultValue.eType = information.datavalue.AbstractEnumerationValue
+information.datatype.Enumeration.ownedNullValue.eType = information.datavalue.AbstractEnumerationValue
+information.datatype.Enumeration.ownedMinValue.eType = information.datavalue.AbstractEnumerationValue
+information.datatype.Enumeration.ownedMaxValue.eType = information.datavalue.AbstractEnumerationValue
+information.datatype.Enumeration.domainType.eType = information.datatype.DataType
+information.datatype.StringType.ownedDefaultValue.eType = information.datavalue.AbstractStringValue
+information.datatype.StringType.ownedNullValue.eType = information.datavalue.AbstractStringValue
+information.datatype.StringType.ownedMinLength.eType = information.datavalue.NumericValue
+information.datatype.StringType.ownedMaxLength.eType = information.datavalue.NumericValue
+information.datatype.NumericType.ownedDefaultValue.eType = information.datavalue.NumericValue
+information.datatype.NumericType.ownedNullValue.eType = information.datavalue.NumericValue
+information.datatype.NumericType.ownedMinValue.eType = information.datavalue.NumericValue
+information.datatype.NumericType.ownedMaxValue.eType = information.datavalue.NumericValue
+information.datatype.PhysicalQuantity.unit.eType = information.Unit
+information.datavalue.DataValue._type.eType = capellacore.Type
+information.datavalue.DataValueContainer.ownedDataValues.eType = information.datavalue.DataValue
+information.datavalue.AbstractBooleanValue._booleanType.eType = information.datatype.BooleanType
+information.datavalue.BooleanReference.referencedValue.eType = information.datavalue.AbstractBooleanValue
+information.datavalue.BooleanReference.referencedProperty.eType = information.Property
+information.datavalue.AbstractEnumerationValue._enumerationType.eType = information.datatype.Enumeration
+information.datavalue.EnumerationLiteral.domainValue.eType = information.datavalue.DataValue
+information.datavalue.EnumerationReference.referencedValue.eType = information.datavalue.AbstractEnumerationValue
+information.datavalue.EnumerationReference.referencedProperty.eType = information.Property
+information.datavalue.AbstractStringValue._stringType.eType = information.datatype.StringType
+information.datavalue.StringReference.referencedValue.eType = information.datavalue.AbstractStringValue
+information.datavalue.StringReference.referencedProperty.eType = information.Property
+information.datavalue.NumericValue.unit.eType = information.Unit
+information.datavalue.NumericValue._numericType.eType = information.datatype.NumericType
+information.datavalue.NumericReference.referencedValue.eType = information.datavalue.NumericValue
+information.datavalue.NumericReference.referencedProperty.eType = information.Property
+information.datavalue.AbstractComplexValue._complexType.eType = capellacore.Classifier
+information.datavalue.ComplexValue.ownedParts.eType = information.datavalue.ValuePart
+information.datavalue.ComplexValueReference.referencedValue.eType = information.datavalue.AbstractComplexValue
+information.datavalue.ComplexValueReference.referencedProperty.eType = information.Property
+information.datavalue.ValuePart.referencedProperty.eType = information.Property
+information.datavalue.ValuePart.ownedValue.eType = information.datavalue.DataValue
+information.datavalue.AbstractExpressionValue._expressionType.eType = information.datatype.DataType
+information.datavalue.BinaryExpression.ownedLeftOperand.eType = information.datavalue.DataValue
+information.datavalue.BinaryExpression.ownedRightOperand.eType = information.datavalue.DataValue
+information.datavalue.UnaryExpression.ownedOperand.eType = information.datavalue.DataValue
+information.AbstractInstance.representingInstanceRoles.eType = interaction.InstanceRole
+information.AssociationPkg.ownedAssociations.eType = information.Association
+information.Association.ownedMembers.eType = information.Property
+information.Association.navigableMembers.eType = information.Property
+information.Class.keyParts.eType = information.KeyPart
+information.Class.ownedStateMachines.eType = capellacommon.StateMachine
+information.Class.ownedDataValues.eType = information.datavalue.DataValue
+information.Class.ownedInformationRealizations.eType = information.InformationRealization
+information.Collection.type.eType = capellacore.Type
+information.Collection.index.eType = information.datatype.DataType
+information.Collection.containedOperations.eType = information.Operation
+information.CollectionValue.ownedElements.eType = information.datavalue.DataValue
+information.CollectionValue.ownedDefaultElement.eType = information.datavalue.DataValue
+information.CollectionValueReference.referencedValue.eType = information.AbstractCollectionValue
+information.CollectionValueReference.referencedProperty.eType = information.Property
+information.DataPkg.ownedDataPkgs.eType = information.DataPkg
+information.DataPkg.ownedClasses.eType = information.Class
+information.DataPkg.ownedKeyParts.eType = information.KeyPart
+information.DataPkg.ownedCollections.eType = information.Collection
+information.DataPkg.ownedUnits.eType = information.Unit
+information.DataPkg.ownedDataTypes.eType = information.datatype.DataType
+information.DataPkg.ownedSignals.eType = information.communication.Signal
+information.DataPkg.ownedMessages.eType = information.communication.Message
+information.DataPkg.ownedExceptions.eType = information.communication.Exception
+information.DataPkg.ownedStateEvents.eType = capellacommon.StateEvent
+information.KeyPart.property.eType = information.Property
+information.MultiplicityElement.ownedDefaultValue.eType = information.datavalue.DataValue
+information.MultiplicityElement.ownedMinValue.eType = information.datavalue.DataValue
+information.MultiplicityElement.ownedMaxValue.eType = information.datavalue.DataValue
+information.MultiplicityElement.ownedNullValue.eType = information.datavalue.DataValue
+information.MultiplicityElement.ownedMinCard.eType = information.datavalue.NumericValue
+information.MultiplicityElement.ownedMinLength.eType = information.datavalue.NumericValue
+information.MultiplicityElement.ownedMaxCard.eType = information.datavalue.NumericValue
+information.MultiplicityElement.ownedMaxLength.eType = information.datavalue.NumericValue
+information.Operation.ownedParameters.eType = information.Parameter
+information.Operation.ownedOperationAllocation.eType = information.OperationAllocation
+information.Operation.ownedExchangeItemRealizations.eType = information.ExchangeItemRealization
+information.OperationAllocation._allocatedOperation.eType = information.Operation
+information.OperationAllocation._allocatingOperation.eType = information.Operation
+information.Property._association.eType = information.Association
+information.Service.thrownExceptions.eType = information.communication.Exception
+information.Service.messages.eType = information.communication.Message
+information.Service.messageReferences.eType = information.communication.MessageReference
+information.Union.discriminant.eType = information.UnionProperty
+information.Union.defaultProperty.eType = information.UnionProperty
+information.Union.containedUnionProperties.eType = information.UnionProperty
+information.UnionProperty.qualifier.eType = information.datavalue.DataValue
+information.Port.ownedProtocols.eType = capellacommon.StateMachine
+information.Port.providedInterfaces.eType = cs.Interface
+information.Port.requiredInterfaces.eType = cs.Interface
+information.Port.ownedPortRealizations.eType = information.PortRealization
+information.Port.ownedPortAllocations.eType = information.PortAllocation
+information.ExchangeItem.ownedElements.eType = information.ExchangeItemElement
+information.ExchangeItem.ownedInformationRealizations.eType = information.InformationRealization
+information.ExchangeItem.ownedExchangeItemInstances.eType = information.ExchangeItemInstance
+information.ExchangeItem.allocatorInterfaces.eType = cs.Interface
+information.ExchangeItemElement.referencedProperties.eType = information.Property
+information.ExchangeItemRealization._realizedItem.eType = modellingcore.AbstractExchangeItem
+information.ExchangeItemRealization._realizingOperation.eType = information.Operation
+information.AbstractEventOperation.invokingSequenceMessages.eType = interaction.SequenceMessage
+information.datatype.DataType.realizedDataTypes.eType = information.datatype.DataType
+information.datatype.DataType.realizingDataTypes.eType = information.datatype.DataType
+information.datatype.DataType.realizingDataTypes.eOpposite = information.datatype.DataType.realizedDataTypes
+information.Class.realizedClasses.eType = information.Class
+information.Class.realizingClasses.eType = information.Class
+information.Class.realizingClasses.eOpposite = information.Class.realizedClasses
+information.Operation.allocatingOperations.eType = information.Operation
+information.Operation.allocatedOperations.eType = information.Operation
+information.Operation.allocatedOperations.eOpposite = information.Operation.allocatingOperations
+information.Operation.realizedExchangeItems.eType = information.ExchangeItem
+information.Port.incomingPortRealizations.eType = information.PortRealization
+information.Port.outgoingPortRealizations.eType = information.PortRealization
+information.Port.incomingPortAllocations.eType = information.PortAllocation
+information.Port.outgoingPortAllocations.eType = information.PortAllocation
+information.PortRealization._realizedPort.eType = information.Port
+information.PortRealization._realizedPort.eOpposite = information.Port.incomingPortRealizations
+information.PortRealization._realizingPort.eType = information.Port
+information.PortRealization._realizingPort.eOpposite = information.Port.outgoingPortRealizations
+information.PortAllocation._allocatedPort.eType = information.Port
+information.PortAllocation._allocatedPort.eOpposite = information.Port.incomingPortAllocations
+information.PortAllocation._allocatingPort.eType = information.Port
+information.PortAllocation._allocatingPort.eOpposite = information.Port.outgoingPortAllocations
+information.ExchangeItem.realizedExchangeItems.eType = information.ExchangeItem
+information.ExchangeItem.realizingExchangeItems.eType = information.ExchangeItem
+information.ExchangeItem.realizingExchangeItems.eOpposite = information.ExchangeItem.realizedExchangeItems
+information.ExchangeItem.realizingOperations.eType = information.Operation
+information.ExchangeItem.realizingOperations.eOpposite = information.Operation.realizedExchangeItems
+
+#print('information.cross_init done')
+
+#print('interaction.cross_init starting')
+
+
+interaction.SequenceMessage.exchangeContext.eType = capellacore.Constraint
+interaction.SequenceMessage.sendingEnd.eType = interaction.MessageEnd
+interaction.SequenceMessage.receivingEnd.eType = interaction.MessageEnd
+interaction.SequenceMessage._invokedOperation.eType = information.AbstractEventOperation
+interaction.SequenceMessage.exchangedItems.eType = information.ExchangeItem
+interaction.SequenceMessage._sendingPart.eType = cs.Part
+interaction.SequenceMessage._receivingPart.eType = cs.Part
+interaction.SequenceMessage._sendingFunction.eType = fa.AbstractFunction
+interaction.SequenceMessage._receivingFunction.eType = fa.AbstractFunction
+interaction.SequenceMessage.ownedSequenceMessageValuations.eType = interaction.SequenceMessageValuation
+interaction.Scenario.preCondition.eType = capellacore.Constraint
+interaction.Scenario.postCondition.eType = capellacore.Constraint
+interaction.Scenario.ownedInstanceRoles.eType = interaction.InstanceRole
+interaction.Scenario.ownedMessages.eType = interaction.SequenceMessage
+interaction.Scenario.ownedInteractionFragments.eType = interaction.InteractionFragment
+interaction.Scenario.ownedTimeLapses.eType = interaction.TimeLapse
+interaction.Scenario.ownedEvents.eType = interaction.Event
+interaction.Scenario.ownedFormalGates.eType = interaction.Gate
+interaction.Scenario.ownedScenarioRealization.eType = interaction.ScenarioRealization
+interaction.Scenario.ownedConstraintDurations.eType = interaction.ConstraintDuration
+interaction.Scenario.containedFunctions.eType = fa.AbstractFunction
+interaction.Scenario.containedParts.eType = cs.Part
+interaction.Scenario.referencedScenarios.eType = interaction.Scenario
+interaction.MessageEnd._message.eType = interaction.SequenceMessage
+interaction.Execution._covered.eType = interaction.InstanceRole
+interaction.ExecutionEnd._execution.eType = interaction.Execution
+interaction.InstanceRole.representedInstance.eType = information.AbstractInstance
+interaction.AbstractEnd.event.eType = interaction.Event
+interaction.EventReceiptOperation.operation.eType = information.AbstractEventOperation
+interaction.EventSentOperation.operation.eType = information.AbstractEventOperation
+interaction.AbstractCapability.preCondition.eType = capellacore.Constraint
+interaction.AbstractCapability.postCondition.eType = capellacore.Constraint
+interaction.AbstractCapability.ownedScenarios.eType = interaction.Scenario
+interaction.AbstractCapability.extends.eType = interaction.AbstractCapabilityExtend
+interaction.AbstractCapability.extending.eType = interaction.AbstractCapabilityExtend
+interaction.AbstractCapability.abstractCapabilityExtensionPoints.eType = interaction.AbstractCapabilityExtensionPoint
+interaction.AbstractCapability.superGeneralizations.eType = interaction.AbstractCapabilityGeneralization
+interaction.AbstractCapability.subGeneralizations.eType = interaction.AbstractCapabilityGeneralization
+interaction.AbstractCapability.includes.eType = interaction.AbstractCapabilityInclude
+interaction.AbstractCapability.including.eType = interaction.AbstractCapabilityInclude
+interaction.AbstractCapability.super_.eType = interaction.AbstractCapability
+interaction.AbstractCapability.sub.eType = interaction.AbstractCapability
+interaction.AbstractCapability.includedAbstractCapabilities.eType = interaction.AbstractCapability
+interaction.AbstractCapability.includingAbstractCapabilities.eType = interaction.AbstractCapability
+interaction.AbstractCapability.extendedAbstractCapabilities.eType = interaction.AbstractCapability
+interaction.AbstractCapability.extendingAbstractCapabilities.eType = interaction.AbstractCapability
+interaction.AbstractCapability.ownedFunctionalChainAbstractCapabilityInvolvements.eType = interaction.FunctionalChainAbstractCapabilityInvolvement
+interaction.AbstractCapability.ownedAbstractFunctionAbstractCapabilityInvolvements.eType = interaction.AbstractFunctionAbstractCapabilityInvolvement
+interaction.AbstractCapability.availableInStates.eType = capellacommon.State
+interaction.AbstractCapability.ownedAbstractCapabilityRealizations.eType = interaction.AbstractCapabilityRealization
+interaction.AbstractCapability.involvedAbstractFunctions.eType = fa.AbstractFunction
+interaction.AbstractCapability.involvedFunctionalChains.eType = fa.FunctionalChain
+interaction.AbstractCapabilityExtend.extended.eType = interaction.AbstractCapability
+interaction.AbstractCapabilityExtend._extension.eType = interaction.AbstractCapability
+interaction.AbstractCapabilityExtensionPoint._abstractCapability.eType = interaction.AbstractCapability
+interaction.AbstractCapabilityGeneralization.super_.eType = interaction.AbstractCapability
+interaction.AbstractCapabilityGeneralization._sub.eType = interaction.AbstractCapability
+interaction.AbstractCapabilityInclude.included.eType = interaction.AbstractCapability
+interaction.AbstractCapabilityInclude._inclusion.eType = interaction.AbstractCapability
+interaction.InteractionFragment.coveredInstanceRoles.eType = interaction.InstanceRole
+interaction.InteractionState.relatedAbstractState.eType = capellacommon.AbstractState
+interaction.InteractionState.relatedAbstractFunction.eType = fa.AbstractFunction
+interaction.InteractionState._covered.eType = interaction.InstanceRole
+interaction.InteractionUse.referencedScenario.eType = interaction.Scenario
+interaction.InteractionUse.actualGates.eType = interaction.Gate
+interaction.CombinedFragment.referencedOperands.eType = interaction.InteractionOperand
+interaction.CombinedFragment.expressionGates.eType = interaction.Gate
+interaction.InteractionOperand.referencedInteractionFragments.eType = interaction.InteractionFragment
+interaction.InteractionOperand.guard.eType = capellacore.Constraint
+interaction.TimeLapse.start.eType = interaction.InteractionFragment
+interaction.TimeLapse.finish.eType = interaction.InteractionFragment
+interaction.AbstractFragment.ownedGates.eType = interaction.Gate
+interaction.FragmentEnd._abstractFragment.eType = interaction.AbstractFragment
+interaction.FunctionalChainAbstractCapabilityInvolvement._capability.eType = interaction.AbstractCapability
+interaction.FunctionalChainAbstractCapabilityInvolvement._functionalChain.eType = fa.FunctionalChain
+interaction.AbstractFunctionAbstractCapabilityInvolvement._capability.eType = interaction.AbstractCapability
+interaction.AbstractFunctionAbstractCapabilityInvolvement._function.eType = fa.AbstractFunction
+interaction.ScenarioRealization._realizedScenario.eType = interaction.Scenario
+interaction.ScenarioRealization._realizingScenario.eType = interaction.Scenario
+interaction.StateFragment.relatedAbstractState.eType = capellacommon.AbstractState
+interaction.StateFragment.relatedAbstractFunction.eType = fa.AbstractFunction
+interaction.ConstraintDuration.start.eType = interaction.InteractionFragment
+interaction.ConstraintDuration.finish.eType = interaction.InteractionFragment
+interaction.SequenceMessageValuation.exchangeItemElement.eType = information.ExchangeItemElement
+interaction.SequenceMessageValuation.value.eType = modellingcore.ValueSpecification
+interaction.Scenario.realizedScenarios.eType = interaction.Scenario
+interaction.Scenario.realizingScenarios.eType = interaction.Scenario
+interaction.Scenario.realizingScenarios.eOpposite = interaction.Scenario.realizedScenarios
+interaction.InstanceRole.abstractEnds.eType = interaction.AbstractEnd
+interaction.AbstractEnd._covered.eType = interaction.InstanceRole
+interaction.AbstractEnd._covered.eOpposite = interaction.InstanceRole.abstractEnds
+interaction.AbstractCapabilityRealization._realizedCapability.eType = interaction.AbstractCapability
+interaction.AbstractCapabilityRealization._realizingCapability.eType = interaction.AbstractCapability
+interaction.AbstractCapability.incomingCapabilityAllocation.eType = interaction.AbstractCapabilityRealization
+interaction.AbstractCapability.incomingCapabilityAllocation.eOpposite = interaction.AbstractCapabilityRealization._realizedCapability
+interaction.AbstractCapability.outgoingCapabilityAllocation.eType = interaction.AbstractCapabilityRealization
+interaction.AbstractCapability.outgoingCapabilityAllocation.eOpposite = interaction.AbstractCapabilityRealization._realizingCapability
+interaction.AbstractCapabilityExtend.extensionLocation.eType = interaction.AbstractCapabilityExtensionPoint
+interaction.AbstractCapabilityExtensionPoint.extendLinks.eType = interaction.AbstractCapabilityExtend
+interaction.AbstractCapabilityExtensionPoint.extendLinks.eOpposite = interaction.AbstractCapabilityExtend.extensionLocation
+
+#print('interaction.cross_init done')
+
+#print('la.cross_init starting')
+
+
+la.LogicalArchitecturePkg.ownedLogicalArchitectures.eType = la.LogicalArchitecture
+la.LogicalArchitecture.ownedLogicalComponentPkg.eType = la.LogicalComponentPkg
+la.LogicalArchitecture._containedCapabilityRealizationPkg.eType = la.CapabilityRealizationPkg
+la.LogicalArchitecture._containedLogicalFunctionPkg.eType = la.LogicalFunctionPkg
+la.LogicalArchitecture.ownedSystemAnalysisRealizations.eType = la.SystemAnalysisRealization
+la.LogicalArchitecture.allocatedSystemAnalysisRealizations.eType = la.SystemAnalysisRealization
+la.LogicalFunction.ownedLogicalFunctionPkgs.eType = la.LogicalFunctionPkg
+la.LogicalFunction.containedLogicalFunctions.eType = la.LogicalFunction
+la.LogicalFunction.childrenLogicalFunctions.eType = la.LogicalFunction
+la.LogicalFunctionPkg.ownedLogicalFunctions.eType = la.LogicalFunction
+la.LogicalFunctionPkg.ownedLogicalFunctionPkgs.eType = la.LogicalFunctionPkg
+la.LogicalComponent.ownedLogicalComponents.eType = la.LogicalComponent
+la.LogicalComponent.ownedLogicalArchitectures.eType = la.LogicalArchitecture
+la.LogicalComponent.ownedLogicalComponentPkgs.eType = la.LogicalComponentPkg
+la.LogicalComponent.subLogicalComponents.eType = la.LogicalComponent
+la.LogicalComponent.realizedSystemComponents.eType = ctx.SystemComponent
+la.LogicalComponentPkg.ownedLogicalComponents.eType = la.LogicalComponent
+la.LogicalComponentPkg.ownedLogicalComponentPkgs.eType = la.LogicalComponentPkg
+la.CapabilityRealization.ownedCapabilityRealizationInvolvements.eType = capellacommon.CapabilityRealizationInvolvement
+la.CapabilityRealization.involvedComponents.eType = capellacommon.CapabilityRealizationInvolvedElement
+la.CapabilityRealizationPkg.ownedCapabilityRealizations.eType = la.CapabilityRealization
+la.CapabilityRealizationPkg.ownedCapabilityRealizationPkgs.eType = la.CapabilityRealizationPkg
+la.LogicalArchitecture.allocatedSystemAnalyses.eType = ctx.SystemAnalysis
+la.LogicalArchitecture.allocatingPhysicalArchitectures.eType = pa.PhysicalArchitecture
+la.LogicalFunction.allocatingLogicalComponents.eType = la.LogicalComponent
+la.LogicalFunction.realizedSystemFunctions.eType = ctx.SystemFunction
+la.LogicalFunction.realizingPhysicalFunctions.eType = pa.PhysicalFunction
+la.LogicalComponent.allocatedLogicalFunctions.eType = la.LogicalFunction
+la.LogicalComponent.allocatedLogicalFunctions.eOpposite = la.LogicalFunction.allocatingLogicalComponents
+la.LogicalComponent.realizingPhysicalComponents.eType = pa.PhysicalComponent
+la.CapabilityRealization.realizedCapabilities.eType = ctx.Capability
+la.CapabilityRealization.realizedCapabilityRealizations.eType = la.CapabilityRealization
+la.CapabilityRealization.realizingCapabilityRealizations.eType = la.CapabilityRealization
+la.CapabilityRealization.realizingCapabilityRealizations.eOpposite = la.CapabilityRealization.realizedCapabilityRealizations
+
+#print('la.cross_init done')
+
+#print('oa.cross_init starting')
+
+
+oa.OperationalAnalysis.ownedRolePkg.eType = oa.RolePkg
+oa.OperationalAnalysis.ownedEntityPkg.eType = oa.EntityPkg
+oa.OperationalAnalysis.ownedConceptPkg.eType = oa.ConceptPkg
+oa.OperationalAnalysis._containedOperationalCapabilityPkg.eType = oa.OperationalCapabilityPkg
+oa.OperationalAnalysis._containedOperationalActivityPkg.eType = oa.OperationalActivityPkg
+oa.OperationalActivityPkg.ownedOperationalActivities.eType = oa.OperationalActivity
+oa.OperationalActivityPkg.ownedOperationalActivityPkgs.eType = oa.OperationalActivityPkg
+oa.OperationalActivity.ownedOperationalActivityPkgs.eType = oa.OperationalActivityPkg
+oa.OperationalActivity.ownedSwimlanes.eType = oa.Swimlane
+oa.OperationalActivity.ownedProcess.eType = oa.OperationalProcess
+oa.OperationalActivity.allocatingRoles.eType = oa.Role
+oa.OperationalActivity.containedOperationalActivities.eType = oa.OperationalActivity
+oa.OperationalActivity.childrenOperationalActivities.eType = oa.OperationalActivity
+oa.OperationalProcess.involvingOperationalCapabilities.eType = oa.OperationalCapability
+oa.Swimlane._representedEntity.eType = oa.Entity
+oa.OperationalCapabilityPkg.ownedOperationalCapabilities.eType = oa.OperationalCapability
+oa.OperationalCapabilityPkg.ownedOperationalCapabilityPkgs.eType = oa.OperationalCapabilityPkg
+oa.OperationalCapabilityPkg.ownedCapabilityConfigurations.eType = oa.CapabilityConfiguration
+oa.OperationalCapabilityPkg.ownedConceptCompliances.eType = oa.ConceptCompliance
+oa.OperationalCapability.compliances.eType = oa.ConceptCompliance
+oa.OperationalCapability.configurations.eType = oa.CapabilityConfiguration
+oa.OperationalCapability.ownedEntityOperationalCapabilityInvolvements.eType = oa.EntityOperationalCapabilityInvolvement
+oa.OperationalCapability.involvedEntities.eType = oa.Entity
+oa.RolePkg.ownedRolePkgs.eType = oa.RolePkg
+oa.RolePkg.ownedRoles.eType = oa.Role
+oa.Role.ownedRoleAssemblyUsages.eType = oa.RoleAssemblyUsage
+oa.Role.ownedActivityAllocations.eType = oa.ActivityAllocation
+oa.Role.allocatingEntities.eType = oa.Entity
+oa.Role.allocatedOperationalActivities.eType = oa.OperationalActivity
+oa.RoleAssemblyUsage.child.eType = oa.Role
+oa.EntityPkg.ownedEntities.eType = oa.Entity
+oa.EntityPkg.ownedEntityPkgs.eType = oa.EntityPkg
+oa.EntityPkg.ownedLocations.eType = oa.Location
+oa.EntityPkg.ownedCommunicationMeans.eType = oa.CommunicationMean
+oa.Entity.organisationalUnitMemberships.eType = oa.OrganisationalUnitComposition
+oa.Entity.actualLocation.eType = oa.Location
+oa.Entity.subEntities.eType = oa.Entity
+oa.Entity.ownedEntities.eType = oa.Entity
+oa.Entity.ownedCommunicationMeans.eType = oa.CommunicationMean
+oa.Entity.ownedRoleAllocations.eType = oa.RoleAllocation
+oa.Entity.allocatedRoles.eType = oa.Role
+oa.Entity.involvingOperationalCapabilities.eType = oa.OperationalCapability
+oa.Entity.realizingSystemComponents.eType = ctx.SystemComponent
+oa.ConceptPkg.ownedConceptPkgs.eType = oa.ConceptPkg
+oa.ConceptPkg.ownedConcepts.eType = oa.Concept
+oa.Concept.compliances.eType = oa.ConceptCompliance
+oa.Concept.compositeLinks.eType = oa.ItemInConcept
+oa.ConceptCompliance.complyWithConcept.eType = oa.Concept
+oa.ConceptCompliance.compliantCapability.eType = oa.OperationalCapability
+oa.ItemInConcept.concept.eType = oa.Concept
+oa.ItemInConcept.item.eType = oa.AbstractConceptItem
+oa.AbstractConceptItem.composingLinks.eType = oa.ItemInConcept
+oa.CommunityOfInterest.communityOfInterestCompositions.eType = oa.CommunityOfInterestComposition
+oa.CommunityOfInterestComposition.communityOfInterest.eType = oa.CommunityOfInterest
+oa.CommunityOfInterestComposition.interestedOrganisationUnit.eType = oa.OrganisationalUnit
+oa.OrganisationalUnit.organisationalUnitCompositions.eType = oa.OrganisationalUnitComposition
+oa.OrganisationalUnit.communityOfInterestMemberships.eType = oa.CommunityOfInterestComposition
+oa.OrganisationalUnitComposition.organisationalUnit.eType = oa.OrganisationalUnit
+oa.OrganisationalUnitComposition.participatingEntity.eType = oa.Entity
+oa.Location.locatedEntities.eType = oa.Entity
+oa.CapabilityConfiguration.configuredCapability.eType = oa.OperationalCapability
+oa.CommunicationMean._sourceEntity.eType = oa.Entity
+oa.CommunicationMean._targetEntity.eType = oa.Entity
+oa.EntityOperationalCapabilityInvolvement._entity.eType = oa.Entity
+oa.EntityOperationalCapabilityInvolvement._capability.eType = oa.OperationalCapability
+oa.OperationalAnalysis.allocatingSystemAnalyses.eType = ctx.SystemAnalysis
+oa.OperationalActivity.activityAllocations.eType = oa.ActivityAllocation
+oa.OperationalActivity.allocatorEntities.eType = oa.Entity
+oa.OperationalActivity.realizingSystemFunctions.eType = ctx.SystemFunction
+oa.OperationalCapability.realizingCapabilities.eType = ctx.Capability
+oa.ActivityAllocation._role.eType = oa.Role
+oa.ActivityAllocation._activity.eType = oa.OperationalActivity
+oa.ActivityAllocation._activity.eOpposite = oa.OperationalActivity.activityAllocations
+oa.Role.roleAllocations.eType = oa.RoleAllocation
+oa.Role.activityAllocations.eType = oa.ActivityAllocation
+oa.Role.activityAllocations.eOpposite = oa.ActivityAllocation._role
+oa.RoleAllocation._role.eType = oa.Role
+oa.RoleAllocation._role.eOpposite = oa.Role.roleAllocations
+oa.RoleAllocation._entity.eType = oa.Entity
+oa.Entity.roleAllocations.eType = oa.RoleAllocation
+oa.Entity.roleAllocations.eOpposite = oa.RoleAllocation._entity
+oa.Entity.allocatedOperationalActivities.eType = oa.OperationalActivity
+oa.Entity.allocatedOperationalActivities.eOpposite = oa.OperationalActivity.allocatorEntities
+
+#print('oa.cross_init done')
+
+#print('pa.cross_init starting')
+
+
+pa.deployment.ComponentInstance.portInstances.eType = pa.deployment.PortInstance
+pa.deployment.ComponentInstance.ownedAbstractPhysicalInstances.eType = pa.deployment.AbstractPhysicalInstance
+pa.deployment.ComponentInstance.ownedInstanceDeploymentLinks.eType = pa.deployment.InstanceDeploymentLink
+pa.deployment.ComponentInstance.type.eType = pa.PhysicalComponent
+pa.deployment.ConnectionInstance.type.eType = fa.ComponentExchange
+pa.deployment.DeploymentAspect.ownedConfigurations.eType = pa.deployment.DeploymentConfiguration
+pa.deployment.DeploymentAspect.ownedDeploymentAspects.eType = pa.deployment.DeploymentAspect
+pa.deployment.DeploymentConfiguration.ownedDeploymentLinks.eType = cs.AbstractDeploymentLink
+pa.deployment.DeploymentConfiguration.ownedPhysicalInstances.eType = pa.deployment.AbstractPhysicalInstance
+pa.deployment.PortInstance._component.eType = pa.deployment.ComponentInstance
+pa.deployment.PortInstance.type.eType = fa.ComponentPort
+pa.PhysicalArchitecturePkg.ownedPhysicalArchitecturePkgs.eType = pa.PhysicalArchitecturePkg
+pa.PhysicalArchitecturePkg.ownedPhysicalArchitectures.eType = pa.PhysicalArchitecture
+pa.PhysicalArchitecture.ownedPhysicalComponentPkg.eType = pa.PhysicalComponentPkg
+pa.PhysicalArchitecture._containedCapabilityRealizationPkg.eType = la.CapabilityRealizationPkg
+pa.PhysicalArchitecture._containedPhysicalFunctionPkg.eType = pa.PhysicalFunctionPkg
+pa.PhysicalArchitecture.ownedDeployments.eType = cs.AbstractDeploymentLink
+pa.PhysicalArchitecture.ownedLogicalArchitectureRealizations.eType = pa.LogicalArchitectureRealization
+pa.PhysicalArchitecture.allocatedLogicalArchitectureRealizations.eType = pa.LogicalArchitectureRealization
+pa.PhysicalFunction.ownedPhysicalFunctionPkgs.eType = pa.PhysicalFunctionPkg
+pa.PhysicalFunction.containedPhysicalFunctions.eType = pa.PhysicalFunction
+pa.PhysicalFunction.childrenPhysicalFunctions.eType = pa.PhysicalFunction
+pa.PhysicalFunctionPkg.ownedPhysicalFunctions.eType = pa.PhysicalFunction
+pa.PhysicalFunctionPkg.ownedPhysicalFunctionPkgs.eType = pa.PhysicalFunctionPkg
+pa.PhysicalComponent.ownedDeploymentLinks.eType = cs.AbstractDeploymentLink
+pa.PhysicalComponent.ownedPhysicalComponents.eType = pa.PhysicalComponent
+pa.PhysicalComponent.ownedPhysicalComponentPkgs.eType = pa.PhysicalComponentPkg
+pa.PhysicalComponent.logicalInterfaceRealizations.eType = pa.LogicalInterfaceRealization
+pa.PhysicalComponent.subPhysicalComponents.eType = pa.PhysicalComponent
+pa.PhysicalComponent.deployedPhysicalComponents.eType = pa.PhysicalComponent
+pa.PhysicalComponent.deployingPhysicalComponents.eType = pa.PhysicalComponent
+pa.PhysicalComponentPkg.ownedPhysicalComponents.eType = pa.PhysicalComponent
+pa.PhysicalComponentPkg.ownedPhysicalComponentPkgs.eType = pa.PhysicalComponentPkg
+pa.PhysicalComponentPkg.ownedKeyParts.eType = information.KeyPart
+pa.PhysicalComponentPkg.ownedDeployments.eType = cs.AbstractDeploymentLink
+pa.PhysicalNode.subPhysicalNodes.eType = pa.PhysicalNode
+pa.deployment.ConnectionInstance.connectionEnds.eType = pa.deployment.PortInstance
+pa.deployment.PortInstance.connections.eType = pa.deployment.ConnectionInstance
+pa.deployment.PortInstance.connections.eOpposite = pa.deployment.ConnectionInstance.connectionEnds
+pa.PhysicalArchitecture.allocatedLogicalArchitectures.eType = la.LogicalArchitecture
+pa.PhysicalArchitecture.allocatingEpbsArchitectures.eType = epbs.EPBSArchitecture
+pa.PhysicalFunction.allocatingPhysicalComponents.eType = pa.PhysicalComponent
+pa.PhysicalFunction.realizedLogicalFunctions.eType = la.LogicalFunction
+pa.PhysicalComponent.realizedLogicalComponents.eType = la.LogicalComponent
+pa.PhysicalComponent.allocatedPhysicalFunctions.eType = pa.PhysicalFunction
+pa.PhysicalComponent.allocatedPhysicalFunctions.eOpposite = pa.PhysicalFunction.allocatingPhysicalComponents
+
+#print('pa.cross_init done')
+
+#print('requirement.cross_init starting')
+
+
+requirement.RequirementsPkg.ownedRequirements.eType = requirement.Requirement
+requirement.RequirementsPkg.ownedRequirementPkgs.eType = requirement.RequirementsPkg
+requirement.RequirementsTrace._source.eType = modellingcore.TraceableElement
+requirement.RequirementsTrace._target.eType = modellingcore.TraceableElement
+requirement.Requirement.relatedCapellaElements.eType = capellacore.CapellaElement
+
+#print('requirement.cross_init done')
+
+#print('sharedmodel.cross_init starting')
+
+
+sharedmodel.SharedPkg.ownedDataPkg.eType = information.DataPkg
+sharedmodel.SharedPkg.ownedGenericPkg.eType = sharedmodel.GenericPkg
+sharedmodel.GenericPkg.subGenericPkgs.eType = sharedmodel.GenericPkg
+sharedmodel.GenericPkg.capellaElements.eType = capellacore.CapellaElement
+
+#print('sharedmodel.cross_init done')
+
+#print('libraries.cross_init starting')
+
+
+libraries.ModelInformation.ownedReferences.eType = libraries.LibraryReference
+libraries.ModelInformation.version.eType = libraries.ModelVersion
+libraries.LibraryReference.library.eType = libraries.ModelInformation
+libraries.LibraryReference.version.eType = libraries.ModelVersion
+
+#print('libraries.cross_init done')
+
+#print('emde.cross_init starting')
+
+
+emde.ExtensibleElement.ownedExtensions.eType = emde.ElementExtension
+
+#print('emde.cross_init done')
+
+# Manual patching circular dep for inheritance
+information.communication.SignalInstance._staticEClass = False
+information.communication.SignalInstance.eClass.eSuperTypes.append(information.AbstractInstance.eClass)

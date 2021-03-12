@@ -1,4 +1,4 @@
-print('la.__init__.py loading')
+#print('la.__init__.py loading')
 from pyecore.resources import global_registry
 from .la import getEClassifier, eClassifiers
 from .la import name, nsURI, nsPrefix, eClass
@@ -30,4 +30,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('la.__init__.py loaded')
+#print('la.__init__.py loaded')

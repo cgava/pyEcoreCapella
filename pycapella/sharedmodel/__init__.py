@@ -1,4 +1,4 @@
-print('sharedmodel.__init__.py loading')
+#print('sharedmodel.__init__.py loading')
 from pyecore.resources import global_registry
 from .sharedmodel import getEClassifier, eClassifiers
 from .sharedmodel import name, nsURI, nsPrefix, eClass
@@ -29,4 +29,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('sharedmodel.__init__.py loaded')
+#print('sharedmodel.__init__.py loaded')

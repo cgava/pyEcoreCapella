@@ -2,9 +2,9 @@
 #print('libraries.cross_init starting')
 
 
-ModelInformation.ownedReferences.eType = LibraryReference
-ModelInformation.version.eType = ModelVersion
-LibraryReference.library.eType = ModelInformation
-LibraryReference.version.eType = ModelVersion
+libraries.ModelInformation.ownedReferences.eType = libraries.LibraryReference
+libraries.ModelInformation.version.eType = libraries.ModelVersion
+libraries.LibraryReference.library.eType = libraries.ModelInformation
+libraries.LibraryReference.version.eType = libraries.ModelVersion
 
 #print('libraries.cross_init done')

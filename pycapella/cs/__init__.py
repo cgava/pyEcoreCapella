@@ -1,4 +1,4 @@
-print('cs.__init__.py loading')
+#print('cs.__init__.py loading')
 from pyecore.resources import global_registry
 from .cs import getEClassifier, eClassifiers
 from .cs import name, nsURI, nsPrefix, eClass
@@ -30,4 +30,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('cs.__init__.py loaded')
+#print('cs.__init__.py loaded')

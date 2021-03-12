@@ -1,4 +1,4 @@
-print('activity.__init__.py loading')
+#print('activity.__init__.py loading')
 from pyecore.resources import global_registry
 from .activity import getEClassifier, eClassifiers
 from .activity import name, nsURI, nsPrefix, eClass
@@ -30,4 +30,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('activity.__init__.py loaded')
+#print('activity.__init__.py loaded')

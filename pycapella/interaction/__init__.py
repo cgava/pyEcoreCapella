@@ -1,4 +1,4 @@
-print('interaction.__init__.py loading')
+#print('interaction.__init__.py loading')
 from pyecore.resources import global_registry
 from .interaction import getEClassifier, eClassifiers
 from .interaction import name, nsURI, nsPrefix, eClass
@@ -30,4 +30,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('interaction.__init__.py loaded')
+#print('interaction.__init__.py loaded')

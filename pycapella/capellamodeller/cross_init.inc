@@ -2,17 +2,17 @@
 #print('capellamodeller.cross_init starting')
 
 
-Project.keyValuePairs.eType = KeyValue
-Project.ownedFolders.eType = Folder
-Project.ownedModelRoots.eType = ModelRoot
-Folder.ownedFolders.eType = Folder
-Folder.ownedModelRoots.eType = ModelRoot
-SystemEngineering.containedOperationalAnalysis.eType = OperationalAnalysis
-SystemEngineering.containedSystemAnalysis.eType = SystemAnalysis
-SystemEngineering.containedLogicalArchitectures.eType = LogicalArchitecture
-SystemEngineering.containedPhysicalArchitectures.eType = PhysicalArchitecture
-SystemEngineering.containedEPBSArchitectures.eType = EPBSArchitecture
-SystemEngineering.containedSharedPkgs.eType = SharedPkg
-SystemEngineeringPkg.ownedSystemEngineerings.eType = SystemEngineering
+capellamodeller.Project.keyValuePairs.eType = capellacore.KeyValue
+capellamodeller.Project.ownedFolders.eType = capellamodeller.Folder
+capellamodeller.Project.ownedModelRoots.eType = capellamodeller.ModelRoot
+capellamodeller.Folder.ownedFolders.eType = capellamodeller.Folder
+capellamodeller.Folder.ownedModelRoots.eType = capellamodeller.ModelRoot
+capellamodeller.SystemEngineering.containedOperationalAnalysis.eType = oa.OperationalAnalysis
+capellamodeller.SystemEngineering.containedSystemAnalysis.eType = ctx.SystemAnalysis
+capellamodeller.SystemEngineering.containedLogicalArchitectures.eType = la.LogicalArchitecture
+capellamodeller.SystemEngineering.containedPhysicalArchitectures.eType = pa.PhysicalArchitecture
+capellamodeller.SystemEngineering.containedEPBSArchitectures.eType = epbs.EPBSArchitecture
+capellamodeller.SystemEngineering.containedSharedPkgs.eType = sharedmodel.SharedPkg
+capellamodeller.SystemEngineeringPkg.ownedSystemEngineerings.eType = capellamodeller.SystemEngineering
 
 #print('capellamodeller.cross_init done')

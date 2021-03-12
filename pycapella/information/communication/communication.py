@@ -6,12 +6,8 @@ from pyecore.ecore import *
 from behavior import AbstractSignal
 from capellacore import CapellaElement, Classifier, Relationship, Structure, VisibilityKind
 from information.datavalue import DataValueContainer
-from emde import Element, ExtensibleElement
-try:
-   from information import AbstractInstance
-   print('communication.{__name__} sucessfully imported AbstractInstance')
-except ImportError:
-   print('communication.{__name__} failed to import AbstractInstance')
+# from information import AbstractInstance
+
 
 name = 'communication'
 nsURI = 'http://www.polarsys.org/capella/core/information/communication/1.4.0'
@@ -222,7 +218,7 @@ class Message(CommunicationItem):
         super().__init__(**kwargs)
 
 
-class SignalInstance(EObject, metaclass=MetaEClass): #CGA AbstractInstance
+class SignalInstance(EObject, metaclass=MetaEClass):
 
     def __init__(self, **kwargs):
 

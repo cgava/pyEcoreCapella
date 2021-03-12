@@ -1,4 +1,4 @@
-print('capellamodeller.__init__.py loading')
+#print('capellamodeller.__init__.py loading')
 from pyecore.resources import global_registry
 from .capellamodeller import getEClassifier, eClassifiers
 from .capellamodeller import name, nsURI, nsPrefix, eClass
@@ -29,4 +29,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('capellamodeller.__init__.py loaded')
+#print('capellamodeller.__init__.py loaded')

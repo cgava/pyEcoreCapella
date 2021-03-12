@@ -1,4 +1,4 @@
-print('fa.__init__.py loading')
+#print('fa.__init__.py loading')
 from pyecore.resources import global_registry
 from .fa import getEClassifier, eClassifiers
 from .fa import name, nsURI, nsPrefix, eClass
@@ -31,4 +31,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('fa.__init__.py loaded')
+#print('fa.__init__.py loaded')

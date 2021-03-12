@@ -1,4 +1,4 @@
-print('deployment.__init__.py loading')
+#print('deployment.__init__.py loading')
 from pyecore.resources import global_registry
 from .deployment import getEClassifier, eClassifiers
 from .deployment import name, nsURI, nsPrefix, eClass
@@ -32,4 +32,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('deployment.__init__.py loaded')
+#print('deployment.__init__.py loaded')

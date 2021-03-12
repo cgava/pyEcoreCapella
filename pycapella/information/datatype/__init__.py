@@ -1,4 +1,4 @@
-print('datatype.__init__.py loading')
+#print('datatype.__init__.py loading')
 from pyecore.resources import global_registry
 from .datatype import getEClassifier, eClassifiers
 from .datatype import name, nsURI, nsPrefix, eClass
@@ -32,4 +32,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('datatype.__init__.py loaded')
+#print('datatype.__init__.py loaded')

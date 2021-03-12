@@ -1,4 +1,4 @@
-print('ctx.__init__.py loading')
+#print('ctx.__init__.py loading')
 from pyecore.resources import global_registry
 from .ctx import getEClassifier, eClassifiers
 from .ctx import name, nsURI, nsPrefix, eClass
@@ -30,4 +30,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('ctx.__init__.py loaded')
+#print('ctx.__init__.py loaded')

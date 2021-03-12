@@ -1,4 +1,4 @@
-print('emde.__init__.py loading')
+#print('emde.__init__.py loading')
 from pyecore.resources import global_registry
 from .emde import getEClassifier, eClassifiers
 from .emde import name, nsURI, nsPrefix, eClass
@@ -29,4 +29,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('emde.__init__.py loaded')
+#print('emde.__init__.py loaded')

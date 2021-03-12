@@ -1,4 +1,4 @@
-print('behavior.__init__.py loading')
+#print('behavior.__init__.py loading')
 from pyecore.resources import global_registry
 from .behavior import getEClassifier, eClassifiers
 from .behavior import name, nsURI, nsPrefix, eClass
@@ -30,4 +30,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('behavior.__init__.py loaded')
+#print('behavior.__init__.py loaded')

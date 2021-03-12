@@ -2,6 +2,6 @@
 #print('emde.cross_init starting')
 
 
-ExtensibleElement.ownedExtensions.eType = ElementExtension
+emde.ExtensibleElement.ownedExtensions.eType = emde.ElementExtension
 
 #print('emde.cross_init done')

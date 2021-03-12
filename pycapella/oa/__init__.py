@@ -1,4 +1,4 @@
-print('oa.__init__.py loading')
+#print('oa.__init__.py loading')
 from pyecore.resources import global_registry
 from .oa import getEClassifier, eClassifiers
 from .oa import name, nsURI, nsPrefix, eClass
@@ -30,4 +30,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('oa.__init__.py loaded')
+#print('oa.__init__.py loaded')

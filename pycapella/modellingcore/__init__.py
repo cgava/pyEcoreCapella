@@ -1,4 +1,4 @@
-print('modellingcore.__init__.py loading')
+#print('modellingcore.__init__.py loading')
 from pyecore.resources import global_registry
 from .modellingcore import getEClassifier, eClassifiers
 from .modellingcore import name, nsURI, nsPrefix, eClass
@@ -30,4 +30,4 @@ for pack in register_packages:
     global_registry[pack.nsURI] = pack
 
 
-print('modellingcore.__init__.py loaded')
+#print('modellingcore.__init__.py loaded')
