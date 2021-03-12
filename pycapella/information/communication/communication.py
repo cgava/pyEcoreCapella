@@ -5,7 +5,7 @@ from pyecore.ecore import *
 from behavior import AbstractSignal
 from capellacore import CapellaElement, Classifier, Relationship, Structure, VisibilityKind
 from information.datavalue import DataValueContainer
-# from information import AbstractInstance
+from ..information_subdep import AbstractInstance
 
 
 name = 'communication'
@@ -217,7 +217,7 @@ class Message(CommunicationItem):
         super().__init__(**kwargs)
 
 
-class SignalInstance(EObject, metaclass=MetaEClass):
+class SignalInstance(AbstractInstance):
 
     def __init__(self, **kwargs):
 
