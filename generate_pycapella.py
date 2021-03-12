@@ -26,8 +26,15 @@ mm_list = (
     './mm/org.polarsys.capella.core.data.def/model/Requirement.ecore',
     './mm/org.polarsys.capella.core.data.def/model/SharedModel.ecore',
     './mm/org.polarsys.capella.common.libraries.gen/model/libraries.ecore',
+    './mm/org.polarsys.capella.common.re.gen/model/re.ecore',
     './mm/org.polarsys.kitalpha.emde/model/eMDE.ecore',
 )
+
+
+#mm_list = (
+#    './mm/org.polarsys.kitalpha.emde/model/eMDE.ecore',
+#    './mm/org.polarsys.capella.common.re.gen/model/re.ecore'
+#)
 
 generator = CapellaGenerator(mm_list)
 generator.generate(outfolder='pycapella')

@@ -2,6 +2,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
+import pyecore.ecore as ecore
 import behavior
 import modellingcore
 import activity
@@ -21,6 +22,7 @@ import la
 import oa
 import pa
 import pa.deployment
+import capellare
 import requirement
 import sharedmodel
 import libraries
@@ -1083,6 +1085,25 @@ pa.PhysicalComponent.allocatedPhysicalFunctions.eType = pa.PhysicalFunction
 pa.PhysicalComponent.allocatedPhysicalFunctions.eOpposite = pa.PhysicalFunction.allocatingPhysicalComponents
 
 #print('pa.cross_init done')
+
+#print('re.cross_init starting')
+
+
+capellare.ReElementContainer.ownedElements.eType = capellare.CatalogElement
+capellare.CatalogElementPkg.ownedElementPkgs.eType = capellare.CatalogElementPkg
+capellare.RecCatalog.ownedCompliancyDefinitionPkg.eType = capellare.CompliancyDefinitionPkg
+capellare.CatalogElementLink.source.eType = capellare.CatalogElement
+capellare.CatalogElementLink.target.eType = ecore.EObject
+capellare.CatalogElementLink.origin.eType = capellare.CatalogElementLink
+capellare.CatalogElement.origin.eType = capellare.CatalogElement
+capellare.CatalogElement.currentCompliancy.eType = capellare.CompliancyDefinition
+capellare.CatalogElement.defaultReplicaCompliancy.eType = capellare.CompliancyDefinition
+capellare.CatalogElement.ownedLinks.eType = capellare.CatalogElementLink
+capellare.CatalogElement.referencedElements.eType = ecore.EObject
+capellare.CatalogElement.replicatedElements.eType = capellare.CatalogElement
+capellare.CompliancyDefinitionPkg.ownedDefinitions.eType = capellare.CompliancyDefinition
+
+#print('re.cross_init done')
 
 #print('requirement.cross_init starting')
 
