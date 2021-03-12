@@ -1,4 +1,5 @@
-# # Issue with my own virtalenv, please, don't pay attention
+# manual setting of sys.path, for testing purpose only, please setup your virtual env as desired
+# import os
 # import sys
 #
 # sys.path.append("../pyecoregen")
