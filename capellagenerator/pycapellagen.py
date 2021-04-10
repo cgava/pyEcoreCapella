@@ -124,7 +124,7 @@ class CapellaGenerator(object):
         print("== Creating toplevel __init__.py")
         with open(root_package / "__init__.py", "w") as f:
             print(" Header creation")
-            f.write(f"__version__ = [{version}]\n\n")
+            f.write(f"__version__ = {version!r}\n\n")
             # f.write("sys.path.append(os.path.dirname(os.path.realpath(__file__)))\n\n")
             print(" Toplevel imports")
             for module in generated_module:
