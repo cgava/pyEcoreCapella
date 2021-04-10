@@ -1,0 +1,37 @@
+
+#print('modellingcore.cross_init starting')
+
+
+modellingcore.ModelElement.constraints.eType = modellingcore.AbstractConstraint
+modellingcore.ModelElement.ownedConstraints.eType = modellingcore.AbstractConstraint
+modellingcore.ModelElement.ownedMigratedElements.eType = modellingcore.ModelElement
+modellingcore.InformationsExchanger.incomingInformationFlows.eType = modellingcore.AbstractInformationFlow
+modellingcore.InformationsExchanger.outgoingInformationFlows.eType = modellingcore.AbstractInformationFlow
+modellingcore.InformationsExchanger.informationFlows.eType = modellingcore.AbstractInformationFlow
+modellingcore.TraceableElement.incomingTraces.eType = modellingcore.AbstractTrace
+modellingcore.TraceableElement.outgoingTraces.eType = modellingcore.AbstractTrace
+modellingcore.AbstractType.abstractTypedElements.eType = modellingcore.AbstractTypedElement
+modellingcore.AbstractTypedElement.abstractType.eType = modellingcore.AbstractType
+modellingcore.AbstractTrace.targetElement.eType = modellingcore.TraceableElement
+modellingcore.AbstractTrace.sourceElement.eType = modellingcore.TraceableElement
+modellingcore.AbstractConstraint.constrainedElements.eType = modellingcore.ModelElement
+modellingcore.AbstractConstraint.ownedSpecification.eType = modellingcore.ValueSpecification
+modellingcore.AbstractConstraint._context.eType = modellingcore.ModelElement
+modellingcore.AbstractParameter.rate.eType = modellingcore.ValueSpecification
+modellingcore.AbstractParameter.probability.eType = modellingcore.ValueSpecification
+modellingcore.AbstractParameterSet.ownedConditions.eType = modellingcore.AbstractConstraint
+modellingcore.AbstractParameterSet.probability.eType = modellingcore.ValueSpecification
+modellingcore.AbstractInformationFlow.convoyedInformations.eType = modellingcore.AbstractExchangeItem
+modellingcore.AbstractInformationFlow.source.eType = modellingcore.InformationsExchanger
+modellingcore.AbstractInformationFlow.target.eType = modellingcore.InformationsExchanger
+modellingcore.IState.referencedStates.eType = modellingcore.IState
+modellingcore.IState.exploitedStates.eType = modellingcore.IState
+modellingcore.AbstractRelationship.realizedFlow.eType = modellingcore.AbstractInformationFlow
+modellingcore.AbstractParameter.parameterSet.eType = modellingcore.AbstractParameterSet
+modellingcore.AbstractParameterSet.parameters.eType = modellingcore.AbstractParameter
+modellingcore.AbstractParameterSet.parameters.eOpposite = modellingcore.AbstractParameter.parameterSet
+modellingcore.AbstractInformationFlow.realizations.eType = modellingcore.AbstractRelationship
+modellingcore.AbstractInformationFlow.realizations.eOpposite = modellingcore.AbstractRelationship.realizedFlow
+
+
+#print('modellingcore.cross_init done')
