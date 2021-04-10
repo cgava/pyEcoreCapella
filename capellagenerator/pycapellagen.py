@@ -14,11 +14,13 @@ old_fix_name_clash = adapter.fix_name_clash
 def fix_name_clash(value):
     value = old_fix_name_clash(value)
     if value in ('super', 'self'):
-        print(f"!! Fixing {value} in {value}_")
+        # print(f"!! Fixing {value} in {value}_")
         value += '_'
     return value
 
 adapter.fix_name_clash = fix_name_clash
+
+ecore.eContainer = lambda: None
 
 
 class CapellaPackageInitTask(EcorePackageInitTask):
@@ -66,7 +68,7 @@ class EcorePackageInitInc(EcoreTask):
     def create_template_context(self, element, **kwargs):
         return super().create_template_context(
             element=element,
-            imported_classifiers_package=self.imported_classifiers_package(element)
+            imported_classifiers_package=self.imported_classifiers_package(element),
         )
 
 
@@ -76,7 +78,8 @@ class CapellaModuleGenerator(EcoreGenerator):
             'templates'
         )
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, package_root, *args, **kwargs):
+        self.package_root = package_root
         super().__init__(*args, auto_register_package=True, **kwargs)
         self.tasks = [
             CapellaPackageInitTask(formatter=multigen.formatter.format_autopep8),
@@ -85,16 +88,24 @@ class CapellaModuleGenerator(EcoreGenerator):
         ]
         multigen.jinja.JinjaGenerator.__init__(self)
 
+    def create_environment(self, **kwargs):
+        env = super().create_environment(**kwargs)
+        env.globals.update({'package_root': self.package_root})
+        return env
+
 
 class CapellaGenerator(object):
-    def __init__(self, ecore_files):
+    def __init__(self, package_root, ecore_files):
+        self.package_root = package_root
         self.ecore_files = ecore_files
-        self.module_generator = CapellaModuleGenerator()
+        self.module_generator = CapellaModuleGenerator(self.package_root)
         self.rset = ResourceSet()
         self.rset.uri_mapper['platform:/plugin/org.polarsys.kitalpha.emde/model'] = '../../org.polarsys.kitalpha.emde/model'
 
-    def generate(self, outfolder):
+    def generate(self, outfolder, version):
         print("== Launch main generation")
+        outfolder = Path(outfolder)
+        root_package = outfolder / self.package_root
         rset = self.rset
         module_generator = self.module_generator
         generated_module = []
@@ -102,20 +113,19 @@ class CapellaGenerator(object):
             # print("* Opening", mm)
             mm_root = rset.get_resource(mm).contents[0]
             print(" Generating", mm_root.name, "module")
-            module_generator.generate(mm_root, outfolder=outfolder)
+            module_generator.generate(mm_root, outfolder=root_package)
             generated_module.append(module_generator.filter_pyfqn(mm_root))
             for sub in mm_root.eSubpackages:
                 print("  submodule", sub.name)
                 generated_module.append(module_generator.filter_pyfqn(sub))
-        self.post_process(outfolder, generated_module)
+        self.post_process(root_package, generated_module, version)
 
-    def post_process(self, outfolder, generated_module):
+    def post_process(self, root_package, generated_module, version):
         print("== Creating toplevel __init__.py")
-        outfolder = Path(outfolder)
-        with open(outfolder / "__init__.py", "w") as f:
+        with open(root_package / "__init__.py", "w") as f:
             print(" Header creation")
-            f.write("import sys\nimport os\n")
-            f.write("sys.path.append(os.path.dirname(os.path.realpath(__file__)))\n\n")
+            f.write(f"__version__ = [{version}]\n\n")
+            # f.write("sys.path.append(os.path.dirname(os.path.realpath(__file__)))\n\n")
             print(" Toplevel imports")
             for module in generated_module:
                 f.write(f"import {module}\n")
@@ -124,10 +134,10 @@ class CapellaGenerator(object):
                 if "." in module:
                     continue
                 print(f" Adding increment from {module} cross_init.inc")
-                with open(outfolder / module / "cross_init.inc", "r") as inc:
+                with open(root_package / module / "cross_init.inc", "r") as inc:
                     for line in inc:
                         f.write(line)
-        print("== Apply patch for circular dependencies")
-        patch = Path(os.path.dirname(os.path.realpath(__file__))) / 'patches' / 'circular.patch'
-        process = subprocess.Popen(['git', 'apply', patch])
-        process.communicate()
+        # print("== Apply patch for circular dependencies")
+        # patch = Path(os.path.dirname(os.path.realpath(__file__))) / 'patches' / 'circular.patch'
+        # process = subprocess.Popen(['git', 'apply', patch])
+        # process.communicate()

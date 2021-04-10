@@ -1,9 +1,9 @@
 # manual setting of sys.path, for testing purpose only, please setup your virtual env as desired
-# import os
-# import sys
-#
-# sys.path.append("../pyecoregen")
-# sys.path.append("../pyecore")
+import os
+import sys
+
+sys.path.append("../pyecoregen")
+sys.path.append("../pyecore")
 
 from capellagenerator import CapellaGenerator
 
@@ -31,10 +31,5 @@ mm_list = (
 )
 
 
-#mm_list = (
-#    './mm/org.polarsys.kitalpha.emde/model/eMDE.ecore',
-#    './mm/org.polarsys.capella.common.re.gen/model/re.ecore'
-#)
-
-generator = CapellaGenerator(mm_list)
-generator.generate(outfolder='pycapella')
+generator = CapellaGenerator("pycapella2", mm_list)
+generator.generate(outfolder='.', version="0.0.1")
