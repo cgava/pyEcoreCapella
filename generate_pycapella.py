@@ -1,9 +1,9 @@
 # manual setting of sys.path, for testing purpose only, please setup your virtual env as desired
-import os
-import sys
-
-sys.path.append("../pyecoregen")
-sys.path.append("../pyecore")
+# import os
+# import sys
+#
+# sys.path.append("../pyecoregen")
+# sys.path.append("../pyecore")
 
 from capellagenerator import CapellaGenerator
 
