@@ -27,5 +27,11 @@ getEClassifier = partial(Ecore.getEClassifier, searchspace=eClassifiers)
 {%- endfor %}
 
 {%- for c in classes -%}
+{% if c in circular_inheritances %}
+# Inheritance definition for {{ c.name }} moved in root package initialization
+# to fix circular imports with {{ circular_inheritances[c]|map(attribute='name')|join(', ') }}
+{{- modutil.generate_class_nocircular(c) }}
+{% else %}
 {{ modutil.generate_class(c) }}
+{% endif %}
 {%- endfor %}

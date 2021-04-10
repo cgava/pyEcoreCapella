@@ -1,4 +1,8 @@
-
+{% macro insertion(classes) -%}
+{% for c in classes %}
+{{ c | pyfqn }}.eClass,
+{%- endfor %}
+{%- endmacro %}
 #print('{{ element.name }}.cross_init starting')
 
 
@@ -16,5 +20,11 @@
         {%- endfor %}
     {%- endwith %}
 {%- endif %}
+
+{% for c, inheritances in circular_inheritances.items() %}
+{{ c | pyfqn }}._staticEClass = False
+{{ c | pyfqn }}.eClass.eSuperTypes.extend(({{ insertion(c.eSuperTypes) }}
+))
+{% endfor %}
 
 #print('{{ element.name }}.cross_init done')

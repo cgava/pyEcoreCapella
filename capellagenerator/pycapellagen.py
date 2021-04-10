@@ -2,6 +2,7 @@ import os
 import subprocess
 from pathlib import Path
 import itertools
+from functools import lru_cache
 import multigen
 import pyecore.ecore as ecore
 from pyecore.resources import ResourceSet
@@ -35,8 +36,18 @@ class CapellaPackageModuleTask(EcorePackageModuleTask):
     @classmethod
     def imported_classifiers(cls, p: ecore.EPackage):
         imported_dict = super(cls, cls).imported_classifiers(p)
+        circular_deps = CapellaModuleGenerator.identify_circular_inheritance(p)
+        all_rejected = flat_list = [item for sublist in circular_deps.values() for item in sublist]
+        for k, v in imported_dict.items():
+            new_v = [x for x in v if x not in all_rejected]
+            imported_dict[k] = new_v
         # Sorting EPackage by name
-        return {k: v for k, v in sorted(imported_dict.items(), key=lambda x: x[0].name)}
+        return {k: v for k, v in sorted(imported_dict.items(), key=lambda x: x[0].name) if v}
+
+    def create_template_context(self, element, **kwargs):
+        context = super().create_template_context(element)
+        context['circular_inheritances'] = CapellaModuleGenerator.identify_circular_inheritance(element)
+        return context
 
 
 class EcorePackageInitInc(EcoreTask):
@@ -69,6 +80,7 @@ class EcorePackageInitInc(EcoreTask):
         return super().create_template_context(
             element=element,
             imported_classifiers_package=self.imported_classifiers_package(element),
+            circular_inheritances=CapellaModuleGenerator.identify_circular_inheritance(element),
         )
 
 
@@ -87,6 +99,27 @@ class CapellaModuleGenerator(EcoreGenerator):
             EcorePackageInitInc(formatter=multigen.formatter.format_autopep8),
         ]
         multigen.jinja.JinjaGenerator.__init__(self)
+
+    @classmethod
+    @lru_cache()
+    def identify_circular_inheritance(cls, p: ecore.EPackage):
+        result = {}
+        classes = (c for c in p.eClassifiers if isinstance(c, ecore.EClass))
+        for c in classes:
+            for st in c.eSuperTypes:
+                if st.ePackage is c.ePackage:
+                    continue
+                other_classes = (c for c in st.ePackage.eClassifiers if isinstance(c, ecore.EClass))
+                for oc in other_classes:
+                    for oc_st in oc.eSuperTypes:
+                        if oc_st.ePackage is c.ePackage and c not in result and oc not in result:
+                            result.setdefault(c, []).append(st)
+                            print("!!!! Found", c.name, st.name, oc.name, oc_st.name)
+
+        for sub in p.eSubpackages:
+            result.update(cls.identify_circular_inheritance(sub))
+        return result
+
 
     def create_environment(self, **kwargs):
         env = super().create_environment(**kwargs)
@@ -127,8 +160,9 @@ class CapellaGenerator(object):
             f.write(f"__version__ = {version!r}\n\n")
             # f.write("sys.path.append(os.path.dirname(os.path.realpath(__file__)))\n\n")
             print(" Toplevel imports")
+            f.write(f"import pyecore.ecore as ecore\n")
             for module in generated_module:
-                f.write(f"import {module}\n")
+                f.write(f"import {root_package.name}.{module}\n")
                 print(f"  Importing {module}")
             for module in generated_module:
                 if "." in module:

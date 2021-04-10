@@ -20,6 +20,15 @@ class {{ c.name }}(
 
 {#- -------------------------------------------------------------------------------------------- -#}
 
+{%- macro generate_class_header_nocircular(c) -%}
+class {{ c.name }}(
+    {%- if user_module %}_user_module.{{ c.name }}Mixin, {% endif -%}
+    EObject, metaclass=MetaEClass):
+    {{ c | docstringline -}}
+{% endmacro -%}
+
+{#- -------------------------------------------------------------------------------------------- -#}
+
 {%- macro generate_mixin_header(c) -%}
 class {{ c.name }}Mixin:
     """User defined mixin class for {{ c.name }}."""
@@ -137,6 +146,33 @@ class Derived{{ d.name | capitalize }}(EDerivedCollection):
 {% if c.abstract %}@abstract
 {% endif -%}
 {{ generate_class_header(c) }}
+{%- for a in c.eAttributes %}
+    {{ generate_attribute(a) -}}
+{% endfor %}
+{%- for r in c.eReferences %}
+    {{ generate_reference(r) -}}
+{% endfor %}
+{% if not user_module %}{% for d in c.eStructuralFeatures | selectattr('derived') | rejectattr('many') %}
+    {{ generate_derived_single(d) }}
+{% endfor %}{% endif %}
+{{- generate_class_init(c) }}
+{% if not user_module %}{% for o in c.eOperations %}
+    {{ generate_operation(o) }}
+{% endfor %}{% endif %}
+{%- endmacro %}
+
+
+{#- -------------------------------------------------------------------------------------------- -#}
+
+{%- macro generate_class_nocircular(c) %}
+
+{% if not user_module %}{% for d in c.eStructuralFeatures | selectattr('derived') | selectattr('many') %}
+{{ generate_derived_collection(d) }}
+{% endfor %}{% endif %}
+
+{% if c.abstract %}@abstract
+{% endif -%}
+{{ generate_class_header_nocircular(c) }}
 {%- for a in c.eAttributes %}
     {{ generate_attribute(a) -}}
 {% endfor %}
